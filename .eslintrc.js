@@ -11,11 +11,25 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',   
+    project: './tsconfig.json',
   },
   plugins: [
     'react'
   ],
   rules: {
+    '@typescript-eslint/semi': [2, 'always'],
+    'semi': [2, 'always'],
+    '@typescript-eslint/member-delimiter-style': [
+      'error',
+      {
+        multiline: {
+          delimiter: 'semi',          
+        },
+        singleline: {
+          delimiter: 'semi',          
+        }
+      }
+    ]
   }
 }

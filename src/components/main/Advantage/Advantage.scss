@@ -1,0 +1,59 @@
+@import '../../../variables.scss';
+
+.advantage {
+    text-align: center;
+    width: calc(25% - 22.5px);
+    padding: 20px;
+    border: 2px solid $main-color;    
+    border-radius: 5px;
+
+    &:not(:last-child) {
+        margin-right: 30px;
+    }
+
+    &:hover {
+        border: 2px solid $hover-color;
+    }
+
+    &__number {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 150%;
+        color: $main-color;
+        margin-bottom: 10px;
+        padding-top: 80px;
+        position: relative;           
+        
+        &::before {                    
+            content: "";
+            width: 64px;      
+            height: 64px;      
+            position: absolute;
+            top: 0;
+            left: calc(50% - 32px);            
+        }
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 160%;
+        color: $dark-color;        
+    }
+}
+
+.recipes::before {    
+    background: url(../../../../public/images/hot-pot.png) no-repeat;
+}
+
+.customers::before {    
+    background: url(../../../../public/images/happy-client.png) no-repeat;
+}
+
+.rating::before {    
+    background: url(../../../../public/images/satisfaction.png) no-repeat;
+}
+
+.awards::before {    
+    background: url(../../../../public/images/medal.png) no-repeat;
+}

@@ -1,13 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { HomePage } from './pages/HomePage/HomePage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { Header } from './components/shared/Header/Header';
+import './App.scss';
 
-function App() {
-  return (
+const App = (): JSX.Element => (
     <div className="App">
-      rtgrsths5h
+      <Header/>
+      <Routes>
+      <Route path='/' element={<HomePage/>} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
     </div>
-  );
-}
+);
 
 export default App;

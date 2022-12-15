@@ -1,0 +1,10 @@
+@import '../../../mixins.scss';  
+
+.header {
+    @include main-align();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin-bottom: 15px;
+}

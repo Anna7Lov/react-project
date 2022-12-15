@@ -1,0 +1,7 @@
+@import '../../mixins.scss';
+
+.video-content {
+    @include main-align();
+    display: flex;    
+    margin-bottom: 30px;
+}
