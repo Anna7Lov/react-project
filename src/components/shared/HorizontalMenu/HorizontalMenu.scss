@@ -6,7 +6,7 @@
         font-size: 20px;
         line-height: 150%;        
         display: flex;
-        margin-right: 50px;        
+        margin-right: 50px;              
     }
 
     &__item {
@@ -19,6 +19,7 @@
 
         &:hover {
             text-decoration: underline;
+            color: $bright-color;
         }
     }
 }

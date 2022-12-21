@@ -8,7 +8,7 @@ interface AdvantagesContentProps {
 
 export const Advantage = ({ advantage }: AdvantagesContentProps): JSX.Element => {
   return (
-    <div key={advantage.id} className="advantage">
+    <div className="advantage">
       <h5 className={`advantage__number ${advantage.additionalClass}`}>
         {advantage.number}
       </h5>

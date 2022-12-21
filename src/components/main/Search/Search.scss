@@ -1,37 +1,64 @@
-@import '../../../variables.scss';  
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
 
 .search {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url(../../../../public/images/search_background.jpg); 
-    background-size: cover;
-    min-height: 397px;    
-    margin-bottom: 70px;
+    &__tools-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        background: url(../../../../public/images/search_background.jpg); 
+        background-size: cover;
+        min-height: 397px;    
+        margin-bottom: 30px;
+    }    
+
+    &__tools {
+        display: flex;
+        margin-bottom: 30px;
+    }
 
     &__input {
         height: 44px;
-        border: 2px solid $main-color;
-        border-right: none;
-        border-radius: 5px 0 0 5px;
+        border: 2px solid $main-color;        
+        border-radius: 5px;
         padding: 12px;
         width: 400px;
         outline: none;
         font-weight: 400;
         font-size: 16px;
         color: $dark-color;        
+    }    
+
+    &__filters {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
     }
 
-    &__button {
-        border-radius: 0 5px 5px 0;
-        border: none;
-        width: 50px;
-        height: 44px;
-        cursor: pointer;
-        background: url(../../../../public/images/search.png) center center no-repeat $main-color;
+    &__checkbox-label {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;        
+    }
 
-        &:hover {
-            background-color: $hover-color;
-        }
+    &__sort {
+        margin-bottom: 30px;
+    }   
+
+    &__results {
+        @include main-align();
+        display: flex;
+        flex-wrap: wrap;  
+    }
+
+    &__no-results {
+        width: 600px;
+        text-align: center;
+        color: $bright-color;
+        font-size: 24px;
+        margin: 0 auto 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $bright-color;
     }
 }

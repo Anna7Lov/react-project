@@ -19,8 +19,10 @@ const horizontalLinks: LinkItem[] = [
 export const Header = (): JSX.Element => {
   return (
     <div className="header">
+      <div className='header__inner'>
       <Logo />
       <HorizontalMenu links={horizontalLinks} />
+      </div>
     </div>
   );
 };

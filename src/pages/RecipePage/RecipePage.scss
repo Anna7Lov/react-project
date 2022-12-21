@@ -1,0 +1,94 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.no-results {
+    width: 500px;
+    text-align: center;
+    color: $bright-color;
+    font-size: 24px;
+    margin: 0 auto 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid $bright-color;
+}
+
+.recipe {
+    @include main-align();   
+
+    &__title {
+        text-align: center;
+        font-weight: 500;
+        font-size: 30px;        
+        color: $main-color;        
+        margin-bottom: 30px;
+    }
+
+    &__top-content {
+        display: flex;        
+        font-size: 30px;
+        font-size: 18px;
+        font-weight: 500;
+        color: $white-color;
+        margin-bottom: 30px;  
+        background: $main-color;      
+    }
+
+    &__image {
+        margin-right: 60px;        
+    }
+
+    &__features {
+        padding: 30px 0;
+    }
+
+    &__info {        
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    &__data {        
+        margin-bottom: 30px;
+    }
+
+    &__subheading {
+        display: inline-block;
+    }
+
+    &__item {
+        &:not(:last-child):after {
+            content: ', ';        
+        }
+    }
+
+    &__content {
+        margin-bottom: 30px;
+    }
+
+    &__subtitle {
+        text-align: center;
+        font-weight: 500;
+        font-size: 24px;        
+        color: $main-color;        
+        margin-bottom: 15px;
+    }
+
+    &__ingredient {
+        list-style: disc inside;
+        margin-bottom: 10px;
+        font-size: 16px;
+
+        &::marker {
+            color: #0ea310;                   
+        }
+    }
+
+    &__instruction {
+        list-style: decimal inside;
+        margin-bottom: 10px;
+        font-size: 16px;
+
+        &::marker {
+            color: #0ea310;
+            font-weight: 500;
+        }
+    }
+}
