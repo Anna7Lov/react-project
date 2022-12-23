@@ -8,7 +8,7 @@ export const Loading = (): JSX.Element => {
       <ThreeDots
         height="128"
         width="128"
-        color="#0ea310"
+        color="#008900"
         ariaLabel="three-dots-loading"
       />
     </div>

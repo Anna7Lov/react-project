@@ -1,0 +1,29 @@
+@import '../../../variables.scss'; 
+
+.footer {    
+    padding-top: 30px;
+    border-top: 5px solid $main-color;   
+
+    &__top {       
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 30px;
+    }
+
+    &__email {        
+        font-weight: 500;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-decoration: none;
+        color: $main-color;
+    }
+
+    &__bottom {
+        background: $main-color;
+        color: $white-color;
+        font-weight: 500;
+        padding: 15px 0;
+        text-align: center;        
+    }    
+}

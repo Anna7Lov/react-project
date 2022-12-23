@@ -1,4 +1,5 @@
 import React from 'react';
+import { useThemeContext } from '../../../hooks/useThemeContext';
 import './Text.scss';
 
 interface TextProps {
@@ -6,5 +7,6 @@ interface TextProps {
 }
 
 export const Text = ({ text }: TextProps): JSX.Element => {
-  return <p className="text">{text}</p>;
+  const theme = useThemeContext();
+  return <p className={theme === 'dark' ? 'text dark-text' : 'text'}>{text}</p>;
 };

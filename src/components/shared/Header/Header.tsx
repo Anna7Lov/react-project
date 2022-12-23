@@ -1,3 +1,4 @@
+import Switch from 'react-switch';
 import React from 'react';
 import { Logo } from '../../shared/Logo/Logo';
 import { HorizontalMenu } from '../../shared/HorizontalMenu/HorizontalMenu';
@@ -16,12 +17,21 @@ const horizontalLinks: LinkItem[] = [
   { id: 4, name: 'Reviews', address: '/reviews' }
 ];
 
-export const Header = (): JSX.Element => {
+interface HeaderProps {
+  onThemeChanged: (checked: boolean) => void;
+  theme: string;
+}
+
+export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
   return (
     <div className="header">
       <div className='header__inner'>
       <Logo />
       <HorizontalMenu links={horizontalLinks} />
+      <div className='header__switch'>
+      <span className='header__switch-title'>Dark theme</span>
+      <Switch onChange={onThemeChanged} checked={theme === 'dark'} />
+      </div>
       </div>
     </div>
   );

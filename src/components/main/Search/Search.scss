@@ -2,14 +2,14 @@
 @import '../../../mixins.scss';
 
 .search {
-    &__tools-wrapper {
+    &__tools-wrapper {        
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-end;
-        background: url(../../../../public/images/search_background.jpg); 
+        background: url(../../../../public/images/search_background.jpg);        
         background-size: cover;
-        min-height: 397px;    
+        min-height: 415px;    
         margin-bottom: 30px;
     }    
 
