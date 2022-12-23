@@ -2,43 +2,14 @@ import React from 'react';
 import { Title } from '../../shared/Title/Title';
 import { Advantage } from '../Advantage/Advantage';
 import { Text } from '../../shared/Text/Text';
+import { AdvantageItem } from '../../../pages/AboutPage/AboutPage';
 import './AdvantagesContent.scss';
 
-export interface AdvantageItem {
-  id: number;
-  number: string;
-  text: string;
-  additionalClass: string;
+interface AdvantagesContentProps {
+  advantages: AdvantageItem[];
 }
 
-const advantages: AdvantageItem[] = [
-  {
-    id: 10,
-    number: '2500+',
-    text: 'recipes in our database',
-    additionalClass: 'recipes'
-  },
-  {
-    id: 11,
-    number: '2M+',
-    text: 'happy customers',
-    additionalClass: 'customers'
-  },
-  {
-    id: 12,
-    number: '4.9',
-    text: 'average app rating',
-    additionalClass: 'rating'
-  },
-  {
-    id: 13,
-    number: '12',
-    text: 'awards received',
-    additionalClass: 'awards'
-  }
-];
-
-export const AdvantagesContent = (): JSX.Element => {
+export const AdvantagesContent = ({ advantages }: AdvantagesContentProps): JSX.Element => {
   return (
     <div className="advantages">
       <div className="advantages__text-content">

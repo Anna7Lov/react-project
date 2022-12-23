@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
+import { AboutPage } from './pages/AboutPage/AboutPage';
 import { RecipePage } from './pages/RecipePage/RecipePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { Layout } from './components/shared/Layout/Layout';
@@ -25,6 +26,7 @@ const App = (): JSX.Element => {
     <div className={theme} >
       <Routes>
       <Route path='/' element={<Layout onThemeChanged={onThemeChanged} theme={theme} />}>
+      <Route path='about' element={<AboutPage />} />
       <Route index element={<HomePage />} />
       <Route path='/recipes/:id/information' element={<RecipePage />} />
       <Route path='*' element={<NotFoundPage />} />

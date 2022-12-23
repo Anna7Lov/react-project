@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { socialMediaItem } from "../Footer/Footer";
-import "./SocialMedia.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { socialMediaItem } from '../Footer/Footer';
+import './SocialMedia.scss';
 
 interface SocialMediaProps {
   socialMediaItems: socialMediaItem[];

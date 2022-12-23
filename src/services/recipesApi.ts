@@ -67,7 +67,7 @@ export const searchRecipes = (
   sort: string
 ): Promise<CallApiEndpointResult<RecipesSearchResponseType>> =>
   callApiEndpoint<undefined, RecipesSearchResponseType>({
-    endpoint: `/recipes/complexSearch?query=${q}&number=12&cuisine=${cuisine}&diet=${diet}&type=${mealType}&excludeIngredients=${excludeOnion}&sort=${sort}&apiKey=${API_KEY}`,
+    endpoint: `/recipes/complexSearch?query=${q}&number=16&cuisine=${cuisine}&diet=${diet}&type=${mealType}&excludeIngredients=${excludeOnion}&sort=${sort}&apiKey=${API_KEY}`,
     method: 'GET'
   });
 

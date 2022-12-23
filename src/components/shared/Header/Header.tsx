@@ -12,7 +12,7 @@ export interface LinkItem {
 
 const horizontalLinks: LinkItem[] = [
   { id: 1, name: 'Home', address: '/' },
-  { id: 2, name: 'Features', address: '/features' },
+  { id: 2, name: 'About', address: '/about' },
   { id: 3, name: 'Gallery', address: '/gallery' },
   { id: 4, name: 'Reviews', address: '/reviews' }
 ];

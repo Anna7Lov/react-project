@@ -13,6 +13,7 @@
 
 .recipe {
     @include main-align();   
+    margin-top: 30px;
 
     &__title {
         text-align: center;

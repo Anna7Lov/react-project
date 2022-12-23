@@ -154,7 +154,7 @@ export const Search = (): JSX.Element => {
       }`
     );
 
-    dispatch (
+    dispatch(
       searchRecipesThunk(
         debouncedQuery,
         cuisine,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdvantageItem } from '../AdvantagesContent/AdvantagesContent';
+import { AdvantageItem } from '../../../pages/AboutPage/AboutPage';
 import './Advantage.scss';
 
 interface AdvantagesContentProps {

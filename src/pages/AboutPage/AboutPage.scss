@@ -1,0 +1,23 @@
+@import '../../mixins.scss';
+
+.about {
+    @include main-align();
+    margin-top: 30px;
+
+    &__team-content {        
+        display: flex;    
+        margin-bottom: 30px;   
+    }
+
+    &__image {
+        width: 560px;
+        margin-left: 100px;
+    }
+
+    &__video-content {        
+        display: flex;    
+        margin-bottom: 30px;   
+    }
+
+}
+
