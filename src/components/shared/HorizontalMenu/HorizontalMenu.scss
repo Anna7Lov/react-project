@@ -2,7 +2,8 @@
 
 .horizontal-menu {
     &__links {
-        font-weight: 500;
+        width: 485px;
+        font-weight: 600;
         font-size: 20px;
         line-height: 150%;        
         display: flex;
@@ -10,15 +11,14 @@
     }
 
     &__item {
-        margin-right: 40px;
+        margin-right: 30px;
     }
 
     &__link {
         text-decoration: none;
         color: $dark-color;
 
-        &:hover {
-            text-decoration: underline;
+        &:hover {            
             color: $bright-color;
         }
     }

@@ -1,0 +1,9 @@
+{
+    "darkTheme": "Dark Theme",
+    "nav": {
+        "link1": "Home",
+        "link2": "About",
+        "link3": "Gallery",
+        "link4": "Reviews"
+    }
+}
