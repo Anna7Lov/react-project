@@ -1,0 +1,53 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.recipe-title-list {
+    &__results {
+        @include main-align();
+        display: flex;
+        flex-wrap: wrap;  
+    }
+
+    &__no-results {
+        width: 600px;
+        text-align: center;
+        color: $bright-color;
+        font-size: 24px;
+        margin: 0 auto 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $bright-color;
+    }
+
+    &__active-button {
+        display: block;
+        width: 120px;
+        height: 50px;
+        margin: 0 auto 30px;
+        background: $main-color;
+        border-radius: 5px;        
+        font-weight: 600;
+        font-size: 16px;        
+        color: $white-color;        
+        cursor: pointer;       
+        border: 5px solid $main-color;
+    
+        &:hover {
+            background: transparent;
+            border: 5px solid $bright-color;
+            color: $bright-color;
+        }
+    }
+
+    &__disabled-button {
+        display: block;
+        width: 120px;
+        height: 50px;
+        margin: 0 auto 30px;
+        background: $dark-color;
+        border-radius: 5px;        
+        font-weight: 600;
+        font-size: 16px;        
+        color: $white-color;       
+        opacity: 0.3;              
+    }
+}

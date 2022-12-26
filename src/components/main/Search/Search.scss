@@ -44,21 +44,5 @@
 
     &__sort {
         margin-bottom: 30px;
-    }   
-
-    &__results {
-        @include main-align();
-        display: flex;
-        flex-wrap: wrap;  
-    }
-
-    &__no-results {
-        width: 600px;
-        text-align: center;
-        color: $bright-color;
-        font-size: 24px;
-        margin: 0 auto 30px;
-        padding-bottom: 15px;
-        border-bottom: 2px solid $bright-color;
-    }
+    }       
 }

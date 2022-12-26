@@ -1,16 +1,9 @@
 import { useDebounce } from 'usehooks-ts';
 import React, { useState, useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { searchRecipesThunk } from '../../../rdx/recipes/thunks';
-import {
-  selectRecipes,
-  selectAreRecipesLoading,
-  selectAreRecipesFailed
-} from '../../../rdx/recipes/selectors';
 import { DropDownList } from '../../shared/DropDownList/DropDownList';
-import { RecipeTitle } from '../RecipeTitle/RecipeTitle';
-import { Loading } from '../../shared/Loading/Loading';
 import './Search.scss';
 
 export interface DropDownModel {
@@ -89,11 +82,7 @@ const sortList: DropDownModel[] = [
 
 export const Search = (): JSX.Element => {
   const dispatch = useDispatch();
-  const recipes = useSelector(selectRecipes);
-  const isLoading = useSelector(selectAreRecipesLoading);
-  const error = useSelector(selectAreRecipesFailed);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const [isInputChecked, setIsInputChecked] = useState(false);
   const [query, setQuery] = useState<string>(searchParams.get('query') ?? '');
   const debouncedQuery = useDebounce<string>(query, 800);
@@ -101,9 +90,7 @@ export const Search = (): JSX.Element => {
     searchParams.get('cuisine') ?? ''
   );
   const [diet, setDiet] = useState<string>(searchParams.get('diet') ?? '');
-  const [mealType, setMealType] = useState<string>(
-    searchParams.get('type') ?? ''
-  );
+  const [mealType, setMealType] = useState<string>(searchParams.get('type') ?? '');
   const [excludeOnion, setExcludeOnion] = useState<string>(
     searchParams.get('excludeIngredients') ?? ''
   );
@@ -145,12 +132,9 @@ export const Search = (): JSX.Element => {
 
   useEffect(() => {
     setSearchParams(
-      `${debouncedQuery === '' ? '' : `&query=${debouncedQuery}`}${
-        cuisine === '' ? '' : `&cuisine=${cuisine}`
-      }${diet === '' ? '' : `&diet=${diet}`}${
-        mealType === '' ? '' : `&type=${mealType}`
-      }${excludeOnion === '' ? '' : `&excludeIngredients=${excludeOnion}`}${
-        sort === '' ? '' : `&sort=${sort}`
+      `${debouncedQuery === '' ? '' : `&query=${debouncedQuery}`}${cuisine === '' ? '' : `&cuisine=${cuisine}`
+      }${diet === '' ? '' : `&diet=${diet}`}${mealType === '' ? '' : `&type=${mealType}`
+      }${excludeOnion === '' ? '' : `&excludeIngredients=${excludeOnion}`}${sort === '' ? '' : `&sort=${sort}`
       }`
     );
 
@@ -210,25 +194,7 @@ export const Search = (): JSX.Element => {
             handleSelectChange={onSortClick}
           />
         </div>
-      </div>
-      {isLoading
-        ? (<Loading />)
-        : !isLoading && !error
-            ? (<div className="search__results">
-          {recipes?.length
-            ? (recipes.map((recipe) => (
-              <RecipeTitle recipe={recipe} key={recipe.id} />
-              )))
-            : (
-            <div className="search__no-results">
-              No results. Try changing your search options.
-            </div>
-              )}
-        </div>
-              )
-            : <div className="search__no-results">
-        Error: {error?.message}
-      </div> }
+      </div>      
     </div>
   );
 };
