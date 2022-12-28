@@ -1,8 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useCallback } from 'react';
 import './Logo.scss';
 
 export const Logo = (): JSX.Element => {
-  return <Link to="/" className="logo"></Link>;
+  const refreshPage = useCallback(() => {
+    window.location.href="/";
+  }, []);
+
+  return <a className="logo" onClick={refreshPage}></a>;
 };

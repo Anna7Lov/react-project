@@ -72,9 +72,9 @@ const sortList: DropDownModel[] = [
     title: 'Sort',
     list: [
       { id: 101, value: '', name: 'Sort By' },
-      { id: 102, value: 'popularity', name: 'Popularity' },
-      { id: 103, value: 'time', name: 'Time' },
-      { id: 104, value: 'calories', name: 'Calories' },
+      { id: 102, value: 'popularity', name: 'Popularity (from the most popular)' },
+      { id: 103, value: 'time', name: 'Time (from the fastest to prepare)' },
+      { id: 104, value: 'calories', name: 'Calories (from the least caloric)' },
       { id: 105, value: '', name: 'Default' }
     ]
   }
@@ -95,6 +95,7 @@ export const Search = (): JSX.Element => {
     searchParams.get('excludeIngredients') ?? ''
   );
   const [sort, setSort] = useState<string>(searchParams.get('sort') ?? '');
+  const [sortDirection, setSortDirection] = useState<string>(searchParams.get('sortDirection') ?? '');
 
   const onInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,6 +129,11 @@ export const Search = (): JSX.Element => {
 
   const onSortClick = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value);
+    if (e.target.value === 'popularity') {
+      setSortDirection('desc');
+    } else {
+      setSortDirection('asc');
+    }
   }, []);
 
   useEffect(() => {
@@ -135,7 +141,8 @@ export const Search = (): JSX.Element => {
       `${debouncedQuery === '' ? '' : `&query=${debouncedQuery}`}${cuisine === '' ? '' : `&cuisine=${cuisine}`
       }${diet === '' ? '' : `&diet=${diet}`}${mealType === '' ? '' : `&type=${mealType}`
       }${excludeOnion === '' ? '' : `&excludeIngredients=${excludeOnion}`}${sort === '' ? '' : `&sort=${sort}`
-      }`
+      }${sortDirection === '' ? '' : `&sortDirection=${sortDirection}`
+    }`
     );
 
     dispatch(
@@ -145,7 +152,8 @@ export const Search = (): JSX.Element => {
         diet,
         mealType,
         excludeOnion,
-        sort
+        sort,
+        sortDirection
       )
     );
   }, [debouncedQuery, cuisine, diet, mealType, excludeOnion, sort]);
@@ -194,7 +202,7 @@ export const Search = (): JSX.Element => {
             handleSelectChange={onSortClick}
           />
         </div>
-      </div>      
+      </div>
     </div>
   );
 };

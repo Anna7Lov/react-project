@@ -1,5 +1,5 @@
 import { createAsyncAction } from 'typesafe-actions';
-import { RecipeTitleModel, RecipeModel } from '../../services/recipesTypes';
+import { RecipeTitleModel, RecipeModel, SimilarRecipeModel } from '../../services/recipesTypes';
 
 export enum RecipesActions {
   GET_SEARCH_RECIPES_REQUEST = '@goods/GET_SEARCH_RECIPES_REQUEST',
@@ -8,7 +8,11 @@ export enum RecipesActions {
 
   GET_RECIPE_REQUEST = '@goods/GET_RECIPE_REQUEST',
   GET_RECIPE_SUCCESS = '@goods/GET_RECIPE_SUCCESS',
-  GET_RECIPE_FAILURE = '@goods/GET_RECIPE_FAILURE'
+  GET_RECIPE_FAILURE = '@goods/GET_RECIPE_FAILURE',
+
+  GET_SIMILAR_RECIPE_REQUEST = '@goods/GET_SIMILAR_RECIPE_REQUEST',
+  GET_SIMILAR_RECIPE_SUCCESS = '@goods/GET_SIMILAR_RECIPE_SUCCESS',
+  GET_SIMILAR_RECIPE_FAILURE = '@goods/GET_SIMILAR_RECIPE_FAILURE'
 }
 
 export const searchRecipesAsyncAction = createAsyncAction(
@@ -22,3 +26,9 @@ export const getRecipeAsyncAction = createAsyncAction(
   RecipesActions.GET_RECIPE_SUCCESS,
   RecipesActions.GET_RECIPE_FAILURE
 )<{ id: string }, { recipe: RecipeModel; id: string }, { error: Error; id: string }>();
+
+export const getSimilarRecipesAsyncAction = createAsyncAction(
+  RecipesActions.GET_SIMILAR_RECIPE_REQUEST,
+  RecipesActions.GET_SIMILAR_RECIPE_SUCCESS,
+  RecipesActions.GET_SIMILAR_RECIPE_FAILURE
+)<{ id: string }, { similarRecipes: SimilarRecipeModel[] }, { error: Error }>();

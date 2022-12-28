@@ -1,0 +1,51 @@
+@import '../../../variables.scss';
+
+.similar-recipe {       
+        display: inline-block;
+        width: 100%;               
+        margin-bottom: 15px;        
+        page-break-inside: avoid;
+        break-inside: avoid;   
+    
+    &__link {        
+        display: block; 
+        padding: 10px 10px 15px 80px;  
+        background: $main-color;      
+        color: $white-color;        
+        box-shadow: 2px 2px 3px 1px $dark-color;        
+        text-decoration: none;   
+        position: relative;        
+    
+        &::before {            
+            content: "";
+            width: 64px;
+            height: 64px;
+            position: absolute;
+            top: calc(50% - 32px);
+            left: 5px;
+            background: url(../../../../public/images/recipe.png) center no-repeat;
+        }        
+        
+        &:hover {
+            background: $bright-color;
+        }
+    }   
+    
+    &__title {
+        display: flex;
+        align-items: center;
+        height: 45px;
+        padding: 0 0 5px;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 5px;
+        border-bottom: 1px dashed $white-color;       
+    }
+    
+    &__time {
+        display: block;
+        padding: 5px 0 10px;
+        border-bottom: 1px dashed $white-color;
+    }
+}
+

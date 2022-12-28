@@ -1,0 +1,26 @@
+@import '../../../variables.scss';
+
+.similar-recipes-list {
+    &__title {
+        text-align: center;
+        font-weight: 500;
+        font-size: 24px;        
+        color: $main-color;        
+        margin-bottom: 30px;  
+    }
+
+    &__items {
+        column-count: 2;
+        margin-bottom: 30px;        
+    }   
+    
+    &__error {        
+        width: 600px;
+        text-align: center;
+        color: $bright-color;
+        font-size: 24px;
+        margin: 0 auto 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $bright-color;        
+    }
+}

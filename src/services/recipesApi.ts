@@ -1,7 +1,12 @@
-import { RecipesSearchResponseType, RecipeResponseType, RecipeModel } from './recipesTypes';
+import {
+  RecipesSearchResponseType,
+  RecipeResponseType,
+  RecipeModel,
+  SimilarRecipeResponseType
+} from './recipesTypes';
 
 const BASE_URL = 'https://api.spoonacular.com';
-const API_KEY = 'a799d633c91f4dfd91e45de0667b5c14';
+const API_KEY = '08e6e5f370804892ba49ed689eb872c6';
 
 const commonHeaders = {
   'Content-Type': 'application/json'
@@ -64,15 +69,22 @@ export const searchRecipes = async (
   diet: string,
   mealType: string,
   excludeOnion: string,
-  sort: string
+  sort: string,
+  sortDirection: string
 ): Promise<CallApiEndpointResult<RecipesSearchResponseType>> =>
   await callApiEndpoint<undefined, RecipesSearchResponseType>({
-    endpoint: `/recipes/complexSearch?query=${q}&number=72&cuisine=${cuisine}&diet=${diet}&type=${mealType}&excludeIngredients=${excludeOnion}&sort=${sort}&apiKey=${API_KEY}`,
+    endpoint: `recipes/complexSearch?query=${q}&number=60&cuisine=${cuisine}&diet=${diet}&type=${mealType}&excludeIngredients=${excludeOnion}&sort=${sort}&sortDirection=${sortDirection}&apiKey=${API_KEY}`,
     method: 'GET'
   });
 
 export const getRecipe = async (id: string): Promise<CallApiEndpointResult<RecipeModel>> =>
   await callApiEndpoint<undefined, RecipeResponseType>({
-    endpoint: `/recipes/${id}/information?apiKey=${API_KEY}`,
+    endpoint: `recipes/${id}/information?apiKey=${API_KEY}`,
+    method: 'GET'
+  });
+
+export const getSimilarRecipes = async (id: string): Promise<CallApiEndpointResult<SimilarRecipeResponseType>> =>
+  await callApiEndpoint<undefined, SimilarRecipeResponseType>({
+    endpoint: `recipes/${id}/similar?apiKey=${API_KEY}&number=6`,
     method: 'GET'
   });

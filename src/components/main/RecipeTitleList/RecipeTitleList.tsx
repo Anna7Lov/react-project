@@ -14,19 +14,26 @@ export const RecipeTitleList = (): JSX.Element => {
   const recipes = useSelector(selectRecipes);
   const isLoading = useSelector(selectAreRecipesLoading);
   const error = useSelector(selectAreRecipesFailed);
-  const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(12);
-  const initialRecipes = slice(recipes, 0, index);
+  const [isCompleted, setIsCompleted] = useState<boolean>();
 
-  const loadMore = useCallback(() => {
+  const recipesToShow = slice(recipes, 0, index);
+
+  const showMore = useCallback(() => {
     setIndex(index + 12);
   }, [index]);
 
   useEffect(() => {
-    if (index === recipes.length) {
+    if (index >= recipes.length) {
       setIsCompleted(true);
+    } else {
+      setIsCompleted(false);
     }
   }, [index, recipes]);
+
+  useEffect(() => {
+    setIndex(12);
+  }, [recipes]);
 
   return (
     <div className="recipe-title-list">
@@ -34,42 +41,42 @@ export const RecipeTitleList = (): JSX.Element => {
         ? (<Loading />)
         : !isLoading && !error
             ? (<div className="recipe-title-list__results">
-            {recipes?.length
-              ? (initialRecipes.map((recipe) => (
-              <RecipeTitle recipe={recipe} key={recipe.id} />
-                ))
-                )
-              : (<div className="recipe-title-list__no-results">
-              No results. Try changing your search options.
-                 </div>
-                )}
-               </div>
+              {recipes?.length
+                ? (recipesToShow.map((recipe) => (
+                <RecipeTitle recipe={recipe} key={recipe.id} />
+                  ))
+                  )
+                : (<div className="recipe-title-list__no-results">
+                No results. Try changing your search options.
+              </div>
+                  )}
+          </div>
               )
             : (<div className="recipe-title-list__no-results">
-              Error: {error?.message}
-               </div>
+            Error: {error?.message}
+          </div>
               )}
 
-      <div className="recipe-title-list__load-more">
+      <div className="recipe-title-list__show-more">
         {isCompleted
           ? (<button
             type="button"
             disabled
             className="recipe-title-list__disabled-button"
           >
-            Load More
-             </button>
+            Show More
+          </button>
             )
           : (
-          <button
-            onClick={loadMore}
-            type="button"
-            className="recipe-title-list__active-button"
-          >
-            Load More
-          </button>
+            <button
+              onClick={showMore}
+              type="button"
+              className="recipe-title-list__active-button"
+            >
+              Show More
+            </button>
             )}
-        </div>
+      </div>
     </div>
   );
 };

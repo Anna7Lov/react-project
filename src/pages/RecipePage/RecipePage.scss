@@ -9,6 +9,7 @@
     margin: 0 auto 30px;
     padding-bottom: 15px;
     border-bottom: 2px solid $bright-color;
+    margin-top: 30px;
 }
 
 .recipe {
@@ -30,14 +31,15 @@
         font-weight: 500;
         color: $white-color;
         margin-bottom: 30px;  
-        background: $main-color;      
+        background: $main-color;            
     }
 
     &__image {
-        margin-right: 60px;        
+        margin-right: 60px;    
+        border-right: 5px solid $white-color;         
     }
 
-    &__features {
+    &__features {        
         padding: 30px 0;
     }
 
@@ -69,7 +71,7 @@
         font-weight: 500;
         font-size: 24px;        
         color: $main-color;        
-        margin-bottom: 15px;
+        margin-bottom: 30px;        
     }
 
     &__ingredient {
@@ -84,12 +86,12 @@
 
     &__instruction {
         list-style: decimal inside;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         font-size: 16px;
 
         &::marker {
             color: #008900;
             font-weight: 500;
         }
-    }
+    }      
 }

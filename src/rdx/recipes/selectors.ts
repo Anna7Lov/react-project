@@ -2,7 +2,8 @@ import { GlobalAppState } from '../rootReducer';
 import {
   RecipeTitleModel,
   RequestState,
-  RecipeModel
+  RecipeModel,
+  SimilarRecipeModel
 } from '../../services/recipesTypes';
 
 export const selectRecipes = (state: GlobalAppState): RecipeTitleModel[] =>
@@ -22,3 +23,11 @@ export const selectRecipe = (
     error: Error | null;
   };
 } => state.recipes.recipe;
+
+export const selectSimilarRecipes = (state: GlobalAppState): SimilarRecipeModel[] =>
+  state.recipes.similarRecipes;
+
+export const selectAreSimilarRecipesLoading = (state: GlobalAppState): boolean =>
+  state.recipes.similarRecipesRequestState === RequestState.Waiting;
+
+export const selectAreSimilarRecipesFailed = (state: GlobalAppState): Error | null => state.recipes.similarRecipesError;

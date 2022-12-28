@@ -43,3 +43,11 @@ export interface RecipeModel {
 }
 
 export type RecipeResponseType = RecipeModel;
+
+export interface SimilarRecipeModel {
+  id: string;
+  title: string;
+  readyInMinutes: number;
+}
+
+export type SimilarRecipeResponseType = SimilarRecipeModel[];

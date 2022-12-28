@@ -26,8 +26,8 @@ const App = (): JSX.Element => {
     <div className={theme} >
       <Routes>
       <Route path='/' element={<Layout onThemeChanged={onThemeChanged} theme={theme} />}>
-      <Route path='about' element={<AboutPage />} />
       <Route index element={<HomePage />} />
+      <Route path='about' element={<AboutPage />} />
       <Route path='/recipes/:id/information' element={<RecipePage />} />
       <Route path='*' element={<NotFoundPage />} />
       </Route>

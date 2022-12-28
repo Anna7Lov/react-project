@@ -2,9 +2,10 @@ import { getType } from 'typesafe-actions';
 import { GlobalAppActions } from '../actions';
 import {
   searchRecipesAsyncAction,
-  getRecipeAsyncAction
+  getRecipeAsyncAction,
+  getSimilarRecipesAsyncAction
 } from './actions';
-import { RecipeTitleModel, RecipeModel, RequestState } from '../../services/recipesTypes';
+import { RecipeTitleModel, RecipeModel, RequestState, SimilarRecipeModel } from '../../services/recipesTypes';
 
 export interface RecipesState {
   recipesTitles: RecipeTitleModel[];
@@ -15,13 +16,19 @@ export interface RecipesState {
     info: RecipeModel | null;
     error: Error | null;
   }; };
+  similarRecipes: SimilarRecipeModel[];
+  similarRecipesRequestState: RequestState;
+  similarRecipesError: Error | null;
 }
 
 const initialState: RecipesState = {
   recipesTitles: [],
   searchRecipesRequestState: RequestState.Unset,
   error: null,
-  recipe: {}
+  recipe: {},
+  similarRecipes: [],
+  similarRecipesRequestState: RequestState.Unset,
+  similarRecipesError: null
 };
 
 export const reducer = (state = initialState, action: GlobalAppActions): RecipesState => {
@@ -90,6 +97,31 @@ export const reducer = (state = initialState, action: GlobalAppActions): Recipes
             requestState: RequestState.Failure
           }
         }
+      };
+    }
+
+    case getType(getSimilarRecipesAsyncAction.request): {
+      return {
+        ...state,
+        similarRecipesRequestState: RequestState.Waiting,
+        similarRecipesError: null
+      };
+    }
+
+    case getType(getSimilarRecipesAsyncAction.success): {
+      return {
+        ...state,
+        similarRecipes: action.payload.similarRecipes,
+        similarRecipesRequestState: RequestState.Success,
+        similarRecipesError: null
+      };
+    }
+
+    case getType(getSimilarRecipesAsyncAction.failure): {
+      return {
+        ...state,
+        similarRecipesRequestState: RequestState.Failure,
+        similarRecipesError: action.payload.error
       };
     }
 

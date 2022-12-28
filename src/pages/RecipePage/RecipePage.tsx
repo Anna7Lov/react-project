@@ -2,9 +2,10 @@ import React, { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RequestState } from '../../services/recipesTypes';
-import { getRecipeThunk } from '../../rdx/recipes/thunks';
+import { getRecipeThunk, getSimilarRecipesThunk } from '../../rdx/recipes/thunks';
 import { selectRecipe } from '../../rdx/recipes/selectors';
 import { Loading } from '../../components/shared/Loading/Loading';
+import { SimilarRecipesList } from '../../components/recipe/SimilarRecipesList/SimilarRecipesList';
 import './RecipePage.scss';
 
 export const RecipePage = (): JSX.Element => {
@@ -22,6 +23,7 @@ export const RecipePage = (): JSX.Element => {
   useEffect(() => {
     if (id) {
       dispatch(getRecipeThunk(id));
+      dispatch(getSimilarRecipesThunk(id));
     }
   }, [id]);
 
@@ -30,7 +32,7 @@ export const RecipePage = (): JSX.Element => {
   }
 
   if (currentRecipe?.requestState === RequestState.Failure) {
-    return <div className="search__no-results">Error: {currentRecipe.error?.message}</div>;
+    return <div className="no-results">Error: {currentRecipe.error?.message}</div>;
   }
 
   if (!id || !currentRecipe || !currentRecipe.info) {
@@ -85,8 +87,8 @@ export const RecipePage = (): JSX.Element => {
       <div className="recipe__content">
         <h3 className="recipe__subtitle">Ingredients:</h3>
         <ul className="recipe__ingredients">
-          {currentRecipe.info.extendedIngredients?.map((ingredient) => (
-            <li key={ingredient.name} className="recipe__ingredient">
+          {currentRecipe.info.extendedIngredients?.map((ingredient, index) => (
+            <li key={`${ingredient.name}${index}`} className="recipe__ingredient">
               {ingredient.original}
             </li>
           ))}
@@ -107,6 +109,8 @@ export const RecipePage = (): JSX.Element => {
           </ol>
         </div>)
         : ('')}
+
+      <SimilarRecipesList />
     </div>
   );
 };
