@@ -3,7 +3,8 @@ import {
   RecipeTitleModel,
   RequestState,
   RecipeModel,
-  SimilarRecipeModel
+  SimilarRecipeModel,
+  AutocompleteModel
 } from '../../services/recipesTypes';
 
 export const selectRecipes = (state: GlobalAppState): RecipeTitleModel[] =>
@@ -31,3 +32,11 @@ export const selectAreSimilarRecipesLoading = (state: GlobalAppState): boolean =
   state.recipes.similarRecipesRequestState === RequestState.Waiting;
 
 export const selectAreSimilarRecipesFailed = (state: GlobalAppState): Error | null => state.recipes.similarRecipesError;
+
+export const selectAutocomplete = (state: GlobalAppState): AutocompleteModel[] =>
+  state.recipes.autocomplete;
+
+export const selectIsAutocompleteLoading = (state: GlobalAppState): boolean =>
+  state.recipes.autocompleteRequestState === RequestState.Waiting;
+
+export const selectIsAutocompleteFailed = (state: GlobalAppState): Error | null => state.recipes.autocompleteError;

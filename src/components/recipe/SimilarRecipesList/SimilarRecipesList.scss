@@ -10,8 +10,9 @@
     }
 
     &__items {
-        column-count: 2;
-        margin-bottom: 30px;        
+        display: flex;
+        flex-wrap: wrap;  
+        margin-bottom: 15px;             
     }   
     
     &__error {        

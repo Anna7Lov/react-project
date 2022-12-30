@@ -1,0 +1,37 @@
+@import '../../../variables.scss';
+
+.autocomplete {
+    width: 450px;
+    position: absolute;
+    top: 44px;
+    background: #f0f5f7;    
+    border-radius: 5px;    
+
+    &__no-results {
+        width: 350px;        
+        text-align: center;
+        color: $bright-color;
+        font-size: 20px;
+        margin: 55.5px auto;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $bright-color;
+    }
+
+    &__list {
+        padding: 15px 0;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    &__link {
+        display: block;
+        color: $dark-color;  
+        text-decoration: none;
+        padding: 10px 20px;
+
+        &:hover {
+            background: $bright-color;
+            color: $white-color;
+        }
+    }
+}

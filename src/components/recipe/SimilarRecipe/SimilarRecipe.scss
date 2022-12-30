@@ -1,11 +1,12 @@
 @import '../../../variables.scss';
 
 .similar-recipe {       
-        display: inline-block;
-        width: 100%;               
+        width: calc(50% - 7.5px);
         margin-bottom: 15px;        
-        page-break-inside: avoid;
-        break-inside: avoid;   
+        
+        &:not(:nth-child(2n+2)) {
+            margin-right: 15px;
+        }
     
     &__link {        
         display: block; 
@@ -34,8 +35,8 @@
     &__title {
         display: flex;
         align-items: center;
-        height: 45px;
-        padding: 0 0 5px;
+        height: 50px;
+        padding: 0 0 2px;
         font-size: 18px;
         font-weight: 500;
         margin-bottom: 5px;

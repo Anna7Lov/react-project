@@ -1,12 +1,12 @@
 import {
   RecipesSearchResponseType,
-  RecipeResponseType,
   RecipeModel,
-  SimilarRecipeResponseType
+  SimilarRecipeModel,
+  AutocompleteModel
 } from './recipesTypes';
 
 const BASE_URL = 'https://api.spoonacular.com';
-const API_KEY = '08e6e5f370804892ba49ed689eb872c6';
+const API_KEY = 'b184dbc986e2446e8754be05fc29fcbb';
 
 const commonHeaders = {
   'Content-Type': 'application/json'
@@ -78,13 +78,19 @@ export const searchRecipes = async (
   });
 
 export const getRecipe = async (id: string): Promise<CallApiEndpointResult<RecipeModel>> =>
-  await callApiEndpoint<undefined, RecipeResponseType>({
+  await callApiEndpoint<undefined, RecipeModel>({
     endpoint: `recipes/${id}/information?apiKey=${API_KEY}`,
     method: 'GET'
   });
 
-export const getSimilarRecipes = async (id: string): Promise<CallApiEndpointResult<SimilarRecipeResponseType>> =>
-  await callApiEndpoint<undefined, SimilarRecipeResponseType>({
+export const getSimilarRecipes = async (id: string): Promise<CallApiEndpointResult<SimilarRecipeModel[]>> =>
+  await callApiEndpoint<undefined, SimilarRecipeModel[]>({
     endpoint: `recipes/${id}/similar?apiKey=${API_KEY}&number=6`,
+    method: 'GET'
+  });
+
+export const getAutocomplete = async (q: string): Promise<CallApiEndpointResult<AutocompleteModel[]>> =>
+  await callApiEndpoint<undefined, AutocompleteModel[]>({
+    endpoint: `recipes/autocomplete?number=8&query=${q}&apiKey=${API_KEY}`,
     method: 'GET'
   });

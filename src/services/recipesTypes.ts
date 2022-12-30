@@ -42,12 +42,13 @@ export interface RecipeModel {
   analyzedInstructions?: InstructionModel[];
 }
 
-export type RecipeResponseType = RecipeModel;
-
 export interface SimilarRecipeModel {
   id: string;
   title: string;
   readyInMinutes: number;
 }
 
-export type SimilarRecipeResponseType = SimilarRecipeModel[];
+export interface AutocompleteModel {
+  id: string;
+  title: string;
+}

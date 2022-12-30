@@ -2,9 +2,10 @@ import { useDebounce } from 'usehooks-ts';
 import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { searchRecipesThunk } from '../../../rdx/recipes/thunks';
+import { searchRecipesThunk, getAutocompleteThunk } from '../../../rdx/recipes/thunks';
 import { DropDownList } from '../../shared/DropDownList/DropDownList';
 import './Search.scss';
+import { Autocomplete } from '../Autocomplete/Autocomplete';
 
 export interface DropDownModel {
   id: number;
@@ -83,23 +84,36 @@ const sortList: DropDownModel[] = [
 export const Search = (): JSX.Element => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [isInputChecked, setIsInputChecked] = useState(false);
+
+  const [inputText, setInputText] = useState<string>(searchParams.get('query') ?? '');
+  const debouncedQuery = useDebounce<string>(inputText, 500);
+  const [isDropDownBoxOpen, setIsDropDownBoxOpen] = useState(false);
   const [query, setQuery] = useState<string>(searchParams.get('query') ?? '');
-  const debouncedQuery = useDebounce<string>(query, 800);
-  const [cuisine, setCuisine] = useState<string>(
-    searchParams.get('cuisine') ?? ''
-  );
+  const [cuisine, setCuisine] = useState<string>(searchParams.get('cuisine') ?? '');
   const [diet, setDiet] = useState<string>(searchParams.get('diet') ?? '');
   const [mealType, setMealType] = useState<string>(searchParams.get('type') ?? '');
   const [excludeOnion, setExcludeOnion] = useState<string>(
     searchParams.get('excludeIngredients') ?? ''
   );
+  const [isInputChecked, setIsInputChecked] = useState(false);
   const [sort, setSort] = useState<string>(searchParams.get('sort') ?? '');
-  const [sortDirection, setSortDirection] = useState<string>(searchParams.get('sortDirection') ?? '');
+  const [sortDirection, setSortDirection] = useState<string>(
+    searchParams.get('sortDirection') ?? ''
+  );
+
+  const onSearchFormSubmit = useCallback(
+    (e: React.ChangeEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setQuery(inputText);
+      setIsDropDownBoxOpen(false);
+    },
+    [inputText]
+  );
 
   const onInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setQuery(e.target.value);
+      setInputText(e.target.value);
+      setIsDropDownBoxOpen(true);
     },
     []
   );
@@ -137,17 +151,21 @@ export const Search = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    dispatch(getAutocompleteThunk(debouncedQuery));
+  }, [debouncedQuery]);
+
+  useEffect(() => {
     setSearchParams(
-      `${debouncedQuery === '' ? '' : `&query=${debouncedQuery}`}${cuisine === '' ? '' : `&cuisine=${cuisine}`
+      `${query === '' ? '' : `&query=${query}`}${cuisine === '' ? '' : `&cuisine=${cuisine}`
       }${diet === '' ? '' : `&diet=${diet}`}${mealType === '' ? '' : `&type=${mealType}`
       }${excludeOnion === '' ? '' : `&excludeIngredients=${excludeOnion}`}${sort === '' ? '' : `&sort=${sort}`
       }${sortDirection === '' ? '' : `&sortDirection=${sortDirection}`
-    }`
+      }`
     );
 
     dispatch(
       searchRecipesThunk(
-        debouncedQuery,
+        query,
         cuisine,
         diet,
         mealType,
@@ -156,20 +174,29 @@ export const Search = (): JSX.Element => {
         sortDirection
       )
     );
-  }, [debouncedQuery, cuisine, diet, mealType, excludeOnion, sort]);
+  }, [query, cuisine, diet, mealType, excludeOnion, sort]);
 
   return (
     <div className="search">
       <div className="search__tools-wrapper">
         <div className="search__tools">
-          <input
-            value={query}
-            placeholder="Search..."
-            type="search"
-            className="search__input"
-            onChange={onInputChange}
-          />
+          <form className='search__form' onSubmit={onSearchFormSubmit}>
+            <input
+              value={inputText}
+              placeholder="Search..."
+              type="search"
+              className="search__input"
+              onChange={onInputChange}
+            />
+            <button className='search__button'></button>
+          </form>
+
+          {isDropDownBoxOpen
+            ? <Autocomplete debouncedQuery={debouncedQuery} />
+            : ''
+          }
         </div>
+
         <div className="search__filters">
           <DropDownList
             items={cuisineList}

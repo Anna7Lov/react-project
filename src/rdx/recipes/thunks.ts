@@ -1,13 +1,15 @@
 import {
   searchRecipesAsyncAction,
   getRecipeAsyncAction,
-  getSimilarRecipesAsyncAction
+  getSimilarRecipesAsyncAction,
+  getAutocompleteAsyncAction
 } from './actions';
 
 import {
   searchRecipes,
   getRecipe,
-  getSimilarRecipes
+  getSimilarRecipes,
+  getAutocomplete
 } from '../../services/recipesApi';
 
 import { AppDispatch } from '../index';
@@ -53,5 +55,18 @@ export const getSimilarRecipesThunk = (id: string): ThunkAppType => async (dispa
     dispatch(getSimilarRecipesAsyncAction.success({ similarRecipes: response.response }));
   } catch (error) {
     dispatch(getSimilarRecipesAsyncAction.failure({ error: new Error('Something went wrong') }));
+  }
+};
+
+export const getAutocompleteThunk = (q: string): ThunkAppType => async (dispatch: AppDispatch) => {
+  dispatch(getAutocompleteAsyncAction.request());
+  try {
+    const response = await getAutocomplete(q);
+    if (!response.success || !response.response) {
+      throw (Error('Something went wrong'));
+    }
+    dispatch(getAutocompleteAsyncAction.success({ autocomplete: response.response }));
+  } catch (error) {
+    dispatch(getAutocompleteAsyncAction.failure({ error: new Error('Something went wrong') }));
   }
 };

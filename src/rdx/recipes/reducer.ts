@@ -3,9 +3,10 @@ import { GlobalAppActions } from '../actions';
 import {
   searchRecipesAsyncAction,
   getRecipeAsyncAction,
-  getSimilarRecipesAsyncAction
+  getSimilarRecipesAsyncAction,
+  getAutocompleteAsyncAction
 } from './actions';
-import { RecipeTitleModel, RecipeModel, RequestState, SimilarRecipeModel } from '../../services/recipesTypes';
+import { RecipeTitleModel, RecipeModel, RequestState, SimilarRecipeModel, AutocompleteModel } from '../../services/recipesTypes';
 
 export interface RecipesState {
   recipesTitles: RecipeTitleModel[];
@@ -19,6 +20,9 @@ export interface RecipesState {
   similarRecipes: SimilarRecipeModel[];
   similarRecipesRequestState: RequestState;
   similarRecipesError: Error | null;
+  autocomplete: AutocompleteModel[];
+  autocompleteRequestState: RequestState;
+  autocompleteError: Error | null;
 }
 
 const initialState: RecipesState = {
@@ -28,7 +32,10 @@ const initialState: RecipesState = {
   recipe: {},
   similarRecipes: [],
   similarRecipesRequestState: RequestState.Unset,
-  similarRecipesError: null
+  similarRecipesError: null,
+  autocomplete: [],
+  autocompleteRequestState: RequestState.Unset,
+  autocompleteError: null
 };
 
 export const reducer = (state = initialState, action: GlobalAppActions): RecipesState => {
@@ -122,6 +129,31 @@ export const reducer = (state = initialState, action: GlobalAppActions): Recipes
         ...state,
         similarRecipesRequestState: RequestState.Failure,
         similarRecipesError: action.payload.error
+      };
+    }
+
+    case getType(getAutocompleteAsyncAction.request): {
+      return {
+        ...state,
+        autocompleteRequestState: RequestState.Waiting,
+        autocompleteError: null
+      };
+    }
+
+    case getType(getAutocompleteAsyncAction.success): {
+      return {
+        ...state,
+        autocomplete: action.payload.autocomplete,
+        autocompleteRequestState: RequestState.Success,
+        autocompleteError: null
+      };
+    }
+
+    case getType(getAutocompleteAsyncAction.failure): {
+      return {
+        ...state,
+        autocompleteRequestState: RequestState.Failure,
+        autocompleteError: action.payload.error
       };
     }
 
