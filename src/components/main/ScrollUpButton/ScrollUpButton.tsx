@@ -4,10 +4,6 @@ import './ScrollUpButton.scss';
 export const ScrollUpButton = (): JSX.Element => {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener('scroll', onScroll);
-  }, []);
-
   const onScroll = useCallback(() => {
     if (window.scrollY > 300) {
       setIsButtonVisible(true);
@@ -15,6 +11,13 @@ export const ScrollUpButton = (): JSX.Element => {
       setIsButtonVisible(false);
     }
   }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [onScroll]);
 
   const moveUp = useCallback(() => {
     window.scrollTo({

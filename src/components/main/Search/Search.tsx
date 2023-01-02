@@ -1,11 +1,12 @@
 import { useDebounce } from 'usehooks-ts';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { searchRecipesThunk, getAutocompleteThunk } from '../../../rdx/recipes/thunks';
+import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { DropDownList } from '../../shared/DropDownList/DropDownList';
-import './Search.scss';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
+import './Search.scss';
 
 export interface DropDownModel {
   id: number;
@@ -84,10 +85,11 @@ const sortList: DropDownModel[] = [
 export const Search = (): JSX.Element => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
+  const searchToolsRef = useRef(null);
 
   const [inputText, setInputText] = useState<string>(searchParams.get('query') ?? '');
   const debouncedQuery = useDebounce<string>(inputText, 500);
-  const [isDropDownBoxOpen, setIsDropDownBoxOpen] = useState(false);
+  const [isDropDownBoxOpened, setIsDropDownBoxOpened] = useState(false);
   const [query, setQuery] = useState<string>(searchParams.get('query') ?? '');
   const [cuisine, setCuisine] = useState<string>(searchParams.get('cuisine') ?? '');
   const [diet, setDiet] = useState<string>(searchParams.get('diet') ?? '');
@@ -101,22 +103,42 @@ export const Search = (): JSX.Element => {
     searchParams.get('sortDirection') ?? ''
   );
 
+  const closeDropDownBox = useCallback(
+    () => {
+      setIsDropDownBoxOpened(false);
+    },
+    []
+  );
+
   const onSearchFormSubmit = useCallback(
     (e: React.ChangeEvent<HTMLFormElement>) => {
       e.preventDefault();
       setQuery(inputText);
-      setIsDropDownBoxOpen(false);
+      closeDropDownBox();
     },
-    [inputText]
+    [inputText, closeDropDownBox]
+  );
+
+  const onInputClick = useCallback(
+    () => {
+      if (!isDropDownBoxOpened) {
+        setIsDropDownBoxOpened(true);
+      }
+    },
+    [isDropDownBoxOpened]
   );
 
   const onInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputText(e.target.value);
-      setIsDropDownBoxOpen(true);
+      if (!isDropDownBoxOpened) {
+        setIsDropDownBoxOpened(true);
+      }
     },
-    []
+    [isDropDownBoxOpened]
   );
+
+  useOnClickOutside(searchToolsRef, closeDropDownBox, isDropDownBoxOpened);
 
   const chooseCuisine = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -174,26 +196,27 @@ export const Search = (): JSX.Element => {
         sortDirection
       )
     );
-  }, [query, cuisine, diet, mealType, excludeOnion, sort]);
+  }, [query, cuisine, diet, mealType, excludeOnion, sort, sortDirection]);
 
   return (
     <div className="search">
       <div className="search__tools-wrapper">
-        <div className="search__tools">
+        <div className="search__tools" ref={searchToolsRef}>
           <form className='search__form' onSubmit={onSearchFormSubmit}>
             <input
               value={inputText}
               placeholder="Search..."
               type="search"
               className="search__input"
+              onClick={onInputClick}
               onChange={onInputChange}
             />
             <button className='search__button'></button>
           </form>
 
-          {isDropDownBoxOpen
+          {isDropDownBoxOpened
             ? <Autocomplete debouncedQuery={debouncedQuery} />
-            : ''
+            : null
           }
         </div>
 
