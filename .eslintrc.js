@@ -16,13 +16,13 @@ module.exports = {
   },
   plugins: [
     'react',
-    //"react-hooks"
+    "react-hooks"
   ],
   rules: {
     '@typescript-eslint/semi': [2, 'always'],
     'semi': [2, 'always'],
-    //"react-hooks/rules-of-hooks": 'error',
-    //"react-hooks/exhaustive-deps": 'warn',
+    "react-hooks/rules-of-hooks": 'error',
+    "react-hooks/exhaustive-deps": 'warn',
     '@typescript-eslint/no-floating-promises': ['off'],
     '@typescript-eslint/strict-boolean-expressions': ['off'],
     '@typescript-eslint/member-delimiter-style': [

@@ -28,24 +28,27 @@ export const Autocomplete = ({
             ? !autocompleteList.length && debouncedQuery !== ''
                 ? (<div className='autocomplete__no-results'>No results. Try changing the query.</div>)
                 : autocompleteList.length
-                  ? (<ul className="autocomplete__list">
-              {autocompleteList.map((item) => (
-                <li key={item.id} className="autocomplete__item">
-                  <Link
-                    to={`/recipes/${item.id}/information`}
-                    className="autocomplete__link"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                  ? (<div>
+                <h3 className='autocomplete__subtitile'>Possible recipe names according to your text query</h3>
+                <ul className="autocomplete__list">
+                  {autocompleteList.map((item) => (
+                    <li key={item.id} className="autocomplete__item">
+                      <Link
+                        to={`/recipes/${item.id}/information`}
+                        className="autocomplete__link"
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
                     )
                   : ''
             : autocompleteListError
               ? (<div className="autocomplete__no-results">
-          Error: {autocompleteListError?.message}
-        </div>)
+              Error: {autocompleteListError?.message}
+            </div>)
               : ('')}
     </div>
   );

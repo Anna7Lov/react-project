@@ -7,7 +7,7 @@ import { ScrollUpButton } from '../../components/main/ScrollUpButton/ScrollUpBut
 export const HomePage = (): JSX.Element => {
   return (
     <div>
-      <ScrollUpButton/>
+      <ScrollUpButton />
       <Search />
       <RecipeTitleList />
       <Partners />

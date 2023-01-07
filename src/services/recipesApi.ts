@@ -6,7 +6,7 @@ import {
 } from './recipesTypes';
 
 const BASE_URL = 'https://api.spoonacular.com';
-const API_KEY = '0af608f360ec471f896ac76414b99cb4';
+const API_KEY = '157ba0f9cc72430abdb17cb6a635b065';
 
 const commonHeaders = {
   'Content-Type': 'application/json'

@@ -3,10 +3,27 @@
 .recipe-main {
     width: calc(25% - 22.5px);
     margin-bottom: 30px;
+    position: relative;
 
     &:not(:nth-child(4n+4)) {
         margin-right: 30px;
     }
+
+    &__button {
+      position: absolute;
+      right: 1%;
+      top: 26%;  
+      background: rgba(255, 255, 255, 0.7);
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+    
+      &:hover {
+        filter: brightness(140%);
+      }
+    }    
 
     &__link {
         display: block;
@@ -16,6 +33,7 @@
         
         &:hover {
             background: $bright-color;
+            transition: all 0.5s; 
         }        
     }
 
@@ -36,4 +54,3 @@
         width: 100%;        
     }
 }
-

@@ -14,6 +14,7 @@
 
     &:hover {
         border: 2px solid $bright-color;
+        transition: all 0.3s; 
     }
 
     &__number {

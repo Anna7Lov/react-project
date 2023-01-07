@@ -2,13 +2,9 @@
 
 .title {
     font-weight: 500;
-    font-size: 30px;
-    line-height: 140%;
-    color: black;
-    max-width: 500px;
-    margin-bottom: 25px;    
-}
-
-.dark-title {
-    color: $white-color;
+    font-size: 20px;       
+    letter-spacing: 0.05em;
+    text-transform: uppercase;     
+    color: $main-color;
+    margin-bottom: 20px;    
 }

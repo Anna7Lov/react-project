@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from '../../shared/Title/Title';
+import { TitleSecondary } from '../../shared/TitleSecondary/TitleSecondary';
 import { Advantage } from '../Advantage/Advantage';
 import { Text } from '../../shared/Text/Text';
 import { AdvantageItem } from '../../../pages/AboutPage/AboutPage';
@@ -13,7 +13,7 @@ export const AdvantagesContent = ({ advantages }: AdvantagesContentProps): JSX.E
   return (
     <div className="advantages">
       <div className="advantages__text-content">
-        <Title title="Why you choose us!" />
+        <TitleSecondary title="Why you choose us!" />
         <Text text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus vel itaque, ad asperiores eum totam deserunt laudantium dicta quod magnam expedita modi beatae inventore blanditiis dolores sint soluta reprehenderit omnis!" />
       </div>
       <div className="advantages__items">

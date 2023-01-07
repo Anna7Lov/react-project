@@ -12,14 +12,21 @@
         width: 350px;        
         text-align: center;
         color: $bright-color;
-        font-size: 20px;
+        font-size: 18px;
         margin: 55.5px auto;
         padding-bottom: 10px;
         border-bottom: 2px solid $bright-color;
     }
 
+    &__subtitile {
+        text-align: center;
+        font-size: 14px;
+        color: #757575;
+        padding-top: 10px;              
+    }
+
     &__list {
-        padding: 15px 0;
+        padding: 10px 0;
         font-size: 16px;
         font-weight: 500;
     }
@@ -33,6 +40,7 @@
         &:hover {
             background: $bright-color;
             color: $white-color;
+            transition: all 0.3s; 
         }
     }
 }

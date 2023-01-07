@@ -1,17 +1,22 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { RequestState } from '../../services/recipesTypes';
 import { getRecipeThunk, getSimilarRecipesThunk } from '../../rdx/recipes/thunks';
+import { RequestState } from '../../services/recipesTypes';
 import { selectRecipe } from '../../rdx/recipes/selectors';
+import { selectCurrentUser } from '../../rdx/user/selectors';
+import { addToFavouritesAction, removeFromFavouritesAction } from '../../rdx/user/actions';
+import { isRecipeFavourite } from '../../utils/isRecipeFavourite';
 import { Loading } from '../../components/shared/Loading/Loading';
 import { SimilarRecipesList } from '../../components/recipe/SimilarRecipesList/SimilarRecipesList';
+import { Heart } from '../../components/shared/Heart/Heart';
 import './RecipePage.scss';
 
 export const RecipePage = (): JSX.Element => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const recipe = useSelector(selectRecipe);
+  const currentUser = useSelector(selectCurrentUser);
 
   const currentRecipe = useMemo(() => {
     if (!id) {
@@ -20,12 +25,22 @@ export const RecipePage = (): JSX.Element => {
     return recipe[id] || null;
   }, [recipe, id]);
 
+  const onHeartClick = useCallback(() => {
+    if (id && currentUser) {
+      if (isRecipeFavourite(+id, currentUser.favouriteRecipes)) {
+        dispatch(removeFromFavouritesAction(+id));
+      } else {
+        dispatch(addToFavouritesAction({ id: +id, title: currentRecipe?.info?.title, image: currentRecipe?.info?.image }));
+      }
+    }
+  }, [dispatch, currentUser, currentRecipe, id]);
+
   useEffect(() => {
     if (id) {
       dispatch(getRecipeThunk(id));
       dispatch(getSimilarRecipesThunk(id));
     }
-  }, [id]);
+  }, [id, dispatch]);
 
   if (currentRecipe?.requestState === RequestState.Waiting) {
     return <Loading />;
@@ -41,6 +56,12 @@ export const RecipePage = (): JSX.Element => {
 
   return (
     <div className="recipe">
+      {currentUser
+        ? (<button className='recipe__button' onClick={onHeartClick}>
+          <Heart id={+id} list={currentUser.favouriteRecipes} />
+        </button>)
+        : ''
+      }
       <h1 className="recipe__title">{currentRecipe.info.title}</h1>
       <div className="recipe__top-content">
         <img

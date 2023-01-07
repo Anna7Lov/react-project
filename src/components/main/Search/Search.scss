@@ -24,7 +24,7 @@
     }
 
     &__input {
-        height: 44px;
+        height: 46px;
         border: 2px solid $main-color;   
         border-radius: 5px 0 0 5px;        
         padding: 12px;
@@ -39,12 +39,13 @@
         border-radius: 0 5px 5px 0;
         border: none;
         width: 50px;
-        height: 44px;
+        height: 46px;
         cursor: pointer;
         background: url(../../../../public/images/search.png) center center no-repeat $main-color;
 
         &:hover {
             background-color: $bright-color;
+            transition: all 0.5s; 
         }
     }    
 

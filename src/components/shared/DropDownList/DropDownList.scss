@@ -1,13 +1,13 @@
 @import '../../../variables.scss';  
 
 .drop-down-list {  
-  &:not(:last-child) {
+  &:not(:last-child) {    
     margin-right: 15px;
   }
   
-  &__label {
+  &__label {    
     display: block;
-    height: 32px;
+    height: 35px;
     color: white;
     background: $main-color;
     font-size: 18px;
@@ -16,8 +16,8 @@
     padding-left: 15px;    
   }
   
-  &__select {    
-    height: 32px;    
+  &__select {  
+    height: 35px;      
     font-size: 16px;
     padding: 0 5px 0 10px;
     margin-left: 15px;

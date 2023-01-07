@@ -16,6 +16,18 @@
     @include main-align();   
     margin-top: 30px;
 
+    &__button {
+        position: absolute;
+        right: 3%;
+        top: 41%;  
+        background: rgba(255, 255, 255, 0.7);
+        width: 37px;
+        height: 37px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+    }  
+
     &__title {
         text-align: center;
         font-weight: 500;

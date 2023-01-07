@@ -4,6 +4,8 @@ import React, { useCallback, useState } from 'react';
 import { Logo } from '../../shared/Logo/Logo';
 import { HorizontalMenu } from '../../shared/HorizontalMenu/HorizontalMenu';
 import './Header.scss';
+import { logoutUserAction } from '../../../rdx/user/actions';
+import { useDispatch } from 'react-redux';
 
 interface HeaderProps {
   onThemeChanged: (checked: boolean) => void;
@@ -17,6 +19,7 @@ export interface LinkItem {
 }
 
 export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
 
   const horizontalLinks: LinkItem[] = [
@@ -38,6 +41,10 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
     setIsEnglishActive(false);
   }, []);
 
+  const onLogoutClicked = useCallback(() => {
+    dispatch(logoutUserAction());
+  }, [dispatch]);
+
   return (
     <div className="header">
       <div className='header__inner'>
@@ -51,6 +58,7 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
           <span className='header__switch-title'>{t('darkTheme')}</span>
           <Switch onChange={onThemeChanged} checked={theme === 'dark'} />
         </div>
+        <button type='button' className='header__logout' onClick={onLogoutClicked}>Log out</button>
       </div>
     </div>
   );

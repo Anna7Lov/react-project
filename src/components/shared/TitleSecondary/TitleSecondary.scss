@@ -1,0 +1,13 @@
+@import '../../../variables.scss';
+
+.title-secondary {
+    font-weight: 500;
+    font-size: 30px;    
+    color: black;
+    max-width: 500px;
+    margin-bottom: 20px;    
+}
+
+.dark-title {
+    color: $white-color;
+}

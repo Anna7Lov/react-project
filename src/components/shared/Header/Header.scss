@@ -29,6 +29,7 @@
             background: $bright-color;
             color: $white-color;
             border: 2px solid $bright-color;
+            transition: all 0.5s; 
         }
     }
 
@@ -42,6 +43,12 @@
         margin-right: 5px;
         font-size: 16px;
         font-weight: 600;
+    }
+
+    &__logout {      
+        width: 50px;  
+        height: 28px;    
+        cursor: pointer;    
     }
 }
 

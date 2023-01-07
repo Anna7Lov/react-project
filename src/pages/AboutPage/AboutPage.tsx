@@ -1,6 +1,6 @@
 import React from 'react';
-import { Subtitle } from '../../components/shared/Subtitle/Subtitle';
 import { Title } from '../../components/shared/Title/Title';
+import { TitleSecondary } from '../../components/shared/TitleSecondary/TitleSecondary';
 import { Text } from '../../components/shared/Text/Text';
 import { Video } from '../../components/about/Video/Video';
 import { AdvantagesContent } from '../../components/about/AdvantagesContent/AdvantagesContent';
@@ -46,8 +46,8 @@ export const AboutPage = (): JSX.Element => {
     <div className='about'>
      <div className="about__team-content">
         <div>
-          <Subtitle title="Our Team" />
-          <Title title="We are in love with cooking" />
+          <Title title="Our Team" />
+          <TitleSecondary title="We are in love with cooking" />
           <Text text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus vel itaque, ad asperiores eum totam deserunt laudantium dicta quod magnam expedita modi beatae inventore blanditiis dolores sint soluta reprehenderit omnis. Lorem ipsum dolor, sit amet consectetur adipisicing elit!" />
         </div>
         <img className='about__image' src="https://i.postimg.cc/bwmD7Dqp/team.jpg" alt="Cooking Food & Drink Team" />
@@ -56,8 +56,8 @@ export const AboutPage = (): JSX.Element => {
       <div className="about__video-content">
         <Video />
         <div>
-          <Subtitle title="Let`s cook" />
-          <Title title="Cooking with Classical Music" />
+          <Title title="Let`s cook" />
+          <TitleSecondary title="Cooking with Classical Music" />
           <Text text="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus vel itaque, ad asperiores eum totam deserunt laudantium dicta quod magnam expedita modi beatae inventore blanditiis dolores sint soluta reprehenderit omnis. Lorem ipsum dolor, sit amet consectetur adipisicing elit!" />
         </div>
       </div>

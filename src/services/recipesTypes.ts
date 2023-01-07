@@ -1,8 +1,7 @@
 export interface RecipeTitleModel {
-  id: string;
+  id: number;
   title: string;
   image: string;
-  imageType: string;
 }
 
 export interface RecipesSearchResponseType {
@@ -29,7 +28,7 @@ interface InstructionModel {
 }
 
 export interface RecipeModel {
-  id: string;
+  id: number;
   title: string;
   image: string;
   imageType: string;
@@ -43,12 +42,12 @@ export interface RecipeModel {
 }
 
 export interface SimilarRecipeModel {
-  id: string;
+  id: number;
   title: string;
   readyInMinutes: number;
 }
 
 export interface AutocompleteModel {
-  id: string;
+  id: number;
   title: string;
 }

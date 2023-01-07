@@ -20,34 +20,34 @@
 
     &__active-button {
         display: block;
-        width: 120px;
+        width: 150px;
         height: 50px;
         margin: 0 auto 30px;
         background: $main-color;
         border-radius: 5px;        
         font-weight: 600;
-        font-size: 16px;        
+        font-size: 18px;        
         color: $white-color;        
         cursor: pointer;       
-        border: 5px solid $main-color;
+        border: none;
     
         &:hover {
-            background: transparent;
-            border: 5px solid $bright-color;
-            color: $bright-color;
+            color: $white-color;
+            background: $bright-color;
+            transition: all 0.5s;  
         }
     }
 
     &__disabled-button {
         display: block;
-        width: 120px;
+        width: 150px;
         height: 50px;
         margin: 0 auto 30px;
         background: $dark-color;
         border-radius: 5px;        
         font-weight: 600;
-        font-size: 16px;        
+        font-size: 18px;        
         color: $white-color;       
-        opacity: 0.3;              
+        opacity: 0.4;              
     }
 }

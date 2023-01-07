@@ -1,5 +1,5 @@
 import React from 'react';
-import { Subtitle } from '../Subtitle/Subtitle';
+import { Title } from '../Title/Title';
 import './Partners.scss';
 
 export interface PartnerItem {
@@ -40,7 +40,7 @@ export const Partners = (): JSX.Element => {
   return (
     <div className="partners">
       <div className="partners__subtitle">
-        <Subtitle title="Our partners" />
+        <Title title="Our partners" />
       </div>
       <div className="partners__list">
         {partnersList.map((partner) => (
