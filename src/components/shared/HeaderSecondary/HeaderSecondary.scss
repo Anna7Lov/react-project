@@ -1,0 +1,21 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.header-secondary {
+    background: $main-color;
+    color: $white-color;
+    font-weight: 500;
+    padding: 15px 0;
+    margin-bottom: 30px;
+
+    &__inner {
+        @include main-align();
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__email {
+        color: $white-color;
+        text-decoration: none;
+    }
+}

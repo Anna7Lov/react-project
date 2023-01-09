@@ -1,0 +1,37 @@
+@import '../../../variables.scss';
+
+.button-small {
+    display: block;
+    width: 90px;
+    height: 35px;
+    margin: 0 auto 30px;    
+    border-radius: 5px;        
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+
+    &:hover {        
+        transition: all 0.5s;
+        filter: brightness(140%);
+    }
+
+    &[disabled] {
+        background-color: $dark-color;
+        opacity: 0.4;
+        cursor: auto;        
+    }
+}
+
+.button-main {
+    background: $main-color;    
+}
+
+.button-ordinary {
+    background: $secondary-color;    
+}
+
+.button-bright {
+    background: $bright-color;    
+}

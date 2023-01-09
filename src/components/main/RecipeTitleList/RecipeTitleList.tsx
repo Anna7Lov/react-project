@@ -41,42 +41,33 @@ export const RecipeTitleList = (): JSX.Element => {
         ? (<Loading />)
         : !isLoading && !error
             ? (<div className="recipe-title-list__results">
-              {recipes?.length
-                ? (recipesToShow.map((recipe) => (
-                <RecipeTitle recipe={recipe} key={recipe.id} />
+            {recipes?.length
+              ? <div>
+                <div className='recipe-title-list__items'>
+                  {(recipesToShow.map((recipe) => (
+                    <RecipeTitle recipe={recipe} key={recipe.id} />
                   ))
-                  )
-                : (<div className="recipe-title-list__no-results">
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={showMore}
+                  disabled={isCompleted}
+                  className="recipe-title-list__button"
+                >
+                  Show More
+                </button>
+              </div>
+              : (<div className="recipe-title-list__no-results">
                 No results. Try changing your search options.
               </div>
-                  )}
+                )}
           </div>
               )
             : (<div className="recipe-title-list__no-results">
             Error: {error?.message}
           </div>
               )}
-
-      <div className="recipe-title-list__show-more">
-        {isCompleted
-          ? (<button
-            type="button"
-            disabled
-            className="recipe-title-list__disabled-button"
-          >
-            Show More
-          </button>
-            )
-          : (
-            <button
-              onClick={showMore}
-              type="button"
-              className="recipe-title-list__active-button"
-            >
-              Show More
-            </button>
-            )}
-      </div>
     </div>
   );
 };

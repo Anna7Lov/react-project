@@ -1,11 +1,13 @@
 import { RecipeTitleModel } from "./recipesTypes";
 
 export interface UserModel {
+    id: string;
     name: string;
     lastName: string;
     phone: string;
     email: string;
     password: string;
-    favouriteRecipes: RecipeTitleModel[];
+    favoriteRecipes: RecipeTitleModel[];
+    theme: string
 }
 

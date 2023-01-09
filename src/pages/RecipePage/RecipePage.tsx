@@ -5,8 +5,8 @@ import { getRecipeThunk, getSimilarRecipesThunk } from '../../rdx/recipes/thunks
 import { RequestState } from '../../services/recipesTypes';
 import { selectRecipe } from '../../rdx/recipes/selectors';
 import { selectCurrentUser } from '../../rdx/user/selectors';
-import { addToFavouritesAction, removeFromFavouritesAction } from '../../rdx/user/actions';
-import { isRecipeFavourite } from '../../utils/isRecipeFavourite';
+import { addToFavoritesAction, removeFromFavoritesAction } from '../../rdx/user/actions';
+import { isRecipeFavorite } from '../../utils/isRecipeFavorite';
 import { Loading } from '../../components/shared/Loading/Loading';
 import { SimilarRecipesList } from '../../components/recipe/SimilarRecipesList/SimilarRecipesList';
 import { Heart } from '../../components/shared/Heart/Heart';
@@ -27,10 +27,10 @@ export const RecipePage = (): JSX.Element => {
 
   const onHeartClick = useCallback(() => {
     if (id && currentUser) {
-      if (isRecipeFavourite(+id, currentUser.favouriteRecipes)) {
-        dispatch(removeFromFavouritesAction(+id));
+      if (isRecipeFavorite(+id, currentUser.favoriteRecipes)) {
+        dispatch(removeFromFavoritesAction(+id));
       } else {
-        dispatch(addToFavouritesAction({ id: +id, title: currentRecipe?.info?.title, image: currentRecipe?.info?.image }));
+        dispatch(addToFavoritesAction({ id: +id, title: currentRecipe?.info?.title, image: currentRecipe?.info?.image }));
       }
     }
   }, [dispatch, currentUser, currentRecipe, id]);
@@ -58,7 +58,7 @@ export const RecipePage = (): JSX.Element => {
     <div className="recipe">
       {currentUser
         ? (<button className='recipe__button' onClick={onHeartClick}>
-          <Heart id={+id} list={currentUser.favouriteRecipes} />
+          <Heart id={+id} list={currentUser.favoriteRecipes} />
         </button>)
         : ''
       }

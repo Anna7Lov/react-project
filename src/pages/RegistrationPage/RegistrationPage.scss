@@ -4,24 +4,21 @@
 .registration {
     background: #f6f6f8;
 
-    &__header {
-        background: $main-color;
-        color: $white-color;
+    &__successful {
+        position: fixed;
+        top: calc(50% - 75px);
+        left: calc(50% - 250px);
+        z-index: 50;
+        width: 500px;
+        height: 150px;
+        font-size: 18px;
+        line-height: 150%;
+        background: $secondary-color;
+        color: #FFFFFF;
         font-weight: 500;
-        padding: 15px 0;
-        margin-bottom: 30px
-    }
-
-    &__header-inner {
-        @include main-align();
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__company-email {
-        color: $white-color;
-        text-decoration: none;
-    }
+        padding: 50px 30px;
+        text-align: center;
+    }    
 
     &__title {
         display: flex;
@@ -33,60 +30,13 @@
         flex-direction: column;
         align-items: center;
         padding-bottom: 30px;
-    }
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    &__item {
-        height: 64px;
-        margin-bottom: 8px;
-    }
-
-    &__input {
-        width: 375px;
-        height: 46px;
-        font-weight: 400;
-        font-size: 16px;
-        color: $dark-color;
-        border: 2px solid $main-color;
-        border-radius: 5px;
-        padding: 12px;
-    }
-
-    &__input-error {
-        border-color: $bright-color;
-    }
-
-    &__error {
-        font-size: 14px;
-        color: $bright-color;
-        padding: 3px 0;
-    }
-
-    &__password {
-        position: relative;
-        height: 64px;
-        margin-bottom: 8px;
-    }
-
-    &__visibility {
-        content: "";
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        right: 15px;
-        cursor: pointer;
-    }
+    }     
 
     &__button {
         display: block;
         width: 375px;
         height: 46px;
-        margin: 0 auto 20px;
+        margin: 0 auto 38px;
         background: $main-color;
         border-radius: 5px;
         font-weight: 600;
@@ -99,6 +49,12 @@
             color: $white-color;
             background: $bright-color;
             transition: all 0.5s;
+        }
+
+        &[disabled] {
+            background-color: $dark-color;
+            opacity: 0.3;
+            cursor: auto;           
         }
     }
 
@@ -120,23 +76,6 @@
 
 }
 
-.invisible {
-    background: url(../../../public/images/hidden.png) no-repeat;
-    top: calc(50% - 21.5px);
-}
-
-.visible {
-    background: url(../../../public/images/visible.png) no-repeat;
-    top: calc(50% - 21px);
-}
-
-button[disabled] {
-    background-color: $dark-color;
-    opacity: 0.4;
-    cursor: auto;
-
-    &:hover {
-        background-color: $dark-color;
-        opacity: 0.4;
-    }
+.dark-registration {
+    background: #202f31; 
 }

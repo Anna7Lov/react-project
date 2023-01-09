@@ -15,7 +15,7 @@ export const AuthRequire = ({ children }: AuthRequireProps): JSX.Element | null 
     if (!isUserAuthenticated) {
       navigate('/login');
     }
-  }, [isUserAuthenticated]);
+  }, [isUserAuthenticated, navigate]);
 
   return isUserAuthenticated ? children : null;
 };

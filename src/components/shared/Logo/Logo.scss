@@ -1,9 +1,10 @@
 .logo {
     display: block;
-    background: url(../../../../public/images/cooking_logo.jpg) no-repeat;
-    width: 309px;
-    height: 100px;
-    margin-right: 50px;
-    border-radius: 5px;
+    background: url(../../../../public/images/cooking_logo.jpg) no-repeat center;
+    background-size: contain;
+    width: 275px;
+    height: 89px;
+    margin-right: 25px;
+    border-radius: 14px;
     cursor: pointer;
 }

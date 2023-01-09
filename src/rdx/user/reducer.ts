@@ -1,7 +1,17 @@
 import { getType } from 'typesafe-actions';
 import { UserModel } from '../../services/userTypes';
 import { GlobalAppActions } from '../actions';
-import { registerUserAction, logoutUserAction, loginUserAction, addToFavouritesAction, removeFromFavouritesAction } from './actions';
+import {
+  registerUserAction,
+  logoutUserAction,
+  loginUserAction,
+  addToFavoritesAction,
+  removeFromFavoritesAction,
+  changeThemeAction,
+  editUserDataAction,
+  editUserPasswordAction
+}
+  from './actions';
 
 export interface UserState {
   users: UserModel[];
@@ -33,24 +43,26 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
     case getType(logoutUserAction):
       return {
         ...state,
-        isUserAuthenticated: false,        
+        isUserAuthenticated: false,
         currentUser: null
       };
 
-    case getType(addToFavouritesAction):
+    case getType(addToFavoritesAction):
       if (state.currentUser) {
         return {
           ...state,
           currentUser: {
             ...state.currentUser,
-            favouriteRecipes: [...state.currentUser.favouriteRecipes, action.payload]
+            favoriteRecipes: [...state.currentUser.favoriteRecipes, action.payload]
           },
           users: state.users.map((i) => (
-            i.email === state.currentUser?.email ? {
-              ...state.currentUser,
-              favouriteRecipes: [...state.currentUser.favouriteRecipes, action.payload]
-            } : i
-          )),
+            i.email === state.currentUser?.email
+              ? {
+                  ...state.currentUser,
+                  favoriteRecipes: [...state.currentUser.favoriteRecipes, action.payload]
+                }
+              : i
+          ))
         };
       } else {
         return {
@@ -58,24 +70,101 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
         };
       }
 
-    case getType(removeFromFavouritesAction):
+    case getType(removeFromFavoritesAction):
       if (state.currentUser) {
         return {
           ...state,
           currentUser: {
             ...state.currentUser,
-            favouriteRecipes: state.currentUser.favouriteRecipes.filter(
+            favoriteRecipes: state.currentUser.favoriteRecipes.filter(
               (item) => item.id !== action.payload
             )
           },
           users: state.users.map((i) => (
-            i.email === state.currentUser?.email ? {
-              ...state.currentUser,
-            favouriteRecipes: state.currentUser.favouriteRecipes.filter(
-              (item) => item.id !== action.payload
-            )
-            } : i
-          )), 
+            i.email === state.currentUser?.email
+              ? {
+                  ...state.currentUser,
+                  favoriteRecipes: state.currentUser.favoriteRecipes.filter(
+                    (item) => item.id !== action.payload
+                  )
+                }
+              : i
+          ))
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
+
+    case getType(changeThemeAction):
+      if (state.currentUser) {
+        return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            theme: action.payload
+          },
+          users: state.users.map((i) => (
+            i.id === state.currentUser?.id
+              ? {
+                  ...state.currentUser,
+                  theme: action.payload
+                }
+              : i
+          ))
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
+
+    case getType(editUserDataAction):
+      if (state.currentUser) {
+        return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            name: action.payload.name,
+            lastName: action.payload.lastName,
+            phone: action.payload.phone,
+            email: action.payload.email
+          },
+          users: state.users.map((i) => (
+            i.id === state.currentUser?.id
+              ? {
+                  ...state.currentUser,
+                  name: action.payload.name,
+                  lastName: action.payload.lastName,
+                  phone: action.payload.phone,
+                  email: action.payload.email
+                }
+              : i
+          ))
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
+
+    case getType(editUserPasswordAction):
+      if (state.currentUser) {
+        return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            password: action.payload.password
+          },
+          users: state.users.map((i) => (
+            i.id === state.currentUser?.id
+              ? {
+                  ...state.currentUser,
+                  password: action.payload.password
+                }
+              : i
+          ))
         };
       } else {
         return {

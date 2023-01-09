@@ -13,17 +13,17 @@
     }
     
     &__language {
-        width: 50px;
+        width: 45px;
+        height: 38px;
         font-size: 16px;
-        font-weight: 600;
-        border: none;
+        font-weight: 600;        
         border-radius: 14px;
         border: 2px solid $main-color;
         background: none;
-        color: $main-color;
-        padding: 2px;
+        color: $main-color;        
         cursor: pointer;
         margin-right: 10px;
+        font-family: 'Poppins', sans-serif;
 
         &:hover {
             background: $bright-color;
@@ -35,7 +35,12 @@
 
     &__switch {
         display: flex;
-        align-items: center;        
+        align-items: center;
+        margin-right: 10px;    
+        height: 38px;    
+        background: $main-color;
+        border-radius: 14px;
+        padding: 5px 12px;        
     }
 
     &__switch-title {
@@ -43,12 +48,87 @@
         margin-right: 5px;
         font-size: 16px;
         font-weight: 600;
+        color: $white-color;
+    }
+    
+    &__user {
+        display: flex;
+        width: 270px;
+        height: 38px;
+        font-weight: 500;
+        align-items: center;
+        justify-content: center;        
+        font-size: 14px;        
+        padding: 5px;
+        position: relative;   
+        background: $main-color;
+        border-radius: 14px;
+        color: $white-color;
+        cursor: pointer;
+        
+        &:hover .header__user-sections {
+            display: block;            
+        }
     }
 
-    &__logout {      
-        width: 50px;  
-        height: 28px;    
-        cursor: pointer;    
+    &__icon {
+        width: 40px;
+        height: 28px;
+        font-size: 16px;
+        font-weight: 600;
+        color: $secondary-color;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;      
+        display: flex;  
+        align-items: center;
+        justify-content: center; 
+        margin-right: 7px;           
+    }
+
+    &__user-sections {
+        width: 270px;
+        position: absolute;
+        top: 38px;
+        left: 0;        
+        background: #f0f5f7;
+        border-radius: 5px;  
+        padding: 10px 0;    
+        display: none;
+    }
+
+    &__user-link {
+        display: block;
+        font-size: 16px;
+        font-weight: 500;
+        color: $dark-color;
+        text-decoration: none;
+        padding: 10px 20px;
+
+        &:hover {
+            background: $bright-color;
+            color: $white-color;
+            transition: all 0.3s; 
+        }
+    }
+
+    &__logout {         
+        width: 100%;
+        background: none;
+        border: none;
+        color: $dark-color;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 500;        
+        font-family: 'Poppins', sans-serif;
+        padding: 6.5px 20px; 
+        cursor: pointer;       
+
+        &:hover {
+            background: $bright-color;
+            color: $white-color;
+            transition: all 0.3s; 
+        }
     }
 }
 

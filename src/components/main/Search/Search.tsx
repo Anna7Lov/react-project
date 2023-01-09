@@ -174,7 +174,7 @@ export const Search = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(getAutocompleteThunk(debouncedQuery));
-  }, [debouncedQuery]);
+  }, [dispatch, debouncedQuery]);
 
   useEffect(() => {
     setSearchParams(
@@ -196,7 +196,7 @@ export const Search = (): JSX.Element => {
         sortDirection
       )
     );
-  }, [query, cuisine, diet, mealType, excludeOnion, sort, sortDirection]);
+  }, [query, cuisine, diet, mealType, excludeOnion, sort, sortDirection, dispatch]);
 
   return (
     <div className="search">

@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToFavouritesAction, removeFromFavouritesAction } from '../../../rdx/user/actions';
+import { addToFavoritesAction, removeFromFavoritesAction } from '../../../rdx/user/actions';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { RecipeTitleModel } from '../../../services/recipesTypes';
-import { isRecipeFavourite } from '../../../utils/isRecipeFavourite';
+import { isRecipeFavorite } from '../../../utils/isRecipeFavorite';
 import { Heart } from '../../shared/Heart/Heart';
 import './RecipeTitle.scss';
 
@@ -18,10 +18,10 @@ export const RecipeTitle = ({ recipe }: RecipeTitleProps): JSX.Element => {
 
   const onHeartClick = useCallback(() => {
     if (currentUser) {
-      if (isRecipeFavourite(recipe.id, currentUser.favouriteRecipes)) {
-        dispatch(removeFromFavouritesAction(recipe.id));
+      if (isRecipeFavorite(recipe.id, currentUser.favoriteRecipes)) {
+        dispatch(removeFromFavoritesAction(recipe.id));
       } else {
-        dispatch(addToFavouritesAction(recipe));
+        dispatch(addToFavoritesAction(recipe));
       }
     }
   }, [dispatch, currentUser, recipe]);
@@ -30,7 +30,7 @@ export const RecipeTitle = ({ recipe }: RecipeTitleProps): JSX.Element => {
     <div className="recipe-main">
       {currentUser
         ? (<button className='recipe-main__button' onClick={onHeartClick}>
-          <Heart id={recipe.id} list={currentUser.favouriteRecipes} />
+          <Heart id={recipe.id} list={currentUser.favoriteRecipes} />
         </button>)
         : ''
       }

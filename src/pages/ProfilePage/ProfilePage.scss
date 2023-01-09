@@ -4,10 +4,24 @@
 .profile {
     @include main-align();
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
 
-    &__favourite-recipes {
+    &__favorite-recipes {
         display: flex;
+        width: 100%;
         flex-wrap: wrap;
         margin-bottom: 15px;
+    }
+
+    &__no-recipes {
+        width: 350px;
+        text-align: center;
+        color: $secondary-color;
+        font-size: 18px;
+        margin: 0 auto 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $secondary-color;
     }
 }

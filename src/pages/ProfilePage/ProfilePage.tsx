@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../rdx/user/selectors';
 import { Title } from '../../components/shared/Title/Title';
-import { FavouriteRecipe } from '../../components/profile/FavouriteRecipe/FavouriteRecipe';
+import { FavoriteRecipe } from '../../components/profile/FavoriteRecipe/FavoriteRecipe';
+import { PersonalData } from '../../components/profile/PersonalData/PersonalData';
+import { PasswordChange } from '../../components/profile/PasswordChange/PasswordChange';
 import './ProfilePage.scss';
 
 export const ProfilePage = (): JSX.Element => {
@@ -10,13 +12,20 @@ export const ProfilePage = (): JSX.Element => {
 
   return (
     <div className='profile'>
-      <Title title='My favourite recipes'/>
-      <ul className='profile__favourite-recipes'>
-        {currentUser?.favouriteRecipes.map((favouriteRecipe) => (
-          <FavouriteRecipe favouriteRecipe={favouriteRecipe} key={favouriteRecipe.id}/>
-        ))
-        }
-      </ul>
+      <Title title='Personal data' />
+      <PersonalData />
+      <PasswordChange />
+      <Title title='My favorite recipes' />
+      {currentUser?.favoriteRecipes.length
+        ? <ul className='profile__favorite-recipes'>
+          {currentUser?.favoriteRecipes.map((favoriteRecipe) => (
+            <FavoriteRecipe favoriteRecipe={favoriteRecipe} key={favoriteRecipe.id} />
+          ))
+          }
+        </ul>
+        : <div className='profile__no-recipes'>No favorite recipes. Add them!</div>
+      }
+
     </div>
   );
 };

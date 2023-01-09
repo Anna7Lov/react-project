@@ -1,6 +1,6 @@
 import React from 'react';
 import { RecipeTitleModel } from '../../../services/recipesTypes';
-import { isRecipeFavourite } from '../../../utils/isRecipeFavourite';
+import { isRecipeFavorite } from '../../../utils/isRecipeFavorite';
 import './Heart.scss';
 
 interface HeartProps {
@@ -11,7 +11,7 @@ interface HeartProps {
 export const Heart = ({ id, list }: HeartProps): JSX.Element => {
   return (
     <span
-      className={isRecipeFavourite(id, list) ? 'heart heart-added' : 'heart'}
+      className={isRecipeFavorite(id, list) ? 'heart heart-added' : 'heart'}
     ></span>
   );
 };
