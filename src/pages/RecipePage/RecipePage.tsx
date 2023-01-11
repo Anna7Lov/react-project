@@ -56,19 +56,26 @@ export const RecipePage = (): JSX.Element => {
 
   return (
     <div className="recipe">
-      {currentUser
-        ? (<button className='recipe__button' onClick={onHeartClick}>
-          <Heart id={+id} list={currentUser.favoriteRecipes} />
-        </button>)
-        : ''
-      }
       <h1 className="recipe__title">{currentRecipe.info.title}</h1>
       <div className="recipe__top-content">
-        <img
-          src={currentRecipe.info.image}
-          alt={currentRecipe.info.title}
-          className="recipe__image"
-        />
+        {currentUser
+          ? (<button className='recipe__button' onClick={onHeartClick}>
+            <Heart id={+id} list={currentUser.favoriteRecipes} />
+          </button>)
+          : ''
+        }
+        {currentRecipe.info.image
+          ? <img
+            src={currentRecipe.info.image}
+            alt={currentRecipe.info.title}
+            className="recipe__image"
+          />
+          : <img
+            src='https://spoonacular.com/recipeImages/667770-556x370.jpg'
+            alt='No image'
+            className="recipe__image"
+          />
+        }
 
         <div className="recipe__features">
           <span className="recipe__info">

@@ -61,7 +61,7 @@ export const AuthorizationPage = (): JSX.Element => {
         <Title title="Log in" />
       </div>
       <div className="authorization__items">
-        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <form noValidate onSubmit={handleSubmit}>
           <InputItem
             name="email"
             placeholder="Email *"

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -12,6 +13,7 @@ interface FavoriteRecipeProps {
 
 export const FavoriteRecipe = ({ favoriteRecipe }: FavoriteRecipeProps): JSX.Element => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const onDeleteClick = useCallback(() => {
     dispatch(removeFromFavoritesAction(favoriteRecipe.id));
@@ -33,8 +35,8 @@ export const FavoriteRecipe = ({ favoriteRecipe }: FavoriteRecipeProps): JSX.Ele
       <ButtonSmall
         type='button'
         onButtonSmallClick={onDeleteClick}
-        title='Delete'
-        additionalClass='button-bright'
+        title={t('deleteFavoriteRecipeButton')}
+        additionalClass='button-delete'
       />
     </li>
   );

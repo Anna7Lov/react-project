@@ -22,14 +22,13 @@
     }
 
     &__button {
+        @include medium-bold-font(); 
         display: block;
         width: 150px;
         height: 50px;
         margin: 0 auto 30px;
         background: $main-color;
-        border-radius: 5px;        
-        font-weight: 600;
-        font-size: 18px;        
+        border-radius: 5px;              
         color: $white-color;        
         cursor: pointer;       
         border: none;

@@ -1,10 +1,11 @@
 @import '../../../variables.scss';
+@import '../../../mixins.scss';
 
 .advantage {
     background: $white-color;
     text-align: center;
     width: calc(25% - 22.5px);
-    padding: 20px;
+    padding: 15px;
     border: 2px solid $main-color;    
     border-radius: 5px;
 
@@ -37,8 +38,7 @@
     }
 
     &__text {
-        font-weight: 500;
-        font-size: 18px;        
+        @include medium-font();         
         line-height: 160%;
         color: $dark-color;        
     }

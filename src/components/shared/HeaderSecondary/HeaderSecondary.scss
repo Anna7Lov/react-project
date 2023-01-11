@@ -13,9 +13,31 @@
         display: flex;
         justify-content: space-between;
     }
-
+   
     &__email {
         color: $white-color;
-        text-decoration: none;
+        text-decoration: none;        
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .header-secondary {
+        &__inner {
+            @include main-align-adaptive();
+            flex-wrap: wrap;
+        }        
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .header-secondary {
+        &__inner {
+            @include main-align-adaptive-small();            
+        } 
+
+        &__company-name {
+            width: 100%;
+            margin-bottom: 15px;
+        }
     }
 }

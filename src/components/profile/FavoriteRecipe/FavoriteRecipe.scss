@@ -12,12 +12,11 @@
     }
 
     &__link {
+        @include small-font();
         display: flex;
         padding: 15px;        
         color: #FFFFFF;        
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
+        text-decoration: none;        
         margin-bottom: 15px;
         border-bottom: 1px dashed $white-color;
 

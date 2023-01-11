@@ -79,8 +79,7 @@ export const RegistrationPage = (): JSX.Element => {
         <Title title="Create an account" />
       </div>
       <div className="registration__items">
-        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-
+        <form noValidate onSubmit={handleSubmit}>
         <InputItem
             name="name"
             placeholder="Name *"
@@ -148,7 +147,7 @@ export const RegistrationPage = (): JSX.Element => {
           />
 
           <button type="submit" className="registration__button" disabled={isSubmitting}>
-            Sign in
+            Sign up
           </button>
         </form>
 

@@ -1,4 +1,5 @@
 @import '../../../variables.scss'; 
+@import '../../../mixins.scss';
 
 .footer {    
     padding-top: 30px;
@@ -12,8 +13,7 @@
     }
 
     &__email {        
-        font-weight: 500;
-        font-size: 18px;
+        @include medium-font(); 
         margin-bottom: 15px;
         text-decoration: none;
         color: $main-color;

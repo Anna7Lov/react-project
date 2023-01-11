@@ -16,7 +16,7 @@ export const RecipeTitle = ({ recipe }: RecipeTitleProps): JSX.Element => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
-  const onHeartClick = useCallback(() => {
+  const onHeartButtonClick = useCallback(() => {
     if (currentUser) {
       if (isRecipeFavorite(recipe.id, currentUser.favoriteRecipes)) {
         dispatch(removeFromFavoritesAction(recipe.id));
@@ -29,7 +29,7 @@ export const RecipeTitle = ({ recipe }: RecipeTitleProps): JSX.Element => {
   return (
     <div className="recipe-main">
       {currentUser
-        ? (<button className='recipe-main__button' onClick={onHeartClick}>
+        ? (<button className='recipe-main__button' onClick={onHeartButtonClick}>
           <Heart id={recipe.id} list={currentUser.favoriteRecipes} />
         </button>)
         : ''

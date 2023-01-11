@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
@@ -20,6 +21,7 @@ export const PersonalData = (): JSX.Element => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const [isDataEditing, setIsDataEditing] = useState(false);
+  const { t } = useTranslation();
 
   const onEditButtonClick = useCallback(() => {
     setIsDataEditing(true);
@@ -75,7 +77,6 @@ export const PersonalData = (): JSX.Element => {
       {isDataEditing
         ? (<form
           noValidate
-          autoComplete="off"
           onSubmit={handleSubmit}
           onReset={onReset}
         >
@@ -147,7 +148,7 @@ export const PersonalData = (): JSX.Element => {
           <ButtonSmall
             type="submit"
             onButtonSmallClick={onEditButtonClick}
-            title="Edit"
+            title={t('editSmallButton')}
             additionalClass="button-main"
             isDisabled={isSubmitting}
           />

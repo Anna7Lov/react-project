@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { Title } from '../Title/Title';
 import './Partners.scss';
@@ -37,10 +38,12 @@ const partnersList: PartnerItem[] = [
 ];
 
 export const Partners = (): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <div className="partners">
       <div className="partners__subtitle">
-        <Title title="Our partners" />
+        <Title title={t('ourPatners')}/>
       </div>
       <div className="partners__list">
         {partnersList.map((partner) => (

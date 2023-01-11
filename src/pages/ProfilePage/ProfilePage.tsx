@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../rdx/user/selectors';
@@ -9,13 +10,14 @@ import './ProfilePage.scss';
 
 export const ProfilePage = (): JSX.Element => {
   const currentUser = useSelector(selectCurrentUser);
+  const { t } = useTranslation();
 
   return (
     <div className='profile'>
-      <Title title='Personal data' />
+      <Title title={t('personalDataTitle')} />
       <PersonalData />
       <PasswordChange />
-      <Title title='My favorite recipes' />
+      <Title title={t('favoritRecipesTitle')} />
       {currentUser?.favoriteRecipes.length
         ? <ul className='profile__favorite-recipes'>
           {currentUser?.favoriteRecipes.map((favoriteRecipe) => (
@@ -23,7 +25,7 @@ export const ProfilePage = (): JSX.Element => {
           ))
           }
         </ul>
-        : <div className='profile__no-recipes'>No favorite recipes. Add them!</div>
+        : <div className='profile__no-recipes'>{t('noFavoriteRecipes')}</div>
       }
 
     </div>

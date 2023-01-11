@@ -1,5 +1,5 @@
-@import '../../../mixins.scss';  
 @import '../../../variables.scss';
+@import '../../../mixins.scss'; 
 
 .header { 
     border-bottom: 5px solid $main-color;
@@ -13,17 +13,16 @@
     }
     
     &__language {
+        @include small-bold-font();
         width: 45px;
-        height: 38px;
-        font-size: 16px;
-        font-weight: 600;        
+        height: 38px;              
         border-radius: 14px;
         border: 2px solid $main-color;
         background: none;
         color: $main-color;        
         cursor: pointer;
         margin-right: 10px;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Rubik', sans-serif;
 
         &:hover {
             background: $bright-color;
@@ -44,16 +43,15 @@
     }
 
     &__switch-title {
+        @include small-bold-font();
         width: 100px;
-        margin-right: 5px;
-        font-size: 16px;
-        font-weight: 600;
+        margin-right: 5px;        
         color: $white-color;
     }
     
     &__user {
         display: flex;
-        width: 270px;
+        width: 265px;
         height: 38px;
         font-weight: 500;
         align-items: center;
@@ -72,10 +70,9 @@
     }
 
     &__icon {
+        @include small-bold-font();
         width: 40px;
-        height: 28px;
-        font-size: 16px;
-        font-weight: 600;
+        height: 28px;        
         color: $secondary-color;
         border-radius: 14px;
         background: rgba(255, 255, 255, 0.7);
@@ -87,7 +84,7 @@
     }
 
     &__user-sections {
-        width: 270px;
+        width: 265px;
         position: absolute;
         top: 38px;
         left: 0;        
@@ -98,9 +95,8 @@
     }
 
     &__user-link {
-        display: block;
-        font-size: 16px;
-        font-weight: 500;
+        @include small-font();
+        display: block;        
         color: $dark-color;
         text-decoration: none;
         padding: 10px 20px;
@@ -112,15 +108,14 @@
         }
     }
 
-    &__logout {         
+    &__logout {     
+        @include small-font();    
         width: 100%;
         background: none;
         border: none;
         color: $dark-color;
-        text-align: left;
-        font-size: 16px;
-        font-weight: 500;        
-        font-family: 'Poppins', sans-serif;
+        text-align: left;               
+        font-family: 'Rubik', sans-serif;
         padding: 6.5px 20px; 
         cursor: pointer;       
 

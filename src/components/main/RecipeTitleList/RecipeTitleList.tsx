@@ -1,4 +1,5 @@
 import { slice } from 'lodash';
+import { useTranslation } from 'react-i18next';
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -16,6 +17,7 @@ export const RecipeTitleList = (): JSX.Element => {
   const error = useSelector(selectAreRecipesFailed);
   const [index, setIndex] = useState<number>(12);
   const [isCompleted, setIsCompleted] = useState<boolean>();
+  const { t } = useTranslation();
 
   const recipesToShow = slice(recipes, 0, index);
 
@@ -55,11 +57,11 @@ export const RecipeTitleList = (): JSX.Element => {
                   disabled={isCompleted}
                   className="recipe-title-list__button"
                 >
-                  Show More
+                  {t('showMore')}
                 </button>
               </div>
               : (<div className="recipe-title-list__no-results">
-                No results. Try changing your search options.
+                {t('searchNoResults')}
               </div>
                 )}
           </div>

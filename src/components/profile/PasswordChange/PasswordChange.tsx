@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
@@ -19,6 +20,7 @@ export const PasswordChange = (): JSX.Element => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const [isPasswordEditing, setIsPasswordEditing] = useState(false);
+  const { t } = useTranslation();
 
   const onChangePasswordButtonClick = useCallback(() => {
     setIsPasswordEditing(true);
@@ -66,7 +68,6 @@ export const PasswordChange = (): JSX.Element => {
       {isPasswordEditing
         ? (<form
           noValidate
-          autoComplete="off"
           onSubmit={handleSubmit}
           onReset={onReset}
         >
@@ -123,7 +124,7 @@ export const PasswordChange = (): JSX.Element => {
           className="password-change__button"
           onClick={onChangePasswordButtonClick}
         >
-          Change Password
+          {t('changePasswordButton')}
         </button>
           )}
     </div>

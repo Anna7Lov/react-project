@@ -1,17 +1,17 @@
-@import '../../../variables.scss';  
+@import '../../../variables.scss'; 
+@import '../../../mixins.scss'; 
 
 .drop-down-list {  
   &:not(:last-child) {    
     margin-right: 15px;
   }
   
-  &__label {    
+  &__label {
+    @include medium-bold-font(); 
     display: block;
     height: 35px;
     color: white;
-    background: $main-color;
-    font-size: 18px;
-    font-weight: 600;
+    background: $main-color;    
     border-radius: 5px;
     padding-left: 15px;    
   }

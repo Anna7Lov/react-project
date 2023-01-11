@@ -36,6 +36,7 @@ export const InputItem = ({
         name={name}
         placeholder={placeholder}
         type={type === 'password' ? passwordInputType : type}
+        autoComplete='on'
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}

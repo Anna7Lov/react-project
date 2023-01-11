@@ -22,16 +22,15 @@ export interface LinkItem {
 
 export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation();
   const currentUser = useSelector(selectCurrentUser);
+  const { t, i18n } = useTranslation();
+  const [isEnglishActive, setIsEnglishActive] = useState<boolean>(i18n.language !== 'ua');
 
   const horizontalLinks: LinkItem[] = [
-    { id: 1, name: `${t('nav.link1')}`, address: '/' },
-    { id: 2, name: `${t('nav.link2')}`, address: '/about' },
-    { id: 3, name: `${t('nav.link3')}`, address: '/reviews' }
+    { id: 1, name: `${t('nav.home')}`, address: '/' },
+    { id: 2, name: `${t('nav.about')}`, address: '/about' },
+    { id: 3, name: `${t('nav.reviews')}`, address: '/reviews' }
   ];
-
-  const [isEnglishActive, setIsEnglishActive] = useState<boolean>(i18n.language === 'en');
 
   const onEnglishClick = useCallback(() => {
     i18n.changeLanguage('en');
@@ -53,8 +52,12 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
         <Logo />
         <HorizontalMenu links={horizontalLinks} />
         <div className="header__languages">
-          <button onClick={onEnglishClick} className={isEnglishActive ? 'header__language active-language' : 'header__language'}>EN</button>
-          <button onClick={onUkrainianClick} className={isEnglishActive ? 'header__language' : 'header__language active-language'}>UA</button>
+          <button onClick={onEnglishClick} className={isEnglishActive
+            ? 'header__language active-language'
+            : 'header__language'}>EN</button>
+          <button onClick={onUkrainianClick} className={isEnglishActive
+            ? 'header__language'
+            : 'header__language active-language'}>UA</button>
         </div>
         <div className='header__switch'>
           <span className='header__switch-title'>{t('darkTheme')}</span>
@@ -66,13 +69,15 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
             <span className='header__icon'>{currentUser?.name[0]}{currentUser?.lastName[0]}</span>
             <span>{currentUser.email.length < 25
               ? currentUser?.email
-              : `${currentUser?.email.substring(0, 24)}...`}
+              : `${currentUser?.email.substring(0, 22)}...`}
             </span>
             <div className='header__user-sections'>
               <Link to={'/profile'} className="header__user-link">
-                Profile
+                {t('profile')}
               </Link>
-              <button type='button' className='header__logout' onClick={onLogoutClicked}>Log out</button>
+              <button type='button' className='header__logout' onClick={onLogoutClicked}>
+                {t('logOut')}
+              </button>
             </div>
           </div>)
           : ''

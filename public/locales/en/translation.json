@@ -1,9 +1,73 @@
 {
     "darkTheme": "Dark Theme",
     "nav": {
-        "link1": "Home",
-        "link2": "About",
-        "link3": "Reviews"        
+        "home": "Home",
+        "about": "About",
+        "reviews": "Reviews"        
     },
-    "nameMaxError": "Max length 25 characters"
+    "profile": "Profile",
+    "logOut": "Logout",
+    "search": "Search...",
+    "autocompleteNoResults": "No results. Try changing the query.",
+    "autocompleteSubtitle": "Possible recipe names according to your text query",
+    "cuisine": {
+        "chooseCuisine": "Choose Cuisine",
+        "american": "American",
+        "caribbean": "Caribbean",
+        "chinese": "Chinese",
+        "easternEuropean": "Eastern European",
+        "italian": "Italian",
+        "japanese": "Japanese",
+        "mexican": "Mexican",
+        "thai": "Thai",
+        "allCuisines": "All cuisines"
+    },
+    "diet": {
+        "chooseDiet": "Choose Diet",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "glutenFree": "Gluten free",
+        "noDiet": "No diet"
+    },
+    "mealType": {
+        "chooseMealType": "Choose Meal type",        
+        "mainCourse": "Main course",
+        "dessert": "Dessert",
+        "salad": "Salad",
+        "soup": "Soup",
+        "snack": "Snack",
+        "drink": "Drink",
+        "allTypes": "All types"
+    },
+    "sort": {
+        "sortBy": "Sort By",        
+        "popularity": "Popularity (from the most popular)",
+        "time": "Time (from the fastest to prepare)",
+        "calories": "Calories (from the least caloric)",        
+        "byDefault": "Default"
+    },
+    "withoutOnion": "Without Onion",
+    "searchNoResults": "No results. Try changing your search options.",
+    "showMore": "Show More",
+    "ourPatners": "Our partners",
+    "ourTeam": "Our team",
+    "ourTeamTitleSecondary": "We are in love with cooking",
+    "ourTeamText": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus vel itaque, ad asperiores eum totam deserunt laudantium dicta quod magnam expedita modi beatae inventore blanditiis dolores sint soluta reprehenderit omnis. Lorem ipsum dolor, sit amet consectetur adipisicing elit!",
+    "cookingTitle": "Let`s cook",
+    "cookingTitleSecondary": "Cooking with Classical Music",
+    "cookingText": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus vel itaque, ad asperiores eum totam deserunt laudantium dicta quod magnam expedita modi beatae inventore blanditiis dolores sint soluta reprehenderit omnis. Lorem ipsum dolor, sit amet consectetur adipisicing elit!",
+    "advantagesTitle": "Why you choose us!",
+    "advantagesText": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus vel itaque, ad asperiores eum totam deserunt laudantium dicta quod magnam expedita modi beatae inventore blanditiis dolores sint soluta reprehenderit omnis!",
+    "advantage": {
+        "recipes": "recipes in our database",
+        "customers": "happy customers",
+        "rating": "average app rating",
+        "awards": "awards received"
+    },
+    "personalDataTitle": "Personal data",
+    "favoritRecipesTitle": "My favorite recipes",
+    "noFavoriteRecipes": "No favorite recipes. Add them!",
+    "editSmallButton": "Edit",
+    "changePasswordButton": "Change password",
+    "deleteFavoriteRecipeButton": "Delete"
 }

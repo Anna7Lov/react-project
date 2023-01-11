@@ -1,4 +1,5 @@
 @import '../../../variables.scss';
+@import '../../../mixins.scss';
 
 .similar-recipe {       
         width: calc(50% - 7.5px);
@@ -34,12 +35,11 @@
     }   
     
     &__title {
+        @include medium-font(); 
         display: flex;
         align-items: center;
         height: 50px;
-        padding: 0 0 2px;
-        font-size: 18px;
-        font-weight: 500;
+        padding: 0 0 2px;        
         margin-bottom: 5px;
         border-bottom: 1px dashed $white-color;       
     }
