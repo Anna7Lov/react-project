@@ -2,11 +2,11 @@
 
 .heart {
   position: absolute;
-  right: 30%;
-  top: 38%;
+  right: 11.3px;
+  top: 39%;
   display: inline-block;
-  height: 15px;
-  width: 15px;
+  height: 13px;
+  width: 13px;
   background: rgb(136, 136, 136);
   transform: rotate(-45deg);
 
@@ -14,19 +14,19 @@
   &:after {
     content: "";
     position: absolute;
-    height: 15px;
-    width: 15px;
+    height: 13px;
+    width: 13px;
     background: rgb(136, 136, 136);
     border-radius: 50%;
   }
 
   &:before {
-    top: -9px;
+    top: -8px;
     left: 0;
   }
 
   &:after {
-    left: 9px;
+    left: 8px;
     top: 0;
   }
 }

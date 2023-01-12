@@ -2,15 +2,14 @@
 
 .scroll-up-button {
     position: fixed;
-    right: 4px;
+    right: 2.5px;
     bottom: 30px;
-    width: 55px;
-    height: 80px;
+    width: 35px;
+    height: 35px;
     background: url(../../../../public/images/up-arrow.png) center center no-repeat $secondary-color;    
     box-shadow: -1px 1px 5px 0 $white-color;
-    border-radius: 5px;
+    border-radius: 50%;
     border: none;
-    cursor: pointer;
-    opacity: 0.9;   
+    cursor: pointer;    
     z-index: 70; 
 }

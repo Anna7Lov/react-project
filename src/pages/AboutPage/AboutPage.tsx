@@ -48,7 +48,7 @@ export const AboutPage = (): JSX.Element => {
   return (
     <div className="about">
       <div className="about__team-content">
-        <div>
+        <div className='about__team-text'>
           <Title title={t('ourTeam')} />
           <TitleSecondary title={t('ourTeamTitleSecondary')} />
           <Text text={t('ourTeamText')} />
@@ -61,8 +61,10 @@ export const AboutPage = (): JSX.Element => {
       </div>
       <AdvantagesContent advantages={advantagesList} />
       <div className="about__video-content">
+        <div className='about__video'>
         <Video />
-        <div>
+        </div>
+        <div className='about__video-text'>
           <Title title={t('cookingTitle')} />
           <TitleSecondary title={t('cookingTitleSecondary')} />
           <Text text={t('cookingText')} />

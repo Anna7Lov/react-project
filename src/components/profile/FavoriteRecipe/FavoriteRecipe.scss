@@ -30,3 +30,54 @@
         margin-right: 15px;
     }   
 }
+
+@media screen and (max-width: 1200px) {
+    .favorite-recipe {
+        width: calc(33.33% - 10px);        
+    
+        &:not(:nth-child(4n+4)) {
+            margin-right: 0;
+        }
+
+        &:not(:nth-child(3n+3)) {
+            margin-right: 15px;
+        }
+
+        &__image {
+            height: 75px;
+            margin-right: 10px;            
+        }
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .favorite-recipe {
+        width: calc(50% - 7.5px);       
+
+        &:not(:nth-child(3n+3)) {
+            margin-right: 0;
+        }
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 15px;
+        }      
+        
+        &__image {
+            height: 70px;                      
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .favorite-recipe {
+        width: calc(100%);        
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 0;
+        }
+
+        &__image {
+            height: 80px;            
+        }
+    }
+}

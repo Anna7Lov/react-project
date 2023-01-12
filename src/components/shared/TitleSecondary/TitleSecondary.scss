@@ -11,3 +11,21 @@
 .dark-title-secondary {
     color: $white-color;
 }
+
+@media screen and (max-width: 1200px) {
+    .title-secondary {    
+        font-size: 26px;           
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .title-secondary {    
+        font-size: 22px;           
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .title-secondary {    
+        font-size: 26px;           
+    }
+}

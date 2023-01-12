@@ -12,11 +12,11 @@
 
     &__button {
       position: absolute;
-      right: 5px;
-      top: 70px;  
+      right: 10px;
+      top: 80px;  
       background: rgba(255, 255, 255, 0.7);
-      width: 37px;
-      height: 37px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       border: none;
       cursor: pointer;
@@ -28,7 +28,7 @@
 
     &__link {
         display: block;
-        height: 264px;
+        height: 98.5%;
         text-decoration: none;
         background: $main-color;  
         
@@ -43,7 +43,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 65px;        
+        height: 70px;        
         text-align: center;
         color: white;        
         padding: 2px 10px;        
@@ -52,5 +52,43 @@
     
     &__image {
         width: 100%;        
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .recipe-main {
+        width: calc(33.33% - 20px);  
+        
+        &:not(:nth-child(4n+4)) {
+            margin-right: 0;
+        }
+    
+        &:not(:nth-child(3n+3)) {
+            margin-right: 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .recipe-main {
+        width: calc(50% - 15px);       
+    
+        &:not(:nth-child(3n+3)) {
+            margin-right: 0;
+        }
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 30px;
+        }        
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .recipe-main {
+        width: 100%;       
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 0;
+        }        
     }
 }

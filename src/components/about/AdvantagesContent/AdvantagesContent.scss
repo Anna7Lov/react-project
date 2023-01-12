@@ -2,7 +2,7 @@
 
 .advantages {
     @include main-align();
-    margin-bottom: 70px;     
+    margin-bottom: 35px;     
     
     &__text-content {
         display: flex;
@@ -14,5 +14,6 @@
     
     &__items {
         display: flex;
+        flex-wrap: wrap;
     }
 }

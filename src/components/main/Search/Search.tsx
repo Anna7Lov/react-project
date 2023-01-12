@@ -223,6 +223,7 @@ export const Search = (): JSX.Element => {
         </div>
 
         <div className="search__filters">
+          <div className='search__filters-top'>
           <DropDownList
             items={cuisineList}
             value={cuisine}
@@ -233,6 +234,9 @@ export const Search = (): JSX.Element => {
             value={diet}
             handleSelectChange={chooseDiet}
           />
+          </div>
+
+          <div className='search__filters-bottom'>
           <DropDownList
             items={mealTypeList}
             value={mealType}
@@ -246,6 +250,7 @@ export const Search = (): JSX.Element => {
             />
             {t('withoutOnion')}
           </label>
+          </div>
         </div>
         <div className="search__sort">
           <DropDownList

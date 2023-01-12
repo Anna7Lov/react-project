@@ -10,7 +10,24 @@
         font-size: 18px;        
         margin-bottom: 15px;
         text-align: center;
-        padding: 0 100px 15px;
+        padding: 0 80px 15px;
         border-bottom: 2px dashed $main-color;       
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .personal-data {
+        &__item {
+            font-size: 16px;            
+            padding: 0 60px 15px;                  
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .personal-data {
+        &__item {                       
+            padding: 0 20px 15px;                  
+        }
     }
 }

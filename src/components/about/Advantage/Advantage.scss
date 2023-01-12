@@ -6,7 +6,7 @@
     text-align: center;
     width: calc(25% - 22.5px);
     padding: 15px;
-    border: 2px solid $main-color;    
+    border: 2px solid $main-color;
     border-radius: 5px;
 
     &:not(:last-child) {
@@ -15,7 +15,7 @@
 
     &:hover {
         border: 2px solid $bright-color;
-        transition: all 0.3s; 
+        transition: all 0.3s;
     }
 
     &__number {
@@ -25,37 +25,100 @@
         color: $main-color;
         margin-bottom: 10px;
         padding-top: 80px;
-        position: relative;           
-        
-        &::before {                    
+        position: relative;
+
+        &::before {
             content: "";
-            width: 64px;      
-            height: 64px;      
+            width: 64px;
+            height: 64px;
             position: absolute;
             top: 0;
-            left: calc(50% - 32px);            
+            left: calc(50% - 32px);
         }
     }
 
     &__text {
-        @include medium-font();         
-        line-height: 160%;
-        color: $dark-color;        
+        @include medium-font();
+        color: $dark-color;
     }
 }
 
-.recipes::before {    
+.recipes::before {
     background: url(../../../../public/images/hot-pot.png) no-repeat;
 }
 
-.customers::before {    
+.customers::before {
     background: url(../../../../public/images/happy-client.png) no-repeat;
 }
 
-.rating::before {    
+.rating::before {
     background: url(../../../../public/images/satisfaction.png) no-repeat;
 }
 
-.awards::before {    
+.awards::before {
     background: url(../../../../public/images/medal.png) no-repeat;
+}
+
+@media screen and (max-width: 1200px) {
+    .advantage {
+        &__number {
+            font-size: 26px;
+        }
+
+        &__text {
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .advantage {
+        width: calc(25% - 11.25px);       
+
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .advantage {
+        width: calc(50% - 7.5px);       
+
+        &:not(:last-child) {
+            margin-right: 0;
+        }
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 15px;
+        }  
+        
+        &:nth-child(1),
+        &:nth-child(2)  {
+            margin-bottom: 15px;
+        }   
+
+        &__text {
+            font-size: 18px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .advantage {        
+        &__text {
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .advantage {
+        width: calc(100%);    
+        margin-bottom: 15px;   
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 0;
+        }        
+    }
 }

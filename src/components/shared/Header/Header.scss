@@ -1,25 +1,38 @@
 @import '../../../variables.scss';
-@import '../../../mixins.scss'; 
+@import '../../../mixins.scss';
 
-.header { 
+.header {
     border-bottom: 5px solid $main-color;
-    
+
     &__inner {
         @include main-align();
         display: flex;
+        flex-wrap: wrap;        
+        justify-content: space-between;
+        padding: 15px 0;
+    }
+
+    &__inner-top,
+    &__inner-bottom {
+        display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        padding: 15px 0;             
     }
     
+    &__settings {
+        display: flex;        
+        align-items: center;        
+    }  
+
     &__language {
         @include small-bold-font();
         width: 45px;
-        height: 38px;              
+        height: 38px;
         border-radius: 14px;
         border: 2px solid $main-color;
         background: none;
-        color: $main-color;        
+        color: $main-color;
         cursor: pointer;
         margin-right: 10px;
         font-family: 'Rubik', sans-serif;
@@ -28,75 +41,75 @@
             background: $bright-color;
             color: $white-color;
             border: 2px solid $bright-color;
-            transition: all 0.5s; 
+            transition: all 0.5s;
         }
     }
 
     &__switch {
         display: flex;
         align-items: center;
-        margin-right: 10px;    
-        height: 38px;    
+        margin-right: 10px;
+        height: 38px;
         background: $main-color;
         border-radius: 14px;
-        padding: 5px 12px;        
+        padding: 5px 12px;
     }
 
     &__switch-title {
         @include small-bold-font();
         width: 100px;
-        margin-right: 5px;        
+        margin-right: 5px;
         color: $white-color;
     }
-    
+
     &__user {
         display: flex;
         width: 265px;
         height: 38px;
         font-weight: 500;
         align-items: center;
-        justify-content: center;        
-        font-size: 14px;        
+        justify-content: center;
+        font-size: 14px;
         padding: 5px;
-        position: relative;   
+        position: relative;
         background: $main-color;
         border-radius: 14px;
         color: $white-color;
         cursor: pointer;
-        
+
         &:hover .header__user-sections {
-            display: block;            
+            display: block;
         }
     }
 
     &__icon {
         @include small-bold-font();
         width: 40px;
-        height: 28px;        
+        height: 28px;
         color: $secondary-color;
         border-radius: 14px;
         background: rgba(255, 255, 255, 0.7);
-        text-transform: uppercase;      
-        display: flex;  
+        text-transform: uppercase;
+        display: flex;
         align-items: center;
-        justify-content: center; 
-        margin-right: 7px;           
+        justify-content: center;
+        margin-right: 7px;
     }
 
     &__user-sections {
         width: 265px;
         position: absolute;
         top: 38px;
-        left: 0;        
+        left: 0;
         background: #f0f5f7;
-        border-radius: 5px;  
-        padding: 10px 0;    
+        border-radius: 5px;
+        padding: 10px 0;
         display: none;
     }
 
     &__user-link {
         @include small-font();
-        display: block;        
+        display: block;
         color: $dark-color;
         text-decoration: none;
         padding: 10px 20px;
@@ -104,25 +117,25 @@
         &:hover {
             background: $bright-color;
             color: $white-color;
-            transition: all 0.3s; 
+            transition: all 0.3s;
         }
     }
 
-    &__logout {     
-        @include small-font();    
+    &__logout {
+        @include small-font();
         width: 100%;
         background: none;
         border: none;
         color: $dark-color;
-        text-align: left;               
+        text-align: left;
         font-family: 'Rubik', sans-serif;
-        padding: 6.5px 20px; 
-        cursor: pointer;       
+        padding: 6.5px 20px;
+        cursor: pointer;
 
         &:hover {
             background: $bright-color;
             color: $white-color;
-            transition: all 0.3s; 
+            transition: all 0.3s;
         }
     }
 }
@@ -130,4 +143,109 @@
 .active-language {
     background: $main-color;
     color: $white-color;
+}
+
+@media screen and (max-width: 1200px) {
+    .header {
+        &__inner {
+            @include main-align-adaptive();
+        }
+
+        &__inner-top {
+            width: 100%; 
+            margin-bottom: 15px;           
+        }
+
+        &__inner-bottom {
+            width: 100%;  
+            justify-content: center;
+            margin-bottom: 5px;           
+        }
+
+        &__languages {
+            margin-right: 10px;
+        }
+
+        &__switch {
+            margin-right: 20px;
+        }
+
+        &__user {
+            width: 305px;
+            font-size: 16px;
+        }
+
+        &__user-sections {
+            width: 305px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .header { 
+        &__inner-top {             
+            margin-bottom: 20px;           
+        }
+
+        &__inner-bottom {           
+            justify-content: space-between;                 
+        }   
+
+        &__settings {
+            width: 100%;
+            margin-bottom: 20px;
+        }       
+
+        &__switch {
+            margin-right: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .inner-top {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .header {
+        &__inner {
+            @include main-align-adaptive-small();
+        }
+        
+        &__settings {
+            justify-content: center;
+        }
+
+        &__user {
+            margin: 0 auto;
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .header {
+        &__languages {
+            margin-right: 0;
+        }
+
+        &__language {
+            width: 41.5px;
+        }
+
+        &__switch-title {
+            width: 85px;
+            font-size: 14px;
+        }
+
+        &__user {
+            width: 273px;
+            font-size: 14px;
+        }
+
+        &__user-sections {
+            width: 273px;
+        }
+    }
 }
