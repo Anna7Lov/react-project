@@ -1,15 +1,14 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipeThunk, getSimilarRecipesThunk } from '../../rdx/recipes/thunks';
 import { RequestState } from '../../services/recipesTypes';
 import { selectRecipe } from '../../rdx/recipes/selectors';
 import { selectCurrentUser } from '../../rdx/user/selectors';
-import { addToFavoritesAction, removeFromFavoritesAction } from '../../rdx/user/actions';
-import { isRecipeFavorite } from '../../utils/isRecipeFavorite';
 import { Loading } from '../../components/shared/Loading/Loading';
 import { SimilarRecipesList } from '../../components/recipe/SimilarRecipesList/SimilarRecipesList';
-import { Heart } from '../../components/shared/Heart/Heart';
+import { HeartButton } from '../../components/shared/HeartButton/HeartButton';
+import { StarRating } from '../../components/shared/StarRating/StarRating';
 import './RecipePage.scss';
 
 export const RecipePage = (): JSX.Element => {
@@ -24,16 +23,6 @@ export const RecipePage = (): JSX.Element => {
     }
     return recipe[id] || null;
   }, [recipe, id]);
-
-  const onHeartClick = useCallback(() => {
-    if (id && currentUser) {
-      if (isRecipeFavorite(+id, currentUser.favoriteRecipes)) {
-        dispatch(removeFromFavoritesAction(+id));
-      } else {
-        dispatch(addToFavoritesAction({ id: +id, title: currentRecipe?.info?.title, image: currentRecipe?.info?.image }));
-      }
-    }
-  }, [dispatch, currentUser, currentRecipe, id]);
 
   useEffect(() => {
     if (id) {
@@ -58,24 +47,34 @@ export const RecipePage = (): JSX.Element => {
     <div className="recipe">
       <h1 className="recipe__title">{currentRecipe.info.title}</h1>
       <div className="recipe__top-content">
-        {currentUser
-          ? (<button className='recipe__button' onClick={onHeartClick}>
-            <Heart id={+id} list={currentUser.favoriteRecipes} />
-          </button>)
-          : ''
-        }
-        {currentRecipe.info.image
-          ? <img
-            src={currentRecipe.info.image}
-            alt={currentRecipe.info.title}
-            className="recipe__image"
-          />
-          : <img
-            src='https://spoonacular.com/recipeImages/667770-556x370.jpg'
-            alt='No image'
-            className="recipe__image"
-          />
-        }
+        <div className='recipe__image-content'>
+          {currentUser
+            ? <div className='recipe__heart-button'>
+              <HeartButton id={+id} recipe={{
+                id: +id,
+                title: currentRecipe?.info?.title,
+                image: currentRecipe?.info?.image
+              }} />
+            </div>
+            : ''
+          }
+          {currentRecipe.info.image
+            ? <img
+              src={currentRecipe.info.image}
+              alt={currentRecipe.info.title}
+              className="recipe__image"
+            />
+            : <img
+              src='https://spoonacular.com/recipeImages/667770-556x370.jpg'
+              alt='No image'
+              className="recipe__image"
+            />
+          }
+          {currentUser
+            ? (<StarRating id={+id} />)
+            : ''
+          }
+        </div>
 
         <div className="recipe__features">
           <span className="recipe__info">

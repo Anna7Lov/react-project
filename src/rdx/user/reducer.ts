@@ -9,7 +9,9 @@ import {
   removeFromFavoritesAction,
   changeThemeAction,
   editUserDataAction,
-  editUserPasswordAction
+  editUserPasswordAction,
+  addToRatingListAction,
+  removeFromRatingListAction
 }
   from './actions';
 
@@ -162,6 +164,60 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
               ? {
                   ...state.currentUser,
                   password: action.payload.password
+                }
+              : i
+          ))
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
+
+    case getType(addToRatingListAction):
+      if (state.currentUser) {
+        return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            ratingList: state.currentUser.ratingList.some((i) => (i.id === action.payload.id))
+              ? state.currentUser.ratingList.map((item) => item.id === action.payload.id ? action.payload : item)
+              : [...state.currentUser.ratingList, action.payload]
+          },
+          users: state.users.map((i) => (
+            i.email === state.currentUser?.email
+              ? {
+                  ...state.currentUser,
+                  ratingList: state.currentUser.ratingList.some((i) => (i.id === action.payload.id))
+                    ? state.currentUser.ratingList.map((item) => item.id === action.payload.id ? action.payload : item)
+                    : [...state.currentUser.ratingList, action.payload]
+                }
+              : i
+          ))
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
+
+    case getType(removeFromRatingListAction):
+      if (state.currentUser) {
+        return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            ratingList: state.currentUser.ratingList.filter(
+              (item) => item.id !== action.payload
+            )
+          },
+          users: state.users.map((i) => (
+            i.email === state.currentUser?.email
+              ? {
+                  ...state.currentUser,
+                  ratingList: state.currentUser.ratingList.filter(
+                    (item) => item.id !== action.payload
+                  )
                 }
               : i
           ))

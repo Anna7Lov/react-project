@@ -1,11 +1,10 @@
-import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToFavoritesAction, removeFromFavoritesAction } from '../../../rdx/user/actions';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { RecipeTitleModel } from '../../../services/recipesTypes';
-import { isRecipeFavorite } from '../../../utils/isRecipeFavorite';
-import { Heart } from '../../shared/Heart/Heart';
+import { HeartButton } from '../../shared/HeartButton/HeartButton';
+import { StarRating } from '../../shared/StarRating/StarRating';
 import './RecipeTitle.scss';
 
 interface RecipeTitleProps {
@@ -13,25 +12,14 @@ interface RecipeTitleProps {
 }
 
 export const RecipeTitle = ({ recipe }: RecipeTitleProps): JSX.Element => {
-  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-
-  const onHeartButtonClick = useCallback(() => {
-    if (currentUser) {
-      if (isRecipeFavorite(recipe.id, currentUser.favoriteRecipes)) {
-        dispatch(removeFromFavoritesAction(recipe.id));
-      } else {
-        dispatch(addToFavoritesAction(recipe));
-      }
-    }
-  }, [dispatch, currentUser, recipe]);
 
   return (
     <div className="recipe-main">
       {currentUser
-        ? (<button className='recipe-main__button' onClick={onHeartButtonClick}>
-          <Heart id={recipe.id} list={currentUser.favoriteRecipes} />
-        </button>)
+        ? <div className='recipe-main__heart-button'>
+        <HeartButton id={recipe.id} recipe={{ id: recipe.id, title: recipe.title, image: recipe.image }} />
+        </div>
         : ''
       }
       <Link to={`/recipes/${recipe.id}/information`} className="recipe-main__link">
@@ -42,6 +30,10 @@ export const RecipeTitle = ({ recipe }: RecipeTitleProps): JSX.Element => {
           alt={recipe.title}
         />
       </Link>
+      {currentUser
+        ? (<StarRating id={recipe.id} />)
+        : ''
+      }
     </div>
   );
 };

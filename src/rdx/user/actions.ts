@@ -1,6 +1,6 @@
 import { createAction } from 'typesafe-actions';
 import { RecipeTitleModel } from '../../services/recipesTypes';
-import { UserModel } from '../../services/userTypes';
+import { RatingItemModel, UserModel } from '../../services/userTypes';
 
 export enum UserActions {
   REGISTER_USER = '@user/REGISTER_USER',
@@ -10,7 +10,9 @@ export enum UserActions {
   REMOVE_FROM_FAVORITES = '@user/REMOVE_FROM_FAVORITES',
   CHANGE_THEME = '@user/CHANGE_THEME',
   EDIT_USER_DATA = '@user/EDIT_USER_DATA',
-  EDIT_USER_PASSWORD = '@user/EDIT_USER_PASSWORD'
+  EDIT_USER_PASSWORD = '@user/EDIT_USER_PASSWORD',
+  ADD_TO_RATING_LIST = '@user/ADD_TO_RATING_LIST',
+  REMOVE_FROM_RATING_LIST = '@user/REMOVE_FROM_RATING_LIST'
 }
 
 export const registerUserAction = createAction(
@@ -61,5 +63,19 @@ export const editUserPasswordAction = createAction(
   UserActions.EDIT_USER_PASSWORD,
   (editedUserPassword): Pick<UserModel, 'password'> => (
     editedUserPassword
+  )
+)();
+
+export const addToRatingListAction = createAction(
+  UserActions.ADD_TO_RATING_LIST,
+  (ratingItem): RatingItemModel => (
+    ratingItem
+  )
+)();
+
+export const removeFromRatingListAction = createAction(
+  UserActions.REMOVE_FROM_RATING_LIST,
+  (id): number => (
+    id
   )
 )();

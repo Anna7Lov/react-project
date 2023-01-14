@@ -8,27 +8,16 @@
 
     &:not(:nth-child(4n+4)) {
         margin-right: 30px;
-    }
-
-    &__button {
-      position: absolute;
-      right: 10px;
-      top: 80px;  
-      background: rgba(255, 255, 255, 0.7);
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-    
-      &:hover {
-        filter: brightness(140%);
-      }
     }    
 
+    &__heart-button {
+        position: relative;
+        top: 70px;
+    }
+
     &__link {
-        display: block;
-        height: 98.5%;
+        display: block;     
+        height: 98.5%;   
         text-decoration: none;
         background: $main-color;  
         
@@ -50,8 +39,8 @@
         
     }
     
-    &__image {
-        width: 100%;        
+    &__image {        
+        width: 100%;            
     }
 }
 

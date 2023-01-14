@@ -26,7 +26,7 @@
         height: 24px;
         position: absolute;
         right: 15px;
-        cursor: pointer;
+        cursor: pointer;             
     }
 
     &__error {
@@ -39,12 +39,12 @@
 
 .invisible {
     background: url(../../../../public/images/hidden.png) no-repeat;
-    top: calc(50% - 21.5px);
+    top: calc(50% - 21.5px);    
 }
 
 .visible {
     background: url(../../../../public/images/visible.png) no-repeat;
-    top: calc(50% - 21px);
+    top: calc(50% - 21px);    
 }
 
 @media screen and (max-width: 450px) {

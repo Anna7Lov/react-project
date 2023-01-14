@@ -3,9 +3,16 @@
     justify-content: center; 
     margin-bottom: 20px;  
 
-    &__item:not(:last-child) {
-        margin-right: 15px; 
-    }
+    &__item {
+        &:not(:last-child) {
+            margin-right: 15px; 
+        }
+
+        &:hover {
+            transition: all 0.3s;
+            filter: brightness(130%);
+        }
+    }    
 
     &__link {
         display: block;               

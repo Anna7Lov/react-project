@@ -34,7 +34,7 @@ export const PersonalData = (): JSX.Element => {
   const onDataEdit = (values: EditDataFormValues, actions: any): void => {
     const editedUser: Omit<
     UserModel,
-    'id' | 'password' | 'favoriteRecipes' | 'theme'
+    'id' | 'password' | 'favoriteRecipes' | 'theme' | 'ratingList'
     > = {
       name: values.name,
       lastName: values.lastName,

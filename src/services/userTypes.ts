@@ -1,5 +1,10 @@
 import { RecipeTitleModel } from "./recipesTypes";
 
+export interface RatingItemModel {
+    id: number;
+    rating: number;
+}
+
 export interface UserModel {
     id: string;
     name: string;
@@ -8,6 +13,7 @@ export interface UserModel {
     email: string;
     password: string;
     favoriteRecipes: RecipeTitleModel[];
-    theme: string
+    theme: string;
+    ratingList: RatingItemModel[];
 }
 
