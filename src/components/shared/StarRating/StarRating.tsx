@@ -1,6 +1,4 @@
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addToRatingListAction, removeFromRatingListAction } from '../../../rdx/user/actions';
 import { StarItem } from '../StarItem/StarItem';
 import './StarRating.scss';
 
@@ -9,26 +7,14 @@ interface StarRatingProps {
 }
 
 export const StarRating = ({ id }: StarRatingProps): JSX.Element => {
-  const dispatch = useDispatch();
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
-
-  const onStarClick = useCallback((index: number) => {
-    setRating(index + 1);
-    dispatch(addToRatingListAction({ id: id, rating: index + 1 }));
-  }, [dispatch, rating]);
-
-  const onStarDoubleClick = useCallback(() => {
-    setRating(0);
-    dispatch(removeFromRatingListAction(id));
-  }, []);
+  const [hover, setHover] = useState<number>(0);
 
   const onHoverEnter = useCallback((index: number) => {
     setHover(index + 1);
   }, []);
 
   const onHoverLeave = useCallback(() => {
-    setHover(rating);
+    setHover(0);
   }, []);
 
   return (
@@ -39,8 +25,6 @@ export const StarRating = ({ id }: StarRatingProps): JSX.Element => {
           index={index}
           id={id}
           hover={hover}
-          onStarClick={onStarClick}
-          onStarDoubleClick={onStarDoubleClick}
           onHoverEnter={onHoverEnter}
           onHoverLeave={onHoverLeave}
         />

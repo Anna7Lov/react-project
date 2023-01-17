@@ -18,7 +18,11 @@ export const RecipeTitle = ({ recipe }: RecipeTitleProps): JSX.Element => {
     <div className="recipe-main">
       {currentUser
         ? <div className='recipe-main__heart-button'>
-        <HeartButton id={recipe.id} recipe={{ id: recipe.id, title: recipe.title, image: recipe.image }} />
+        <HeartButton id={recipe.id} recipe={{
+          id: recipe.id,
+          title: recipe.title,
+          image: recipe.image
+        }} />
         </div>
         : ''
       }

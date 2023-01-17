@@ -68,6 +68,8 @@
     "favoritRecipesTitle": "My favorite recipes",
     "noFavoriteRecipes": "No favorite recipes. Add them!",
     "editSmallButton": "Edit",
+    "saveButton": "Save",
+    "cancelButton": "Cancel",
     "changePasswordButton": "Change password",
     "deleteFavoriteRecipeButton": "Delete"
 }

@@ -68,6 +68,8 @@
     "favoritRecipesTitle": "Мої обрані рецепти",
     "noFavoriteRecipes": "Немає обраних рецептів. Додайте їх!",
     "editSmallButton": "Редагувати",
+    "saveButton": "Зберегти",
+    "cancelButton": "Скасувати",
     "changePasswordButton": "Змінити пароль",
     "deleteFavoriteRecipeButton": "Видалити"
 }

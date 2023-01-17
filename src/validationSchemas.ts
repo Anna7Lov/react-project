@@ -1,15 +1,16 @@
 
 import * as Yup from 'yup';
-import { EditPasswordFormValues } from './components/profile/PasswordChange/PasswordChange';
-import { EditDataFormValues } from './components/profile/PersonalData/PersonalData';
-import { AuthorizationFormValues } from './pages/AuthorizationPage/AuthorizationPage';
-import { RegistrationFormValues } from './pages/RegistrationPage/RegistrationPage';
 import { store } from './rdx';
+import { RegistrationFormValues } from './pages/RegistrationPage/RegistrationPage';
+import { AuthorizationFormValues } from './pages/AuthorizationPage/AuthorizationPage';
+import { EditDataFormValues } from './components/profile/PersonalData/PersonalData';
+import { EditPasswordFormValues } from './components/profile/PasswordChange/PasswordChange';
 
-export const phoneRules = /^\+?\d{7,13}$/;
-export const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+const phoneRules = /^\+?\d{7,12}$/;
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-export const registrationFormSchema: Yup.SchemaOf<RegistrationFormValues> = Yup.object().shape({
+export const registrationFormSchema: Yup.SchemaOf<RegistrationFormValues> =
+Yup.object().shape({
   name: Yup
     .string()
     .max(25, 'Max length 25 characters')
@@ -55,12 +56,14 @@ export const registrationFormSchema: Yup.SchemaOf<RegistrationFormValues> = Yup.
     .required('Required')
 });
 
-export const authorizationFormSchema: Yup.SchemaOf<AuthorizationFormValues> = Yup.object().shape({
+export const authorizationFormSchema: Yup.SchemaOf<AuthorizationFormValues> =
+Yup.object().shape({
   email: Yup.string().email('Please enter a valid email').required('Required'),
   password: Yup.string().required('Required')
 });
 
-export const editDataFormSchema: Yup.SchemaOf<EditDataFormValues> = Yup.object().shape({
+export const editDataFormSchema: Yup.SchemaOf<EditDataFormValues> =
+Yup.object().shape({
   name: Yup
     .string()
     .max(25, 'Max length 25 characters')
@@ -92,7 +95,8 @@ export const editDataFormSchema: Yup.SchemaOf<EditDataFormValues> = Yup.object()
     .required('Required')
 });
 
-export const editPasswordFormSchema: Yup.SchemaOf<EditPasswordFormValues> = Yup.object().shape({
+export const editPasswordFormSchema: Yup.SchemaOf<EditPasswordFormValues> =
+Yup.object().shape({
   password: Yup
     .string()
     .test('Correct Password', 'Wrong password',

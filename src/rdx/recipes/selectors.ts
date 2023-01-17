@@ -13,7 +13,8 @@ export const selectRecipes = (state: GlobalAppState): RecipeTitleModel[] =>
 export const selectAreRecipesLoading = (state: GlobalAppState): boolean =>
   state.recipes.searchRecipesRequestState === RequestState.Waiting;
 
-export const selectAreRecipesFailed = (state: GlobalAppState): Error | null => state.recipes.error;
+export const selectAreRecipesFailed = (state: GlobalAppState): Error | null =>
+  state.recipes.error;
 
 export const selectRecipe = (
   state: GlobalAppState
@@ -31,7 +32,8 @@ export const selectSimilarRecipes = (state: GlobalAppState): SimilarRecipeModel[
 export const selectAreSimilarRecipesLoading = (state: GlobalAppState): boolean =>
   state.recipes.similarRecipesRequestState === RequestState.Waiting;
 
-export const selectAreSimilarRecipesFailed = (state: GlobalAppState): Error | null => state.recipes.similarRecipesError;
+export const selectAreSimilarRecipesFailed = (state: GlobalAppState): Error | null =>
+  state.recipes.similarRecipesError;
 
 export const selectAutocomplete = (state: GlobalAppState): AutocompleteModel[] =>
   state.recipes.autocomplete;
@@ -39,4 +41,5 @@ export const selectAutocomplete = (state: GlobalAppState): AutocompleteModel[] =
 export const selectIsAutocompleteLoading = (state: GlobalAppState): boolean =>
   state.recipes.autocompleteRequestState === RequestState.Waiting;
 
-export const selectIsAutocompleteFailed = (state: GlobalAppState): Error | null => state.recipes.autocompleteError;
+export const selectIsAutocompleteFailed = (state: GlobalAppState): Error | null =>
+  state.recipes.autocompleteError;

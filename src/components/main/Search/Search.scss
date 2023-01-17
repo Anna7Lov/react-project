@@ -102,21 +102,21 @@
         &__filters-bottom {
             justify-content: center;
             margin-bottom: 20px;
-        }        
+        }
     }
 }
 
 @media screen and (max-width: 600px) {
     .search {
-        &__input {            
-            width: 320px;            
+        &__input {
+            width: 320px;
         }
 
         &__filters-top {
             margin-bottom: 0;
         }
 
-        &__filters-bottom {            
+        &__filters-bottom {
             margin-bottom: 15px;
         }
 
@@ -133,8 +133,8 @@
 
 @media screen and (max-width: 450px) {
     .search {
-        &__input {            
-            width: 270px;            
+        &__input {
+            width: 270px;
         }
 
         &__tools-wrapper {
@@ -148,9 +148,9 @@
 }
 
 @media screen and (max-width: 370px) {
-    .search {    
-        &__input {            
-            width: 220px;            
+    .search {
+        &__input {
+            width: 220px;
         }
     }
-  }
+}

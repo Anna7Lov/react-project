@@ -2,78 +2,78 @@
 @import '../../../mixins.scss';
 
 .drop-down-list {
-  &:not(:last-child) {
-    margin-right: 15px;
-  }
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
 
-  &__label {
-    @include medium-bold-font();
-    display: block;
-    height: 35px;
-    color: white;
-    background: $main-color;
-    border-radius: 5px;
-    padding-left: 15px;
-  }
+    &__label {
+        @include medium-bold-font();
+        display: block;
+        height: 35px;
+        color: white;
+        background: $main-color;
+        border-radius: 5px;
+        padding-left: 15px;
+    }
 
-  &__select {
-    height: 35px;
-    font-size: 16px;
-    padding: 0 5px 0 10px;
-    margin-left: 15px;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-  } 
+    &__select {
+        height: 35px;
+        font-size: 16px;
+        padding: 0 5px 0 10px;
+        margin-left: 15px;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
 }
 
 @media screen and (max-width: 600px) {
-  .drop-down-list {    
-    margin-bottom: 15px;
+    .drop-down-list {
+        margin-bottom: 15px;
 
-    &:not(:last-child) {
-      margin-right: 0;
-    }
-    
-    &__label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 370px;      
-    }
+        &:not(:last-child) {
+            margin-right: 0;
+        }
 
-    &__select {
-      width: 275px;      
+        &__label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 370px;
+        }
+
+        &__select {
+            width: 275px;
+        }
     }
-  }
 }
 
 @media screen and (max-width: 450px) {
-  .drop-down-list {    
-    &__label {
-      @include small-bold-font();     
-      width: 320px;
-      padding-left: 10px;           
-    }
+    .drop-down-list {
+        &__label {
+            @include small-bold-font();
+            width: 320px;
+            padding-left: 10px;
+        }
 
-    &__select {
-      width: 250px;
-      font-size: 14px;
-      margin-left: 10px;
-      padding: 0 0 0 5px;
+        &__select {
+            width: 250px;
+            font-size: 14px;
+            margin-left: 10px;
+            padding: 0 0 0 5px;
+        }
     }
-  }
 }
 
 @media screen and (max-width: 370px) {
-  .drop-down-list {    
-    &__label {     
-      width: 270px;             
-    }
+    .drop-down-list {
+        &__label {
+            width: 270px;
+        }
 
-    &__select {
-      width: 220px;
-      font-size: 13px;    
+        &__select {
+            width: 220px;
+            font-size: 13px;
+        }
     }
-  }
 }

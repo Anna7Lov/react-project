@@ -1,4 +1,5 @@
 import { useDebounce } from 'usehooks-ts';
+import { useTranslation } from 'react-i18next';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
@@ -7,7 +8,6 @@ import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { DropDownList } from '../../shared/DropDownList/DropDownList';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import './Search.scss';
-import { useTranslation } from 'react-i18next';
 
 export interface DropDownModel {
   id: number;
@@ -25,7 +25,7 @@ export const Search = (): JSX.Element => {
   const searchToolsRef = useRef(null);
   const [inputText, setInputText] = useState<string>(searchParams.get('query') ?? '');
   const debouncedQuery = useDebounce<string>(inputText, 500);
-  const [isDropDownBoxOpened, setIsDropDownBoxOpened] = useState(false);
+  const [isDropDownBoxOpened, setIsDropDownBoxOpened] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(searchParams.get('query') ?? '');
   const [cuisine, setCuisine] = useState<string>(searchParams.get('cuisine') ?? '');
   const [diet, setDiet] = useState<string>(searchParams.get('diet') ?? '');
@@ -33,7 +33,7 @@ export const Search = (): JSX.Element => {
   const [excludeOnion, setExcludeOnion] = useState<string>(
     searchParams.get('excludeIngredients') ?? ''
   );
-  const [isInputChecked, setIsInputChecked] = useState(false);
+  const [isInputChecked, setIsInputChecked] = useState<boolean>(false);
   const [sort, setSort] = useState<string>(searchParams.get('sort') ?? '');
   const [sortDirection, setSortDirection] = useState<string>(
     searchParams.get('sortDirection') ?? ''
@@ -182,7 +182,8 @@ export const Search = (): JSX.Element => {
     setSearchParams(
       `${query === '' ? '' : `&query=${query}`}${cuisine === '' ? '' : `&cuisine=${cuisine}`
       }${diet === '' ? '' : `&diet=${diet}`}${mealType === '' ? '' : `&type=${mealType}`
-      }${excludeOnion === '' ? '' : `&excludeIngredients=${excludeOnion}`}${sort === '' ? '' : `&sort=${sort}`
+      }${excludeOnion === '' ? '' : `&excludeIngredients=${excludeOnion}`
+      }${sort === '' ? '' : `&sort=${sort}`
       }${sortDirection === '' ? '' : `&sortDirection=${sortDirection}`
       }`
     );

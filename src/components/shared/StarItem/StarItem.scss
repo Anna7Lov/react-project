@@ -1,25 +1,25 @@
 @import '../../../variables.scss';
 
 .star-item {
-  display: inline-block;
+    display: inline-block;
 
-  &__button {
-    color: rgb(136, 136, 136);
-    font-size: 26px;
-    line-height: 1;
-    padding: 0;
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }  
+    &__button {
+        color: rgb(136, 136, 136);
+        font-size: 26px;
+        line-height: 1;
+        padding: 0;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
 }
 
 .filled {
-  color: $bright-color;
+    color: $bright-color;
 }
 
 .hover {
-  color: $bright-color;
-  filter: brightness(150%);
+    color: $bright-color;
+    filter: brightness(150%);
 }

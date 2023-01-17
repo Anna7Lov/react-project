@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { useFormik, FormikHelpers } from 'formik';
 import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +19,7 @@ export interface EditPasswordFormValues {
 export const PasswordChange = (): JSX.Element => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const [isPasswordEditing, setIsPasswordEditing] = useState(false);
+  const [isPasswordEditing, setIsPasswordEditing] = useState<boolean>(false);
   const { t } = useTranslation();
 
   const onChangePasswordButtonClick = useCallback(() => {
@@ -32,7 +32,7 @@ export const PasswordChange = (): JSX.Element => {
 
   const onPasswordEdit = (
     values: EditPasswordFormValues,
-    actions: any
+    actions: FormikHelpers<EditPasswordFormValues>
   ): void => {
     const editedUserPassword: Pick<UserModel, 'password'> = {
       password: values.newPassword
@@ -107,13 +107,13 @@ export const PasswordChange = (): JSX.Element => {
           <div className="password-change__form-buttons">
             <ButtonSmall
               type="submit"
-              title="Save"
+              title={t('saveButton')}
               additionalClass="button-ordinary"
               isDisabled={isSubmitting}
             />
             <ButtonSmall
               type="reset"
-              title="Cancel"
+              title={t('cancelButton')}
               additionalClass="button-bright"
             />
           </div>

@@ -9,7 +9,13 @@ interface ButtonSmallProps {
   title: string;
 }
 
-export const ButtonSmall = ({ additionalClass, type, onButtonSmallClick, isDisabled, title }: ButtonSmallProps): JSX.Element => {
+export const ButtonSmall = ({
+  additionalClass,
+  type,
+  onButtonSmallClick,
+  isDisabled,
+  title
+}: ButtonSmallProps): JSX.Element => {
   return (
     <button className={`button-small ${additionalClass}`}
       type={type}

@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { useFormik, FormikHelpers } from 'formik';
 import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,7 @@ export interface EditDataFormValues {
 export const PersonalData = (): JSX.Element => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const [isDataEditing, setIsDataEditing] = useState(false);
+  const [isDataEditing, setIsDataEditing] = useState<boolean>(false);
   const { t } = useTranslation();
 
   const onEditButtonClick = useCallback(() => {
@@ -31,10 +31,12 @@ export const PersonalData = (): JSX.Element => {
     setIsDataEditing(false);
   }, []);
 
-  const onDataEdit = (values: EditDataFormValues, actions: any): void => {
+  const onDataEdit = (
+    values: EditDataFormValues,
+    actions: FormikHelpers<EditDataFormValues>): void => {
     const editedUser: Omit<
     UserModel,
-    'id' | 'password' | 'favoriteRecipes' | 'theme' | 'ratingList'
+    'id' | 'password' | 'favoriteRecipes' | 'theme' | 'language' | 'ratingList'
     > = {
       name: values.name,
       lastName: values.lastName,
@@ -127,13 +129,13 @@ export const PersonalData = (): JSX.Element => {
           <div className="personal-data__form-buttons">
             <ButtonSmall
               type="submit"
-              title="Save"
+              title={t('saveButton')}
               additionalClass="button-ordinary"
               isDisabled={isSubmitting}
             />
             <ButtonSmall
               type="reset"
-              title="Cancel"
+              title={t('cancelButton')}
               additionalClass="button-bright"
             />
           </div>

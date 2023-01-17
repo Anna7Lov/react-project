@@ -38,6 +38,7 @@ export const RegistrationPage = (): JSX.Element => {
       password: values.password,
       favoriteRecipes: [],
       theme: 'light',
+      language: 'en',
       ratingList: []
     };
     dispatch(registerUserAction(newUser));

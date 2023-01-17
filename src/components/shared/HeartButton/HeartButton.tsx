@@ -23,7 +23,7 @@ export const HeartButton = ({ id, recipe }: HeartButtonProps): JSX.Element => {
         dispatch(addToFavoritesAction(recipe));
       }
     }
-  }, [dispatch, currentUser, recipe]);
+  }, [dispatch, currentUser?.favoriteRecipes, recipe, id]);
 
   return (
     <div className='heart-button'>

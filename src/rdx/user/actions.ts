@@ -4,11 +4,12 @@ import { RatingItemModel, UserModel } from '../../services/userTypes';
 
 export enum UserActions {
   REGISTER_USER = '@user/REGISTER_USER',
-  LOGIN_USER = '@user/LOGIN_USER',
+  LOGIN_USER_SUCCESS = '@user/LOGIN_USER_SUCCESS',
   LOGOUT_USER = '@user/LOGOUT_USER',
   ADD_TO_FAVORITES = '@user/ADD_TO_FAVORITES',
   REMOVE_FROM_FAVORITES = '@user/REMOVE_FROM_FAVORITES',
   CHANGE_THEME = '@user/CHANGE_THEME',
+  CHANGE_LANGUAGE = '@user/CHANGE_LANGUAGE',
   EDIT_USER_DATA = '@user/EDIT_USER_DATA',
   EDIT_USER_PASSWORD = '@user/EDIT_USER_PASSWORD',
   ADD_TO_RATING_LIST = '@user/ADD_TO_RATING_LIST',
@@ -23,7 +24,7 @@ export const registerUserAction = createAction(
 )();
 
 export const loginUserAction = createAction(
-  UserActions.LOGIN_USER,
+  UserActions.LOGIN_USER_SUCCESS,
   (user): UserModel => (
     user
   )
@@ -49,6 +50,13 @@ export const changeThemeAction = createAction(
   UserActions.CHANGE_THEME,
   (theme): string => (
     theme
+  )
+)();
+
+export const changeLanguageAction = createAction(
+  UserActions.CHANGE_LANGUAGE,
+  (language): string => (
+    language
   )
 )();
 

@@ -5,8 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUserAction } from '../../rdx/user/actions';
 import { selectUsers } from '../../rdx/user/selectors';
 import { useThemeContext } from '../../hooks/useThemeContext';
-import { Title } from '../../components/shared/Title/Title';
 import { authorizationFormSchema } from '../../validationSchemas';
+import { Title } from '../../components/shared/Title/Title';
 import { InputItem } from '../../components/shared/InputItem/InputItem';
 import { HeaderSecondary } from '../../components/shared/HeaderSecondary/HeaderSecondary';
 import './AuthorizationPage.scss';
@@ -25,13 +25,13 @@ export const AuthorizationPage = (): JSX.Element => {
 
   const onAuthorizationFormSubmit = (values: AuthorizationFormValues): void => {
     if (users.length) {
-      for (const user of users) {
-        if (values.email === user.email && values.password === user.password) {
-          dispatch(loginUserAction(user));
-          navigate('/');
-        } else {
-          setAuthorizationError('Authorization data is incorrect');
-        }
+      const user = users.find((u) =>
+        values.email === u.email && values.password === u.password);
+      if (user) {
+        dispatch(loginUserAction(user));
+        navigate('/');
+      } else {
+        setAuthorizationError('Authorization data is incorrect');
       }
     } else {
       setAuthorizationError('Authorization data is incorrect');

@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import Switch from 'react-switch';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
-import { logoutUserAction } from '../../../rdx/user/actions';
+import { changeLanguageAction, logoutUserAction } from '../../../rdx/user/actions';
 import { Logo } from '../../shared/Logo/Logo';
 import { HorizontalMenu } from '../../shared/HorizontalMenu/HorizontalMenu';
 import './Header.scss';
@@ -24,7 +24,6 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const { t, i18n } = useTranslation();
-  const [isEnglishActive, setIsEnglishActive] = useState<boolean>(i18n.language !== 'ua');
 
   const horizontalLinks: LinkItem[] = [
     { id: 1, name: `${t('nav.home')}`, address: '/' },
@@ -33,18 +32,23 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
   ];
 
   const onEnglishClick = useCallback(() => {
-    i18n.changeLanguage('en');
-    setIsEnglishActive(true);
-  }, []);
+    dispatch(changeLanguageAction('en'));
+  }, [dispatch]);
 
   const onUkrainianClick = useCallback(() => {
-    i18n.changeLanguage('ua');
-    setIsEnglishActive(false);
-  }, []);
+    dispatch(changeLanguageAction('ua'));
+  }, [dispatch]);
 
   const onLogoutClicked = useCallback(() => {
     dispatch(logoutUserAction());
   }, [dispatch]);
+
+  useEffect(
+    () => {
+      if (currentUser) {
+        i18n.changeLanguage(currentUser.language);
+      }
+    }, [currentUser?.language]);
 
   return (
     <div className="header">
@@ -55,18 +59,22 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
         </div>
         <div className='header__inner-bottom'>
           <div className='header__settings'>
-          <div className="header__languages">
-            <button onClick={onEnglishClick} className={isEnglishActive
-              ? 'header__language active-language'
-              : 'header__language'}>EN</button>
-            <button onClick={onUkrainianClick} className={isEnglishActive
-              ? 'header__language'
-              : 'header__language active-language'}>UA</button>
-          </div>
-          <div className='header__switch'>
-            <span className='header__switch-title'>{t('darkTheme')}</span>
-            <Switch onChange={onThemeChanged} checked={theme === 'dark'} />
-          </div>
+            {currentUser
+              ? <div className="header__languages">
+                <button onClick={onEnglishClick} className={currentUser.language === 'en'
+                  ? 'header__language active-language'
+                  : 'header__language'}>EN</button>
+                <button onClick={onUkrainianClick} className={currentUser.language === 'en'
+                  ? 'header__language'
+                  : 'header__language active-language'}>UA</button>
+              </div>
+              : ''
+            }
+
+            <div className='header__switch'>
+              <span className='header__switch-title'>{t('darkTheme')}</span>
+              <Switch onChange={onThemeChanged} checked={theme === 'dark'} />
+            </div>
           </div>
 
           {currentUser

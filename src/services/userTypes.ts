@@ -14,6 +14,7 @@ export interface UserModel {
     password: string;
     favoriteRecipes: RecipeTitleModel[];
     theme: string;
+    language: string;
     ratingList: RatingItemModel[];
 }
 

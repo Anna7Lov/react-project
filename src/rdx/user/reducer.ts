@@ -3,11 +3,12 @@ import { UserModel } from '../../services/userTypes';
 import { GlobalAppActions } from '../actions';
 import {
   registerUserAction,
-  logoutUserAction,
   loginUserAction,
+  logoutUserAction,
   addToFavoritesAction,
   removeFromFavoritesAction,
   changeThemeAction,
+  changeLanguageAction,
   editUserDataAction,
   editUserPasswordAction,
   addToRatingListAction,
@@ -19,12 +20,14 @@ export interface UserState {
   users: UserModel[];
   currentUser: UserModel | null;
   isUserAuthenticated: boolean;
+  authError: string | null;
 }
 
 const initialState: UserState = {
   users: [],
   currentUser: null,
-  isUserAuthenticated: false
+  isUserAuthenticated: false,
+  authError: null
 };
 
 export const reducer = (state = initialState, action: GlobalAppActions): UserState => {
@@ -112,6 +115,29 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
               ? {
                   ...state.currentUser,
                   theme: action.payload
+                }
+              : i
+          ))
+        };
+      } else {
+        return {
+          ...state
+        };
+      }
+
+    case getType(changeLanguageAction):
+      if (state.currentUser) {
+        return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            language: action.payload
+          },
+          users: state.users.map((i) => (
+            i.id === state.currentUser?.id
+              ? {
+                  ...state.currentUser,
+                  language: action.payload
                 }
               : i
           ))

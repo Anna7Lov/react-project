@@ -27,7 +27,6 @@ export const ProfilePage = (): JSX.Element => {
         </ul>
         : <div className='profile__no-recipes'>{t('noFavoriteRecipes')}</div>
       }
-
     </div>
   );
 };

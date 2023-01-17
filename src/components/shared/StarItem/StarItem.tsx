@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToRatingListAction, removeFromRatingListAction } from '../../../rdx/user/actions';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { recipeRatingById } from '../../../utils/recipeRatingById';
 import './StarItem.scss';
@@ -8,26 +9,27 @@ interface StarItemProps {
   index: number;
   id: number;
   hover: number;
-  onStarClick: (index: number) => void;
-  onStarDoubleClick: () => void;
   onHoverEnter: (index: number) => void;
   onHoverLeave: () => void;
 }
 
 export const StarItem = ({
   index,
+  id,
   hover,
-  onStarClick,
-  onStarDoubleClick,
-  onHoverLeave,
   onHoverEnter,
-  id
+  onHoverLeave
 }: StarItemProps): JSX.Element => {
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
-  const onButtonClick = useCallback(() => {
-    onStarClick(index);
-  }, [onStarClick, index]);
+  const onStarClick = useCallback(() => {
+    dispatch(addToRatingListAction({ id, rating: index + 1 }));
+  }, [dispatch, id, index]);
+
+  const onStarDoubleClick = useCallback(() => {
+    dispatch(removeFromRatingListAction(id));
+  }, [dispatch, id]);
 
   const onHover = useCallback(() => {
     onHoverEnter(index);
@@ -50,7 +52,7 @@ export const StarItem = ({
                 ? 'star-item__button hover'
                 : 'star-item__button'
           }
-          onClick={onButtonClick}
+          onClick={onStarClick}
           onDoubleClick={onStarDoubleClick}
           onMouseEnter={onHover}
           onMouseLeave={onHoverLeave}

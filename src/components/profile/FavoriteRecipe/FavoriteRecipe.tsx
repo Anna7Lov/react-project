@@ -6,8 +6,8 @@ import { removeFromFavoritesAction } from '../../../rdx/user/actions';
 import { RecipeTitleModel } from '../../../services/recipesTypes';
 import { ButtonSmall } from '../../shared/ButtonSmall/ButtonSmall';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
-import './FavoriteRecipe.scss';
 import { StarRating } from '../../shared/StarRating/StarRating';
+import './FavoriteRecipe.scss';
 
 interface FavoriteRecipeProps {
   favoriteRecipe: RecipeTitleModel;
