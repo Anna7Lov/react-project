@@ -33,7 +33,7 @@ export const Autocomplete = ({
                   </div>)
                 : autocompleteList.length
                   ? (<div>
-                <h3 className='autocomplete__subtitile'>
+                <h3 className='autocomplete__subtitle'>
                   {t('autocompleteSubtitle')}
                 </h3>
                 <ul className="autocomplete__list">

@@ -27,7 +27,7 @@ export const RegistrationPage = (): JSX.Element => {
   const theme = useThemeContext();
   const [isSuccessfulRegistrationVisible, setIsSuccessfulRegistrationVisible] = useState(false);
 
-  const onSubmit = (values: RegistrationFormValues):
+  const onRegistrationFormSubmit = (values: RegistrationFormValues):
   void => {
     const newUser: UserModel = {
       id: uuidv4(),
@@ -66,7 +66,7 @@ export const RegistrationPage = (): JSX.Element => {
       confirmPassword: ''
     },
     validationSchema: registrationFormSchema,
-    onSubmit
+    onSubmit: onRegistrationFormSubmit
   });
 
   return (

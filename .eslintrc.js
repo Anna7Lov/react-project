@@ -15,14 +15,11 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: [
-    'react',
-    "react-hooks"
+    'react'    
   ],
   rules: {
     '@typescript-eslint/semi': [2, 'always'],
     'semi': [2, 'always'],
-    "react-hooks/rules-of-hooks": 'error',
-    "react-hooks/exhaustive-deps": 'warn',
     '@typescript-eslint/no-floating-promises': ['off'],
     '@typescript-eslint/strict-boolean-expressions': ['off'],
     '@typescript-eslint/member-delimiter-style': [

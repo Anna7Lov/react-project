@@ -20,14 +20,12 @@ export interface UserState {
   users: UserModel[];
   currentUser: UserModel | null;
   isUserAuthenticated: boolean;
-  authError: string | null;
 }
 
 const initialState: UserState = {
   users: [],
   currentUser: null,
-  isUserAuthenticated: false,
-  authError: null
+  isUserAuthenticated: false
 };
 
 export const reducer = (state = initialState, action: GlobalAppActions): UserState => {

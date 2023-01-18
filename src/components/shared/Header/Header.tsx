@@ -32,12 +32,16 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
   ];
 
   const onEnglishClick = useCallback(() => {
-    dispatch(changeLanguageAction('en'));
-  }, [dispatch]);
+    if (currentUser?.language !== 'en') {
+      dispatch(changeLanguageAction('en'));
+    }
+  }, [dispatch, currentUser?.language]);
 
   const onUkrainianClick = useCallback(() => {
-    dispatch(changeLanguageAction('ua'));
-  }, [dispatch]);
+    if (currentUser?.language !== 'ua') {
+      dispatch(changeLanguageAction('ua'));
+    }
+  }, [dispatch, currentUser?.language]);
 
   const onLogoutClicked = useCallback(() => {
     dispatch(logoutUserAction());
@@ -57,10 +61,10 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
           <Logo />
           <HorizontalMenu links={horizontalLinks} />
         </div>
-        <div className='header__inner-bottom'>
-          <div className='header__settings'>
-            {currentUser
-              ? <div className="header__languages">
+        {currentUser
+          ? <div className='header__inner-bottom'>
+            <div className='header__settings'>
+              <div className="header__languages">
                 <button onClick={onEnglishClick} className={currentUser.language === 'en'
                   ? 'header__language active-language'
                   : 'header__language'}>EN</button>
@@ -68,17 +72,14 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
                   ? 'header__language'
                   : 'header__language active-language'}>UA</button>
               </div>
-              : ''
-            }
 
-            <div className='header__switch'>
-              <span className='header__switch-title'>{t('darkTheme')}</span>
-              <Switch onChange={onThemeChanged} checked={theme === 'dark'} />
+              <div className='header__switch'>
+                <span className='header__switch-title'>{t('darkTheme')}</span>
+                <Switch onChange={onThemeChanged} checked={theme === 'dark'} />
+              </div>
             </div>
-          </div>
 
-          {currentUser
-            ? (<div className='header__user'>
+            <div className='header__user'>
               <span className='header__icon'>{currentUser?.name[0]}{currentUser?.lastName[0]}</span>
               <span>{currentUser.email.length < 25
                 ? currentUser?.email
@@ -92,10 +93,10 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
                   {t('logOut')}
                 </button>
               </div>
-            </div>)
-            : ''
-          }
-        </div>
+            </div>
+          </div>
+          : ''
+        }
       </div>
     </div>
   );

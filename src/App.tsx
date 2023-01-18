@@ -24,10 +24,8 @@ const App = (): JSX.Element => {
   const onThemeChanged = useCallback(
     (checked: boolean) => {
       if (checked) {
-        setTheme('dark');
         dispatch(changeThemeAction('dark'));
       } else {
-        setTheme('light');
         dispatch(changeThemeAction('light'));
       }
     }, [dispatch]);

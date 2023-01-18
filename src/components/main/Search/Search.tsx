@@ -167,7 +167,7 @@ export const Search = (): JSX.Element => {
 
   const onSortClick = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value);
-    if (e.target.value === 'popularity') {
+    if (e.target.value === 'popularity' || e.target.value === '') {
       setSortDirection('desc');
     } else {
       setSortDirection('asc');

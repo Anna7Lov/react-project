@@ -19,7 +19,7 @@
         border-bottom: 2px solid $bright-color;
     }
 
-    &__subtitile {
+    &__subtitle {
         text-align: center;
         font-size: 14px;
         color: #757575;
@@ -52,6 +52,11 @@
         &__no-results {
             width: 320px;            
         }
+
+        &__subtitle {
+            width: 270px;
+            margin: 0 auto;
+        }
     }    
 }
 
@@ -61,7 +66,7 @@
 
         &__no-results {
             width: 270px;            
-        }
+        }        
     }
 }
 
@@ -70,6 +75,10 @@
         width: 270px;
 
         &__no-results {
+            width: 220px;            
+        }
+
+        &__subtitle {
             width: 220px;            
         }
     }

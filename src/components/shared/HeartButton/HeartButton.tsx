@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToFavoritesAction, removeFromFavoritesAction } from '../../../rdx/user/actions';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { RecipeTitleModel } from '../../../services/recipesTypes';
-import { isRecipeFavorite } from '../../../utils/isRecipeFavorite';
+import { isItemInList } from '../../../utils/isIteminList';
 import './HeartButton.scss';
 
 interface HeartButtonProps {
@@ -17,7 +17,7 @@ export const HeartButton = ({ id, recipe }: HeartButtonProps): JSX.Element => {
 
   const onHeartButtonClick = useCallback(() => {
     if (currentUser) {
-      if (isRecipeFavorite(id, currentUser.favoriteRecipes)) {
+      if (isItemInList(id, currentUser.favoriteRecipes)) {
         dispatch(removeFromFavoritesAction(id));
       } else {
         dispatch(addToFavoritesAction(recipe));
@@ -30,7 +30,7 @@ export const HeartButton = ({ id, recipe }: HeartButtonProps): JSX.Element => {
       {currentUser
         ? <button className='heart-button__button' onClick={onHeartButtonClick}>
             <span
-              className={isRecipeFavorite(id, currentUser.favoriteRecipes)
+              className={isItemInList(id, currentUser.favoriteRecipes)
                 ? 'heart-button__heart heart-added'
                 : 'heart-button__heart'}
             ></span >

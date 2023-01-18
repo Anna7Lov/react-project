@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToRatingListAction, removeFromRatingListAction } from '../../../rdx/user/actions';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { recipeRatingById } from '../../../utils/recipeRatingById';
+import { useSingleAndDoubleClick } from '../../../hooks/useSingleAndDoubleClick';
+import { isItemInList } from '../../../utils/isIteminList';
 import './StarItem.scss';
 
 interface StarItemProps {
@@ -23,13 +25,19 @@ export const StarItem = ({
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
-  const onStarClick = useCallback(() => {
-    dispatch(addToRatingListAction({ id, rating: index + 1 }));
-  }, [dispatch, id, index]);
+  const onStarSingleClick = useCallback(() => {
+    if (currentUser && recipeRatingById(id, currentUser.ratingList) !== index + 1) {
+      dispatch(addToRatingListAction({ id, rating: index + 1 }));
+    }
+  }, [dispatch, id, index, currentUser?.ratingList]);
 
   const onStarDoubleClick = useCallback(() => {
-    dispatch(removeFromRatingListAction(id));
-  }, [dispatch, id]);
+    if (currentUser && isItemInList(id, currentUser?.ratingList)) {
+      dispatch(removeFromRatingListAction(id));
+    }
+  }, [dispatch, id, currentUser?.ratingList]);
+
+  const onStarClick = useSingleAndDoubleClick(onStarSingleClick, onStarDoubleClick);
 
   const onHover = useCallback(() => {
     onHoverEnter(index);
@@ -53,7 +61,6 @@ export const StarItem = ({
                 : 'star-item__button'
           }
           onClick={onStarClick}
-          onDoubleClick={onStarDoubleClick}
           onMouseEnter={onHover}
           onMouseLeave={onHoverLeave}
         >
