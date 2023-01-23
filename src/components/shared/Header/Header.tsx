@@ -45,6 +45,7 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
 
   const onLogoutClicked = useCallback(() => {
     dispatch(logoutUserAction());
+    window.location.href = '/login';
   }, [dispatch]);
 
   useEffect(

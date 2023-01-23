@@ -15,28 +15,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+    }    
 
-    &__button {
-        @include medium-bold-font();
-        display: block;
-        width: 375px;
-        height: 46px;
-        margin: 0 auto 10px;
-        background: $main-color;
-        border-radius: 5px;
-        color: $white-color;
-        cursor: pointer;
-        border: none;
-
-        &:hover {
-            color: $white-color;
-            background: $bright-color;
-            transition: all 0.5s;
-        }
-    }
-
-    &__content {
+    &__info {
         margin-bottom: 20px;
     }
 
@@ -76,18 +57,6 @@
     .authorization {
         &__items {
             @include main-align-adaptive-small();
-        }
-
-        &__button {
-            width: 340px;
-        }
-    }
-}
-
-@media screen and (max-width: 390px) {
-    .authorization {
-        &__button {
-            width: 270px;
-        }
+        }        
     }
 }

@@ -26,10 +26,6 @@ export const PasswordChange = (): JSX.Element => {
     setIsPasswordEditing(true);
   }, []);
 
-  const onReset = useCallback(() => {
-    setIsPasswordEditing(false);
-  }, []);
-
   const onPasswordEdit = (
     values: EditPasswordFormValues,
     actions: FormikHelpers<EditPasswordFormValues>
@@ -45,6 +41,10 @@ export const PasswordChange = (): JSX.Element => {
     actions.resetForm();
   };
 
+  const onPasswordEditCancel = (): void => {
+    setIsPasswordEditing(false);
+  };
+
   const {
     values,
     errors,
@@ -52,7 +52,8 @@ export const PasswordChange = (): JSX.Element => {
     isSubmitting,
     handleBlur,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handleReset
   } = useFormik<EditPasswordFormValues>({
     initialValues: {
       password: '',
@@ -60,7 +61,8 @@ export const PasswordChange = (): JSX.Element => {
       confirmNewPassword: ''
     },
     validationSchema: editPasswordFormSchema,
-    onSubmit: onPasswordEdit
+    onSubmit: onPasswordEdit,
+    onReset: onPasswordEditCancel
   });
 
   return (
@@ -69,7 +71,7 @@ export const PasswordChange = (): JSX.Element => {
         ? (<form
           noValidate
           onSubmit={handleSubmit}
-          onReset={onReset}
+          onReset={handleReset}
         >
           <InputItem
             name="password"

@@ -2,6 +2,7 @@
 @import '../../mixins.scss';
 
 .registration {
+    min-height: 100vh;
     background: #f6f6f8;
 
     &__successful {
@@ -29,32 +30,7 @@
         flex-direction: column;
         align-items: center;
         padding-bottom: 50px;
-    }     
-
-    &__button {
-        @include medium-bold-font(); 
-        display: block;
-        width: 375px;
-        height: 46px;
-        margin: 0 auto 25px;
-        background: $main-color;
-        border-radius: 5px;        
-        color: $white-color;
-        cursor: pointer;
-        border: none;
-
-        &:hover {
-            color: $white-color;
-            background: $bright-color;
-            transition: all 0.5s;
-        }
-
-        &[disabled] {
-            background-color: $dark-color;
-            opacity: 0.3;
-            cursor: default;           
-        }
-    }
+    }    
 
     &__link {
         @include small-bold-font();
@@ -65,6 +41,10 @@
             color: $bright-color;
             transition: all 0.3s;
         }
+    }
+
+    &__info {
+        margin-top: 15px;
     }
 
     &__text {
@@ -81,18 +61,6 @@
     .registration {
         &__items {
             @include main-align-adaptive-small();
-        }
-
-        &__button {
-            width: 340px;
-        }
-    }
-}
-
-@media screen and (max-width: 390px) {
-    .registration {
-        &__button {
-            width: 270px;
-        }
+        }        
     }
 }

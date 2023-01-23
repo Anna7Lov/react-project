@@ -24,7 +24,7 @@ export const Search = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchToolsRef = useRef(null);
   const [inputText, setInputText] = useState<string>(searchParams.get('query') ?? '');
-  const debouncedQuery = useDebounce<string>(inputText, 500);
+  const debouncedQuery = useDebounce<string>(inputText, 600);
   const [isDropDownBoxOpened, setIsDropDownBoxOpened] = useState<boolean>(false);
   const [query, setQuery] = useState<string>(searchParams.get('query') ?? '');
   const [cuisine, setCuisine] = useState<string>(searchParams.get('cuisine') ?? '');
@@ -33,7 +33,6 @@ export const Search = (): JSX.Element => {
   const [excludeOnion, setExcludeOnion] = useState<string>(
     searchParams.get('excludeIngredients') ?? ''
   );
-  const [isInputChecked, setIsInputChecked] = useState<boolean>(false);
   const [sort, setSort] = useState<string>(searchParams.get('sort') ?? '');
   const [sortDirection, setSortDirection] = useState<string>(
     searchParams.get('sortDirection') ?? ''
@@ -52,10 +51,11 @@ export const Search = (): JSX.Element => {
         { id: 54, value: 'chinese', name: `${t('cuisine.chinese')}` },
         { id: 55, value: 'eastern european', name: `${t('cuisine.easternEuropean')}` },
         { id: 56, value: 'italian', name: `${t('cuisine.italian')}` },
-        { id: 57, value: 'japanese', name: `${t('cuisine.japanese')}` },
-        { id: 58, value: 'mexican', name: `${t('cuisine.mexican')}` },
-        { id: 59, value: 'thai', name: `${t('cuisine.thai')}` },
-        { id: 60, value: '', name: `${t('cuisine.allCuisines')}` }
+        { id: 57, value: 'spanish', name: `${t('cuisine.spanish')}` },
+        { id: 58, value: 'japanese', name: `${t('cuisine.japanese')}` },
+        { id: 59, value: 'mexican', name: `${t('cuisine.mexican')}` },
+        { id: 60, value: 'thai', name: `${t('cuisine.thai')}` },
+        { id: 61, value: '', name: `${t('cuisine.allCuisines')}` }
       ]
     }
   ];
@@ -161,9 +161,8 @@ export const Search = (): JSX.Element => {
   );
 
   const handleCheckboxChange = useCallback(() => {
-    setIsInputChecked(!isInputChecked);
     excludeOnion === '' ? setExcludeOnion('onion') : setExcludeOnion('');
-  }, [isInputChecked, excludeOnion]);
+  }, [excludeOnion]);
 
   const onSortClick = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
     setSort(e.target.value);
@@ -246,7 +245,7 @@ export const Search = (): JSX.Element => {
           <label className="search__checkbox-label">
             <input
               type="checkbox"
-              checked={isInputChecked}
+              checked={excludeOnion === 'onion'}
               onChange={handleCheckboxChange}
             />
             {t('withoutOnion')}

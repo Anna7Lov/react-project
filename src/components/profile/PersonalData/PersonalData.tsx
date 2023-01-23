@@ -27,22 +27,13 @@ export const PersonalData = (): JSX.Element => {
     setIsDataEditing(true);
   }, []);
 
-  const onReset = useCallback(() => {
-    setIsDataEditing(false);
-  }, []);
-
-  const onDataEdit = (
+  const onDataEdit = useCallback((
     values: EditDataFormValues,
     actions: FormikHelpers<EditDataFormValues>): void => {
     const editedUser: Omit<
     UserModel,
     'id' | 'password' | 'favoriteRecipes' | 'theme' | 'language' | 'ratingList'
-    > = {
-      name: values.name,
-      lastName: values.lastName,
-      phone: values.phone,
-      email: values.email
-    };
+    > = values;
     if (
       editedUser.name !== currentUser?.name ||
       editedUser.lastName !== currentUser?.lastName ||
@@ -53,6 +44,10 @@ export const PersonalData = (): JSX.Element => {
     }
     setIsDataEditing(false);
     actions.setSubmitting(false);
+  }, [currentUser]);
+
+  const onDataEditCancel = (): void => {
+    setIsDataEditing(false);
   };
 
   const {
@@ -62,7 +57,8 @@ export const PersonalData = (): JSX.Element => {
     isSubmitting,
     handleBlur,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handleReset
   } = useFormik<EditDataFormValues>({
     initialValues: {
       name: currentUser?.name ?? '',
@@ -71,7 +67,9 @@ export const PersonalData = (): JSX.Element => {
       email: currentUser?.email ?? ''
     },
     validationSchema: editDataFormSchema,
-    onSubmit: onDataEdit
+    onSubmit: onDataEdit,
+    onReset: onDataEditCancel,
+    enableReinitialize: true
   });
 
   return (
@@ -80,7 +78,7 @@ export const PersonalData = (): JSX.Element => {
         ? (<form
           noValidate
           onSubmit={handleSubmit}
-          onReset={onReset}
+          onReset={handleReset}
         >
           <InputItem
             name="name"

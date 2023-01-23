@@ -3,6 +3,7 @@
 
 .profile {
     @include main-align();
+    min-height: 63.6vh;
     margin-top: 30px;
     display: flex;
     flex-direction: column;

@@ -8,8 +8,9 @@ import { registerUserAction } from '../../rdx/user/actions';
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { UserModel } from '../../services/userTypes';
 import { registrationFormSchema } from '../../validationSchemas';
-import { InputItem } from '../../components/shared/InputItem/InputItem';
 import { HeaderSecondary } from '../../components/shared/HeaderSecondary/HeaderSecondary';
+import { InputItem } from '../../components/shared/InputItem/InputItem';
+import { ButtonLarge } from '../../components/shared/ButtonLarge/ButtonLarge';
 import './RegistrationPage.scss';
 
 export interface RegistrationFormValues {
@@ -73,8 +74,8 @@ export const RegistrationPage = (): JSX.Element => {
     <div className={theme === 'dark' ? 'registration dark-registration' : 'registration'}>
       {isSuccessfulRegistrationVisible
         ? <div className='registration__successful'>
-        You have successfully registered and can log in on next step. Wait please.
-       </div>
+          You have successfully registered and can log in on next step. Wait please.
+        </div>
         : null}
       <HeaderSecondary />
       <div className="registration__title">
@@ -82,7 +83,7 @@ export const RegistrationPage = (): JSX.Element => {
       </div>
       <div className="registration__items">
         <form noValidate onSubmit={handleSubmit}>
-        <InputItem
+          <InputItem
             name="name"
             placeholder="Name *"
             type="text"
@@ -93,7 +94,7 @@ export const RegistrationPage = (): JSX.Element => {
             touched={touched.name}
           />
 
-        <InputItem
+          <InputItem
             name="lastName"
             placeholder="Last Name *"
             type="text"
@@ -104,7 +105,7 @@ export const RegistrationPage = (): JSX.Element => {
             touched={touched.lastName}
           />
 
-        <InputItem
+          <InputItem
             name="phone"
             placeholder="Phone +4917755511222 *"
             type="tel"
@@ -115,7 +116,7 @@ export const RegistrationPage = (): JSX.Element => {
             touched={touched.phone}
           />
 
-        <InputItem
+          <InputItem
             name="email"
             placeholder="Email *"
             type="email"
@@ -126,7 +127,7 @@ export const RegistrationPage = (): JSX.Element => {
             touched={touched.email}
           />
 
-        <InputItem
+          <InputItem
             name="password"
             placeholder="Password *"
             type="password"
@@ -137,7 +138,7 @@ export const RegistrationPage = (): JSX.Element => {
             touched={touched.password}
           />
 
-        <InputItem
+          <InputItem
             name="confirmPassword"
             placeholder="Confirm password *"
             type="password"
@@ -148,12 +149,13 @@ export const RegistrationPage = (): JSX.Element => {
             touched={touched.confirmPassword}
           />
 
-          <button type="submit" className="registration__button" disabled={isSubmitting}>
-            Sign up
-          </button>
+          <ButtonLarge
+            isDisabled={isSubmitting}
+            title="Sign up"
+          />
         </form>
 
-        <div>
+        <div className='registration__info'>
           <span className="registration__text">Already have an account? </span>
           <Link to={'/login'} className="registration__link">
             Log in

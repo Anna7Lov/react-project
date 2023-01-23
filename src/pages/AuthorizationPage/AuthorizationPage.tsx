@@ -6,9 +6,10 @@ import { loginUserAction } from '../../rdx/user/actions';
 import { selectUsers } from '../../rdx/user/selectors';
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { authorizationFormSchema } from '../../validationSchemas';
+import { HeaderSecondary } from '../../components/shared/HeaderSecondary/HeaderSecondary';
 import { Title } from '../../components/shared/Title/Title';
 import { InputItem } from '../../components/shared/InputItem/InputItem';
-import { HeaderSecondary } from '../../components/shared/HeaderSecondary/HeaderSecondary';
+import { ButtonLarge } from '../../components/shared/ButtonLarge/ButtonLarge';
 import './AuthorizationPage.scss';
 
 export interface AuthorizationFormValues {
@@ -83,16 +84,19 @@ export const AuthorizationPage = (): JSX.Element => {
             error={errors.password}
             touched={touched.password}
           />
-          <button type="submit" className="authorization__button">
-            Log in
-          </button>
+
+          <ButtonLarge
+            title="Log in"
+          />
+
           <div className="authorization__error">
             {authorizationError
               ? <div className="authorization__error-text">{authorizationError}</div>
               : null}
           </div>
         </form>
-        <div className="authorization__content">
+
+        <div className="authorization__info">
           <span className="authorization__text">
             Don’t you have an account?{' '}
           </span>
