@@ -4,7 +4,7 @@
 .title {
     @include medium-bold-font();
     letter-spacing: 0.05em;
-    text-transform: uppercase;     
+    text-transform: uppercase;    
     color: $main-color;
     margin-bottom: 30px;    
 }

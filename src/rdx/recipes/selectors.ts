@@ -43,3 +43,12 @@ export const selectIsAutocompleteLoading = (state: GlobalAppState): boolean =>
 
 export const selectIsAutocompleteFailed = (state: GlobalAppState): Error | null =>
   state.recipes.autocompleteError;
+
+export const selectFoodTrivia = (state: GlobalAppState): string =>
+  state.recipes.foodTrivia;
+
+export const selectIsFoodTriviaLoading = (state: GlobalAppState): boolean =>
+  state.recipes.foodTriviaRequestState === RequestState.Waiting;
+
+export const selectIsFoodTriviaFailed = (state: GlobalAppState): Error | null =>
+  state.recipes.foodTriviaError;

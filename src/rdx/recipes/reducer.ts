@@ -4,7 +4,8 @@ import {
   searchRecipesAsyncAction,
   getRecipeAsyncAction,
   getSimilarRecipesAsyncAction,
-  getAutocompleteAsyncAction
+  getAutocompleteAsyncAction,
+  getFoodTriviaAsyncAction
 } from './actions';
 import { RecipeTitleModel, RecipeModel, RequestState, SimilarRecipeModel, AutocompleteModel } from '../../services/recipesTypes';
 
@@ -23,6 +24,9 @@ export interface RecipesState {
   autocomplete: AutocompleteModel[];
   autocompleteRequestState: RequestState;
   autocompleteError: Error | null;
+  foodTrivia: string;
+  foodTriviaRequestState: RequestState;
+  foodTriviaError: Error | null;
 }
 
 const initialState: RecipesState = {
@@ -35,7 +39,10 @@ const initialState: RecipesState = {
   similarRecipesError: null,
   autocomplete: [],
   autocompleteRequestState: RequestState.Unset,
-  autocompleteError: null
+  autocompleteError: null,
+  foodTrivia: '',
+  foodTriviaRequestState: RequestState.Unset,
+  foodTriviaError: null
 };
 
 export const reducer = (state = initialState, action: GlobalAppActions): RecipesState => {
@@ -154,6 +161,31 @@ export const reducer = (state = initialState, action: GlobalAppActions): Recipes
         ...state,
         autocompleteRequestState: RequestState.Failure,
         autocompleteError: action.payload.error
+      };
+    }
+
+    case getType(getFoodTriviaAsyncAction.request): {
+      return {
+        ...state,
+        foodTriviaRequestState: RequestState.Waiting,
+        foodTriviaError: null
+      };
+    }
+
+    case getType(getFoodTriviaAsyncAction.success): {
+      return {
+        ...state,
+        foodTrivia: action.payload.foodTrivia,
+        foodTriviaRequestState: RequestState.Success,
+        foodTriviaError: null
+      };
+    }
+
+    case getType(getFoodTriviaAsyncAction.failure): {
+      return {
+        ...state,
+        foodTriviaRequestState: RequestState.Failure,
+        foodTriviaError: action.payload.error
       };
     }
 

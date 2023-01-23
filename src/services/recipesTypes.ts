@@ -51,3 +51,7 @@ export interface AutocompleteModel {
   id: number;
   title: string;
 }
+
+export interface FoodTriviaResponseType {
+  text: string;
+}

@@ -16,7 +16,11 @@ export enum RecipesActions {
 
   GET_AUTOCOMPLETE_REQUEST = '@goods/GET_AUTOCOMPLETE_REQUEST',
   GET_AUTOCOMPLETE_SUCCESS = '@goods/GET_AUTOCOMPLETE_SUCCESS',
-  GET_AUTOCOMPLETE_FAILURE = '@goods/GET_AUTOCOMPLETE_FAILURE'
+  GET_AUTOCOMPLETE_FAILURE = '@goods/GET_AUTOCOMPLETE_FAILURE',
+
+  GET_FOOD_TRIVIA_REQUEST = '@goods/GET_FOOD_TRIVIA_REQUEST',
+  GET_FOOD_TRIVIA_SUCCESS = '@goods/GET_FOOD_TRIVIA_SUCCESS',
+  GET_FOOD_TRIVIA_FAILURE = '@goods/GET_FOOD_TRIVIA_FAILURE',
 }
 
 export const searchRecipesAsyncAction = createAsyncAction(
@@ -42,3 +46,9 @@ export const getAutocompleteAsyncAction = createAsyncAction(
   RecipesActions.GET_AUTOCOMPLETE_SUCCESS,
   RecipesActions.GET_AUTOCOMPLETE_FAILURE
 )<undefined, { autocomplete: AutocompleteModel[] }, { error: Error }>();
+
+export const getFoodTriviaAsyncAction = createAsyncAction(
+  RecipesActions.GET_FOOD_TRIVIA_REQUEST,
+  RecipesActions.GET_FOOD_TRIVIA_SUCCESS,
+  RecipesActions.GET_FOOD_TRIVIA_FAILURE
+)<undefined, { foodTrivia: string }, { error: Error }>();

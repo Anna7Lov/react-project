@@ -2,12 +2,36 @@
 @import '../../mixins.scss';
 
 .profile {
-    @include main-align();
-    min-height: 63.6vh;
+    @include main-align();    
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &__food-trivia {
+        display: flex;
+        align-items: center;
+        max-width: 800px;   
+        min-height: 108px;   
+        font-size: 18px;
+        line-height: 160%;
+        text-align: center;
+        padding: 15px 30px;
+        color: $white-color;
+        background: $main-color;
+        border-radius: 5px;       
+        margin-bottom: 50px;       
+    }
+
+    &__food-trivia-error {
+        width: 370px;
+        text-align: center;
+        color: $bright-color;
+        font-size: 18px;
+        margin: 0 auto 50px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $bright-color;
+    }
 
     &__favorite-recipes {
         width: 100%;
@@ -35,6 +59,16 @@
 
 @media screen and (max-width: 600px) {
     .profile {
+        &__food-trivia {
+            font-size: 16px; 
+            line-height: 140%;
+        }
+
+        &__food-trivia-error {
+            width: 240px;   
+            font-size: 16px;  
+        }
+
         &__no-recipes {
             width: 240px;   
             font-size: 16px;         

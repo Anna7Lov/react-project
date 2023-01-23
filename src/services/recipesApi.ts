@@ -2,11 +2,12 @@ import {
   RecipesSearchResponseType,
   RecipeModel,
   SimilarRecipeModel,
-  AutocompleteModel
+  AutocompleteModel,
+  FoodTriviaResponseType
 } from './recipesTypes';
 
 const BASE_URL = 'https://api.spoonacular.com';
-const API_KEY = '3726eaf2941248f0bbd5c880725bbba8';
+const API_KEY = '08e6e5f370804892ba49ed689eb872c6';
 
 const commonHeaders = {
   'Content-Type': 'application/json'
@@ -87,5 +88,11 @@ export const getSimilarRecipes = async (id: string): Promise<CallApiEndpointResu
 export const getAutocomplete = async (q: string): Promise<CallApiEndpointResult<AutocompleteModel[]>> =>
   await callApiEndpoint<undefined, AutocompleteModel[]>({
     endpoint: `recipes/autocomplete?number=8&query=${q}&apiKey=${API_KEY}`,
+    method: 'GET'
+  });
+
+export const getFoodTrivia = async (): Promise<CallApiEndpointResult<FoodTriviaResponseType>> =>
+  await callApiEndpoint<undefined, FoodTriviaResponseType>({
+    endpoint: `/food/trivia/random?apiKey=${API_KEY}`,
     method: 'GET'
   });

@@ -2,14 +2,16 @@ import {
   searchRecipesAsyncAction,
   getRecipeAsyncAction,
   getSimilarRecipesAsyncAction,
-  getAutocompleteAsyncAction
+  getAutocompleteAsyncAction,
+  getFoodTriviaAsyncAction
 } from './actions';
 
 import {
   searchRecipes,
   getRecipe,
   getSimilarRecipes,
-  getAutocomplete
+  getAutocomplete,
+  getFoodTrivia
 } from '../../services/recipesApi';
 
 import { AppDispatch } from '../index';
@@ -19,10 +21,19 @@ import { GlobalAppActions } from '../actions';
 
 export type ThunkAppType = ThunkAction<Promise<void>, GlobalAppState, undefined, GlobalAppActions>;
 
-export const searchRecipesThunk = (q: string, cuisine: string, diet: string, mealType: string, excludeOnion: string, sort: string, sortDirection: string): ThunkAppType => async (dispatch: AppDispatch) => {
+export const searchRecipesThunk = (
+  q: string,
+  cuisine: string,
+  diet: string,
+  mealType: string,
+  excludeOnion: string,
+  sort: string,
+  sortDirection: string
+): ThunkAppType => async (dispatch: AppDispatch) => {
   dispatch(searchRecipesAsyncAction.request());
   try {
-    const response = await searchRecipes(q, cuisine, diet, mealType, excludeOnion, sort, sortDirection);
+    const response = await searchRecipes(
+      q, cuisine, diet, mealType, excludeOnion, sort, sortDirection);
     if (!response.success || !response.response) {
       throw (Error('Something went wrong'));
     }
@@ -68,5 +79,18 @@ export const getAutocompleteThunk = (q: string): ThunkAppType => async (dispatch
     dispatch(getAutocompleteAsyncAction.success({ autocomplete: response.response }));
   } catch (error) {
     dispatch(getAutocompleteAsyncAction.failure({ error: new Error('Something went wrong') }));
+  }
+};
+
+export const getFoodTriviaThunk = (): ThunkAppType => async (dispatch: AppDispatch) => {
+  dispatch(getFoodTriviaAsyncAction.request());
+  try {
+    const response = await getFoodTrivia();
+    if (!response.success || !response.response) {
+      throw (Error('Something went wrong'));
+    }
+    dispatch(getFoodTriviaAsyncAction.success({ foodTrivia: response.response.text }));
+  } catch (error) {
+    dispatch(getFoodTriviaAsyncAction.failure({ error: new Error('Something went wrong') }));
   }
 };
