@@ -15,14 +15,14 @@ export const RecipeTitleList = (): JSX.Element => {
   const recipes = useSelector(selectRecipes);
   const isLoading = useSelector(selectAreRecipesLoading);
   const error = useSelector(selectAreRecipesFailed);
-  const [index, setIndex] = useState<number>(12);
+  const [index, setIndex] = useState<number>(16);
   const [isCompleted, setIsCompleted] = useState<boolean>();
   const { t } = useTranslation();
 
   const recipesToShow = slice(recipes, 0, index);
 
   const showMore = useCallback(() => {
-    setIndex(index + 12);
+    setIndex(index + 16);
   }, [index]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const RecipeTitleList = (): JSX.Element => {
   }, [index, recipes]);
 
   useEffect(() => {
-    setIndex(12);
+    setIndex(16);
   }, [recipes]);
 
   return (

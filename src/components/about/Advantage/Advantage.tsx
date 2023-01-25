@@ -1,5 +1,5 @@
 import React from 'react';
-import { AdvantageItem } from '../../../pages/AboutPage/AboutPage';
+import { AdvantageItem } from '../../../componentsItemsTypes';
 import './Advantage.scss';
 
 interface AdvantagesContentProps {
@@ -9,7 +9,7 @@ interface AdvantagesContentProps {
 export const Advantage = ({ advantage }: AdvantagesContentProps): JSX.Element => {
   return (
     <div className="advantage">
-      <h5 className={`advantage__number ${advantage.additionalClass}`}>
+      <h5 className={`advantage__number ${String(advantage.additionalClass)}`}>
         {advantage.number}
       </h5>
       <p className="advantage__text">{advantage.text}</p>

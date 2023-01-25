@@ -1,14 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
+import { PartnerItem } from '../../../componentsItemsTypes';
 import { Title } from '../Title/Title';
 import './Partners.scss';
-
-export interface PartnerItem {
-  id: number;
-  logo: string;
-  alt: string;
-  class: string;
-}
 
 const partnersList: PartnerItem[] = [
   {
@@ -47,7 +41,7 @@ export const Partners = (): JSX.Element => {
       </div>
       <div className="partners__list">
         {partnersList.map((partner) => (
-          <div key={partner.id} className={`partners__item ${partner.class}`}>
+          <div key={partner.id} className={`partners__item ${String(partner.class)}`}>
             <img src={partner.logo} alt={partner.alt} />
           </div>
         ))}

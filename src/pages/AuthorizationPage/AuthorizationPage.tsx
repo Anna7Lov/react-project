@@ -6,16 +6,12 @@ import { loginUserAction } from '../../rdx/user/actions';
 import { selectUsers } from '../../rdx/user/selectors';
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { authorizationFormSchema } from '../../validationSchemas';
+import { AuthorizationFormValues } from '../../componentsItemsTypes';
 import { HeaderSecondary } from '../../components/shared/HeaderSecondary/HeaderSecondary';
 import { Title } from '../../components/shared/Title/Title';
 import { InputItem } from '../../components/shared/InputItem/InputItem';
 import { ButtonLarge } from '../../components/shared/ButtonLarge/ButtonLarge';
 import './AuthorizationPage.scss';
-
-export interface AuthorizationFormValues {
-  email: string;
-  password: string;
-}
 
 export const AuthorizationPage = (): JSX.Element => {
   const dispatch = useDispatch();

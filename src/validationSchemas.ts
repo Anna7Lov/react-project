@@ -1,13 +1,15 @@
 
 import * as Yup from 'yup';
+import {
+  AuthorizationFormValues,
+  EditDataFormValues,
+  EditPasswordFormValues,
+  RegistrationFormValues
+} from './componentsItemsTypes';
 import { store } from './rdx';
-import { RegistrationFormValues } from './pages/RegistrationPage/RegistrationPage';
-import { AuthorizationFormValues } from './pages/AuthorizationPage/AuthorizationPage';
-import { EditDataFormValues } from './components/profile/PersonalData/PersonalData';
-import { EditPasswordFormValues } from './components/profile/PasswordChange/PasswordChange';
 
 const phoneRules = /^\+?\d{7,12}$/;
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+const passwordRules = /^(?=.*\d)(?=.*[a-z-а-я])(?=.*[A-Z-А-Я]).{6,}$/;
 
 export const registrationFormSchema: Yup.SchemaOf<RegistrationFormValues> =
 Yup.object().shape({

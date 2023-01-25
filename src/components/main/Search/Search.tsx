@@ -5,19 +5,10 @@ import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { searchRecipesThunk, getAutocompleteThunk } from '../../../rdx/recipes/thunks';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
+import { DropDownItem } from '../../../componentsItemsTypes';
 import { DropDownList } from '../../shared/DropDownList/DropDownList';
 import { Autocomplete } from '../Autocomplete/Autocomplete';
 import './Search.scss';
-
-export interface DropDownModel {
-  id: number;
-  title: string;
-  list: Array<{
-    id: number;
-    value: string;
-    name: string;
-  }>;
-}
 
 export const Search = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -40,7 +31,7 @@ export const Search = (): JSX.Element => {
 
   const { t } = useTranslation();
 
-  const cuisineList: DropDownModel[] = [
+  const cuisineList: DropDownItem[] = [
     {
       id: 50,
       title: 'Cuisine',
@@ -60,7 +51,7 @@ export const Search = (): JSX.Element => {
     }
   ];
 
-  const dietList: DropDownModel[] = [
+  const dietList: DropDownItem[] = [
     {
       id: 60,
       title: 'Diet',
@@ -74,7 +65,7 @@ export const Search = (): JSX.Element => {
     }
   ];
 
-  const mealTypeList: DropDownModel[] = [
+  const mealTypeList: DropDownItem[] = [
     {
       id: 70,
       title: 'Type',
@@ -91,7 +82,7 @@ export const Search = (): JSX.Element => {
     }
   ];
 
-  const sortList: DropDownModel[] = [
+  const sortList: DropDownItem[] = [
     {
       id: 100,
       title: 'Sort',

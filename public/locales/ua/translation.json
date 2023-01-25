@@ -3,7 +3,7 @@
     "nav": {
         "home": "Домашня",
         "about": "Про нас",
-        "reviews": "Відгуки"        
+        "gallery": "Галерея"        
     },
     "profile": "Профіль",
     "logOut": "Вийти",
@@ -73,5 +73,9 @@
     "saveButton": "Зберегти",
     "cancelButton": "Скасувати",
     "changePasswordButton": "Змінити пароль",
-    "deleteFavoriteRecipeButton": "Видалити"
+    "deleteFavoriteRecipeButton": "Видалити",
+    "galleryTitle": "Ваші кулінарні шедеври",
+    "galleryTitleSecondary": "Насолоджуйтесь готуванням з нашими рецептами!",
+    "galleryTextSend": "Надсилайте фотографії на електронну пошту ",
+    "galleryTextPlace": "і ми розмістимо найкращі з них в цьому розділі!"
 }

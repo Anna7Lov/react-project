@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
+import { AdvantageItem } from '../../../componentsItemsTypes';
 import { TitleSecondary } from '../../shared/TitleSecondary/TitleSecondary';
 import { Advantage } from '../Advantage/Advantage';
 import { Text } from '../../shared/Text/Text';
-import { AdvantageItem } from '../../../pages/AboutPage/AboutPage';
 import './AdvantagesContent.scss';
 
 interface AdvantagesContentProps {

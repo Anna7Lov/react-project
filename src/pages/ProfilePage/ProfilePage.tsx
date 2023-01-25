@@ -1,15 +1,19 @@
 import { useTranslation } from 'react-i18next';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectFoodTrivia,
+  selectIsFoodTriviaFailed,
+  selectIsFoodTriviaLoading
+} from '../../rdx/recipes/selectors';
 import { selectCurrentUser } from '../../rdx/user/selectors';
+import { getFoodTriviaThunk } from '../../rdx/recipes/thunks';
 import { Title } from '../../components/shared/Title/Title';
 import { FavoriteRecipe } from '../../components/profile/FavoriteRecipe/FavoriteRecipe';
 import { PersonalData } from '../../components/profile/PersonalData/PersonalData';
 import { PasswordChange } from '../../components/profile/PasswordChange/PasswordChange';
-import './ProfilePage.scss';
-import { selectFoodTrivia, selectIsFoodTriviaFailed, selectIsFoodTriviaLoading } from '../../rdx/recipes/selectors';
-import { getFoodTriviaThunk } from '../../rdx/recipes/thunks';
 import { Loading } from '../../components/shared/Loading/Loading';
+import './ProfilePage.scss';
 
 export const ProfilePage = (): JSX.Element => {
   const dispatch = useDispatch();

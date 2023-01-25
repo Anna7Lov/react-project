@@ -6,15 +6,10 @@ import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { editUserPasswordAction } from '../../../rdx/user/actions';
 import { editPasswordFormSchema } from '../../../validationSchemas';
 import { UserModel } from '../../../services/userTypes';
+import { EditPasswordFormValues } from '../../../componentsItemsTypes';
 import { ButtonSmall } from '../../shared/ButtonSmall/ButtonSmall';
 import { InputItem } from '../../shared/InputItem/InputItem';
 import './PasswordChange.scss';
-
-export interface EditPasswordFormValues {
-  password: string;
-  newPassword: string;
-  confirmNewPassword: string;
-}
 
 export const PasswordChange = (): JSX.Element => {
   const dispatch = useDispatch();

@@ -1,12 +1,7 @@
 import React from 'react';
+import { socialMediaItem } from '../../../componentsItemsTypes';
 import { SocialMedia } from '../SocialMedia/SocialMedia';
 import './Footer.scss';
-
-export interface socialMediaItem {
-  id: number;
-  name: string;
-  address: string;
-}
 
 const socialMediaList: socialMediaItem[] = [
   { id: 200, name: 'facebook', address: 'https://www.facebook.com/' },

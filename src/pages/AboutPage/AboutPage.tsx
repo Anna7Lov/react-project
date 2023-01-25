@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
+import { AdvantageItem } from '../../componentsItemsTypes';
 import { Title } from '../../components/shared/Title/Title';
 import { TitleSecondary } from '../../components/shared/TitleSecondary/TitleSecondary';
 import { Text } from '../../components/shared/Text/Text';
@@ -7,13 +8,6 @@ import { Video } from '../../components/about/Video/Video';
 import { AdvantagesContent } from '../../components/about/AdvantagesContent/AdvantagesContent';
 import { Partners } from '../../components/shared/Partners/Partners';
 import './AboutPage.scss';
-
-export interface AdvantageItem {
-  id: number;
-  number: string;
-  text: string;
-  additionalClass: string;
-}
 
 export const AboutPage = (): JSX.Element => {
   const { t } = useTranslation();

@@ -6,16 +6,10 @@ import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { editUserDataAction } from '../../../rdx/user/actions';
 import { editDataFormSchema } from '../../../validationSchemas';
 import { UserModel } from '../../../services/userTypes';
+import { EditDataFormValues } from '../../../componentsItemsTypes';
 import { ButtonSmall } from '../../shared/ButtonSmall/ButtonSmall';
 import { InputItem } from '../../shared/InputItem/InputItem';
 import './PersonalData.scss';
-
-export interface EditDataFormValues {
-  name: string;
-  lastName: string;
-  phone: string;
-  email: string;
-}
 
 export const PersonalData = (): JSX.Element => {
   const dispatch = useDispatch();

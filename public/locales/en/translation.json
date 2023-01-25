@@ -3,7 +3,7 @@
     "nav": {
         "home": "Home",
         "about": "About",
-        "reviews": "Reviews"        
+        "gallery": "Gallery"        
     },
     "profile": "Profile",
     "logOut": "Logout",
@@ -73,5 +73,9 @@
     "saveButton": "Save",
     "cancelButton": "Cancel",
     "changePasswordButton": "Change password",
-    "deleteFavoriteRecipeButton": "Delete"
+    "deleteFavoriteRecipeButton": "Delete",
+    "galleryTitle": "Your culinary masterpieces",
+    "galleryTitleSecondary": "Enjoy cooking with our recipes!",
+    "galleryTextSend": "Send photos to Email ",
+    "galleryTextPlace": "and we will place the best of them in this section!"
 }

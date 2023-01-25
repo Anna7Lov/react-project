@@ -4,7 +4,7 @@ import { RatingItemModel, UserModel } from '../../services/userTypes';
 
 export enum UserActions {
   REGISTER_USER = '@user/REGISTER_USER',
-  LOGIN_USER_SUCCESS = '@user/LOGIN_USER_SUCCESS',
+  LOGIN_USER = '@user/LOGIN_USER',
   LOGOUT_USER = '@user/LOGOUT_USER',
   ADD_TO_FAVORITES = '@user/ADD_TO_FAVORITES',
   REMOVE_FROM_FAVORITES = '@user/REMOVE_FROM_FAVORITES',
@@ -24,7 +24,7 @@ export const registerUserAction = createAction(
 )();
 
 export const loginUserAction = createAction(
-  UserActions.LOGIN_USER_SUCCESS,
+  UserActions.LOGIN_USER,
   (user): UserModel => (
     user
   )

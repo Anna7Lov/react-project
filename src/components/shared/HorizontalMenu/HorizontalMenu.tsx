@@ -1,7 +1,7 @@
 import React from 'react';
 import { useThemeContext } from '../../../hooks/useThemeContext';
 import { NavLink } from 'react-router-dom';
-import { LinkItem } from '../Header/Header';
+import { LinkItem } from '../../../componentsItemsTypes';
 import './HorizontalMenu.scss';
 
 interface HorizontalMenuProps {

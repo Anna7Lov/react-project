@@ -9,6 +9,7 @@ import { AuthRequire } from './components/shared/AuthRequire/AuthRequire';
 import { Layout } from './components/shared/Layout/Layout';
 import { HomePage } from './pages/HomePage/HomePage';
 import { AboutPage } from './pages/AboutPage/AboutPage';
+import { GalleryPage } from './pages/GalleryPage/GalleryPage';
 import { RecipePage } from './pages/RecipePage/RecipePage';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
@@ -48,8 +49,9 @@ const App = (): JSX.Element => {
           </AuthRequire>}>
             <Route index element={<HomePage />} />
             <Route path='about' element={<AboutPage />} />
-            <Route path='/recipes/:id/information' element={<RecipePage />} />
             <Route path='profile' element={<ProfilePage />} />
+            <Route path='gallery' element={<GalleryPage />} />
+            <Route path='/recipes/:id/information' element={<RecipePage />} />
             <Route path='*' element={<NotFoundPage />} />
           </Route>
         </Routes>

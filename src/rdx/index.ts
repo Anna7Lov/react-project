@@ -16,17 +16,9 @@ const persistedReducer = persistReducer<GlobalAppState>(
   rootReducer
 );
 
-const logger = (store: any) => (next: any) => (action: any) => {
-  console.log('dispatching', action);
-  const result = next(action);
-  console.log('next state', store.getState());
-  return result;
-};
-
 export const store: Store<GlobalAppState> = createStore(
   persistedReducer,
-  applyMiddleware(thunk, logger)
-
+  applyMiddleware(thunk)
 );
 
 export const persistor = persistStore(store);

@@ -1,9 +1,9 @@
 import React from 'react';
-import { DropDownModel } from '../../main/Search/Search';
+import { DropDownItem } from '../../../componentsItemsTypes';
 import './DropDownList.scss';
 
 interface DropDownListProps {
-  items: DropDownModel[];
+  items: DropDownItem[];
   value: string;
   handleSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }

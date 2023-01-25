@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { changeLanguageAction, logoutUserAction } from '../../../rdx/user/actions';
+import { LinkItem } from '../../../componentsItemsTypes';
 import { Logo } from '../../shared/Logo/Logo';
 import { HorizontalMenu } from '../../shared/HorizontalMenu/HorizontalMenu';
 import './Header.scss';
@@ -12,12 +13,6 @@ import './Header.scss';
 interface HeaderProps {
   onThemeChanged: (checked: boolean) => void;
   theme: string;
-}
-
-export interface LinkItem {
-  id: number;
-  name: string;
-  address: string;
 }
 
 export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
@@ -28,7 +23,7 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
   const horizontalLinks: LinkItem[] = [
     { id: 1, name: `${t('nav.home')}`, address: '/' },
     { id: 2, name: `${t('nav.about')}`, address: '/about' },
-    { id: 3, name: `${t('nav.reviews')}`, address: '/reviews' }
+    { id: 3, name: `${t('nav.gallery')}`, address: '/gallery' }
   ];
 
   const onEnglishClick = useCallback(() => {

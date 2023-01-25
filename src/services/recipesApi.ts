@@ -7,7 +7,7 @@ import {
 } from './recipesTypes';
 
 const BASE_URL = 'https://api.spoonacular.com';
-const API_KEY = '08e6e5f370804892ba49ed689eb872c6';
+const API_KEY = '0af608f360ec471f896ac76414b99cb4';
 
 const commonHeaders = {
   'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ export const searchRecipes = async (
   sortDirection: string
 ): Promise<CallApiEndpointResult<RecipesSearchResponseType>> =>
   await callApiEndpoint<undefined, RecipesSearchResponseType>({
-    endpoint: `recipes/complexSearch?query=${q}&number=60&cuisine=${cuisine}&diet=${diet}&type=${mealType}&excludeIngredients=${excludeOnion}&sort=${sort}&sortDirection=${sortDirection}&apiKey=${API_KEY}`,
+    endpoint: `recipes/complexSearch?query=${q}&number=64&cuisine=${cuisine}&diet=${diet}&type=${mealType}&excludeIngredients=${excludeOnion}&sort=${sort}&sortDirection=${sortDirection}&apiKey=${API_KEY}`,
     method: 'GET'
   });
 
@@ -93,6 +93,6 @@ export const getAutocomplete = async (q: string): Promise<CallApiEndpointResult<
 
 export const getFoodTrivia = async (): Promise<CallApiEndpointResult<FoodTriviaResponseType>> =>
   await callApiEndpoint<undefined, FoodTriviaResponseType>({
-    endpoint: `/food/trivia/random?apiKey=${API_KEY}`,
+    endpoint: `food/trivia/random?apiKey=${API_KEY}`,
     method: 'GET'
   });

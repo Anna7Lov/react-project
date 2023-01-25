@@ -8,19 +8,11 @@ import { registerUserAction } from '../../rdx/user/actions';
 import { useThemeContext } from '../../hooks/useThemeContext';
 import { UserModel } from '../../services/userTypes';
 import { registrationFormSchema } from '../../validationSchemas';
+import { RegistrationFormValues } from '../../componentsItemsTypes';
 import { HeaderSecondary } from '../../components/shared/HeaderSecondary/HeaderSecondary';
 import { InputItem } from '../../components/shared/InputItem/InputItem';
 import { ButtonLarge } from '../../components/shared/ButtonLarge/ButtonLarge';
 import './RegistrationPage.scss';
-
-export interface RegistrationFormValues {
-  name: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
 
 export const RegistrationPage = (): JSX.Element => {
   const dispatch = useDispatch();
