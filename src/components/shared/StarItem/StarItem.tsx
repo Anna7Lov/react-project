@@ -4,7 +4,7 @@ import { addToRatingListAction, removeFromRatingListAction } from '../../../rdx/
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { recipeRatingById } from '../../../utils/recipeRatingById';
 import { useSingleAndDoubleClick } from '../../../hooks/useSingleAndDoubleClick';
-import { isItemInList } from '../../../utils/isIteminList';
+import { isItemInList } from '../../../utils/isItemInList';
 import './StarItem.scss';
 
 interface StarItemProps {

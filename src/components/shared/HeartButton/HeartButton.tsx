@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToFavoritesAction, removeFromFavoritesAction } from '../../../rdx/user/actions';
 import { selectCurrentUser } from '../../../rdx/user/selectors';
 import { RecipeTitleModel } from '../../../services/recipesTypes';
-import { isItemInList } from '../../../utils/isIteminList';
+import { isItemInList } from '../../../utils/isItemInList';
 import './HeartButton.scss';
 
 interface HeartButtonProps {

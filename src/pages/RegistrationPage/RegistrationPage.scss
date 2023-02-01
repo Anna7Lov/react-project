@@ -6,19 +6,19 @@
     background: #f6f6f8;
 
     &__successful {
-        @include medium-font(); 
+        @include medium-font();
         position: fixed;
         top: calc(50% - 75px);
         left: calc(50% - 250px);
         z-index: 50;
         width: 500px;
-        height: 150px;        
+        height: 150px;
         line-height: 150%;
         background: $secondary-color;
-        color: #FFFFFF;        
+        color: #FFFFFF;
         padding: 50px 30px;
         text-align: center;
-    }    
+    }
 
     &__title {
         display: flex;
@@ -30,11 +30,11 @@
         flex-direction: column;
         align-items: center;
         padding-bottom: 50px;
-    }    
+    }
 
     &__link {
         @include small-bold-font();
-        color: $main-color;        
+        color: $main-color;
         text-decoration: none;
 
         &:hover {
@@ -54,13 +54,37 @@
 }
 
 .dark-registration {
-    background: #202f31; 
+    background: #202f31;
+}
+
+@media screen and (max-width: 550px) {
+    .registration {
+        &__successful {
+            left: calc(50% - 200px);
+            width: 400px;
+        }
+    }
 }
 
 @media screen and (max-width: 450px) {
     .registration {
+        &__successful {
+            left: calc(50% - 175px);
+            width: 350px;
+            padding: 30px;
+        }
+
         &__items {
             @include main-align-adaptive-small();
-        }        
+        }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .registration {
+        &__successful {
+            left: calc(50% - 140px);
+            width: 280px;
+        }
     }
 }
