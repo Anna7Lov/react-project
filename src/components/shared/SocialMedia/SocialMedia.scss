@@ -1,0 +1,50 @@
+.social-media {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 20px;  
+
+    &__item {
+        &:not(:last-child) {
+            margin-right: 15px; 
+        }
+
+        &:hover {
+            transition: all 0.3s;
+            filter: brightness(130%);
+        }
+    }    
+
+    &__link {
+        display: block;               
+    }
+
+    &__element {
+        display: block;   
+        width: 32px;
+        height: 32px;            
+    }
+}
+
+.facebook {   
+    background: url(../../../../public/images/facebook.png) no-repeat center;    
+}
+
+.instagram {    
+    background: url(../../../../public/images/instagram.png) no-repeat center;    
+}
+
+.youtube {    
+    background: url(../../../../public/images/youtube.png) no-repeat center;    
+}
+
+.viber {    
+    background: url(../../../../public/images/viber.png) no-repeat center;    
+}
+
+.tiktok {    
+    background: url(../../../../public/images/tiktok.png) no-repeat center;    
+}
+
+.twitter {    
+    background: url(../../../../public/images/twitter.png) no-repeat center;    
+}

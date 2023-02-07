@@ -1,0 +1,39 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.button-large {
+    @include medium-bold-font();
+    display: block;
+    width: 375px;
+    height: 46px;
+    margin: 0 auto 10px;
+    background: $main-color;
+    border-radius: 5px;
+    color: $white-color;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        color: $white-color;
+        background: $bright-color;
+        transition: all 0.5s;
+    }
+
+    &[disabled] {
+        background-color: $dark-color;
+        opacity: 0.3;
+        cursor: default;           
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .button-large {
+        width: 340px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .button-large {
+        width: 270px;
+    }
+}

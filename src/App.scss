@@ -1,0 +1,14 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.light {
+    background: $white-color; 
+    transition: all 0.5s;  
+    color: $dark-color;
+}
+
+.dark {
+    background: #202f31; 
+    transition: all 0.5s;  
+    color: $white-color;  
+}

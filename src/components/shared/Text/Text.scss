@@ -1,0 +1,31 @@
+@import '../../../variables.scss';
+
+.text {    
+    font-size: 18px;
+    line-height: 160%;
+    color: $dark-color;
+    margin-bottom: 20px;
+}
+
+.dark-text {
+    color: $white-color;
+}
+
+@media screen and (max-width: 1250px) {
+    .text {    
+        font-size: 16px;   
+        line-height: 140%;     
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .text {          
+        line-height: 105%;     
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .text {          
+        line-height: 140%;     
+    }
+}

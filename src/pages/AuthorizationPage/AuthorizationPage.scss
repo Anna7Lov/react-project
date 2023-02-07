@@ -1,0 +1,62 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.authorization {
+    height: 100vh;
+    background: #f6f6f8 url(../../../public/images/authorization_background.jpg) center bottom no-repeat;
+    background-size: 100%;
+
+    &__title {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }    
+
+    &__info {
+        margin-bottom: 20px;
+    }
+
+    &__link {
+        @include small-bold-font();
+        color: $main-color;
+        text-decoration: none;
+
+        &:hover {
+            color: $bright-color;
+            transition: all 0.3s;
+        }
+    }
+
+    &__text {
+        font-size: 16px;
+    }
+
+    &__error {
+        height: 28px;
+    }
+
+    &__error-text {
+        height: 18px;
+        text-align: center;
+        font-size: 18px;
+        color: $bright-color;
+        margin-bottom: 10px;
+    }
+}
+
+.dark-authorization {
+    background: #202f31;
+}
+
+@media screen and (max-width: 450px) {
+    .authorization {
+        &__items {
+            @include main-align-adaptive-small();
+        }        
+    }
+}

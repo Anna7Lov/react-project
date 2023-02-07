@@ -1,0 +1,91 @@
+@import '../../mixins.scss';
+
+.about {
+    @include main-align();
+    margin-top: 30px;
+
+    &__team-content {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    &__team-text {
+        width: calc(50% - 40px);
+        margin-right: 80px;
+    }
+
+    &__image {
+        width: calc(50% - 40px);
+    }
+
+    &__video-content {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    &__video {
+        width: calc(50% - 40px);
+        margin-right: 80px;
+    }
+
+    &__video-text {
+        width: calc(50% - 40px);        
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .about {
+        @include main-align-adaptive();
+
+        &__team-text {
+            width: calc(47% - 15px);
+            margin-right: 30px;
+        }
+
+        &__image {
+            width: calc(53% - 15px);
+        }
+
+        &__video {
+            width: calc(53% - 15px);
+            margin-right: 30px;
+        }
+    
+        &__video-text {
+            width: calc(47% - 15px);        
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .about {
+        &__team-text {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+
+        &__image {
+            width: 100%;
+        }
+
+        &__video {
+            width: 100%;
+            margin-right: 0;
+            order: 2;  
+        }
+    
+        &__video-text {
+            width: 100%;   
+            order: 1;  
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .about {
+        @include main-align-adaptive-small();        
+    }
+}

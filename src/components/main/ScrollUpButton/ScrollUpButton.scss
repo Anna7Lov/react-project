@@ -1,0 +1,26 @@
+@import '../../../variables.scss';
+
+.scroll-up-button {
+    position: fixed;
+    right: 10px;
+    bottom: 30px;
+    width: 35px;
+    height: 35px;
+    background: url(../../../../public/images/up-arrow.png) center center no-repeat $secondary-color;
+    box-shadow: 0 1px 4px 0 #d1e891;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 70;
+
+    &:hover {
+        transition: all 0.3s;
+        filter: brightness(130%);
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .scroll-up-button {
+        right: 2.5px;
+    }
+}

@@ -1,0 +1,87 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.favorite-recipe {
+    width: calc(25% - 11.25px);
+    background: $main-color;
+    box-shadow: 2px 2px 3px 1px #3a3a3c;    
+    margin-bottom: 15px;
+
+    &:not(:nth-child(4n+4)) {
+        margin-right: 15px;
+    }
+
+    &__link {
+        @include small-font();                  
+        display: flex;        
+        padding: 15px 15px 53px 15px;        
+        color: #FFFFFF;        
+        text-decoration: none;
+        border-bottom: 1px dashed $white-color;                   
+
+        &:hover {
+            background: $bright-color;
+        }
+    }
+
+    &__image {
+        height: 85px;
+        margin-right: 10px;
+    }    
+
+    &__rating {
+        position: relative;
+        margin-bottom: 15px;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .favorite-recipe {
+        width: calc(33.33% - 10px);        
+    
+        &:not(:nth-child(4n+4)) {
+            margin-right: 0;
+        }
+
+        &:not(:nth-child(3n+3)) {
+            margin-right: 15px;
+        }
+
+        &__image {
+            height: 75px;                       
+        }
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .favorite-recipe {
+        width: calc(50% - 7.5px);       
+
+        &:not(:nth-child(3n+3)) {
+            margin-right: 0;
+        }
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 15px;
+        }      
+        
+        &__image {
+            height: 70px;                      
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .favorite-recipe {
+        width: calc(100%);        
+
+        &:not(:nth-child(2n+2)) {
+            margin-right: 0;
+        }
+
+        &__image {
+            height: 80px;            
+        }
+    }
+}

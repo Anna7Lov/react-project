@@ -1,0 +1,85 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.autocomplete {
+    width: 450px;
+    position: absolute;
+    top: 46px;
+    background: #f0f5f7;
+    border-radius: 5px;
+    z-index: 50;
+
+    &__no-results {
+        width: 400px;
+        text-align: center;
+        color: $bright-color;
+        font-size: 18px;
+        margin: 50px auto;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $bright-color;
+    }
+
+    &__subtitle {
+        text-align: center;
+        font-size: 14px;
+        color: #757575;
+        padding-top: 10px;
+    }
+
+    &__list {
+        @include small-font();
+        padding: 10px 0;
+    }
+
+    &__link {
+        display: block;
+        color: $dark-color;
+        text-decoration: none;
+        padding: 10px 20px;
+
+        &:hover {
+            background: $bright-color;
+            color: $white-color;
+            transition: all 0.3s;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .autocomplete {
+        width: 370px;
+
+        &__no-results {
+            width: 320px;            
+        }
+
+        &__subtitle {
+            width: 270px;
+            margin: 0 auto;
+        }
+    }    
+}
+
+@media screen and (max-width: 450px) {
+    .autocomplete {
+        width: 320px;
+
+        &__no-results {
+            width: 270px;            
+        }        
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .autocomplete {
+        width: 270px;
+
+        &__no-results {
+            width: 220px;            
+        }
+
+        &__subtitle {
+            width: 220px;            
+        }
+    }
+}

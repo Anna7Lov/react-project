@@ -1,0 +1,28 @@
+@import '../../../variables.scss';
+
+.similar-recipes-list {
+    &__items {
+        display: flex;
+        flex-wrap: wrap;  
+        margin-bottom: 15px;             
+    }   
+    
+    &__error {        
+        width: 550px;
+        text-align: center;
+        color: $bright-color;
+        font-size: 24px;
+        margin: 0 auto 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $bright-color;        
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .similar-recipes-list {        
+        &__error {        
+            width: 230px;  
+            font-size: 18px;                
+        }
+    }
+}

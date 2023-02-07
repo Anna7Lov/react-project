@@ -1,0 +1,36 @@
+@mixin main-align() {
+    max-width: 1200px;    
+    margin: 0 auto;  
+}
+
+@mixin small-font() {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+@mixin small-bold-font() {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+@mixin medium-font() {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+@mixin medium-bold-font() {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+@mixin main-align-adaptive() {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+@mixin main-align-adaptive-small() {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}

@@ -1,0 +1,86 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.recipe-title-list {
+    &__results {
+        @include main-align();
+    }
+
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__no-results {
+        width: 600px;
+        text-align: center;
+        color: $bright-color;
+        font-size: 24px;
+        margin: 0 auto 30px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid $bright-color;
+    }
+
+    &__button {
+        @include medium-bold-font();
+        display: block;
+        width: 150px;
+        height: 50px;
+        margin: 0 auto 30px;
+        background: $main-color;
+        border-radius: 5px;
+        color: $white-color;
+        cursor: pointer;
+        border: none;
+
+        &:hover {
+            color: $white-color;
+            background: $bright-color;
+            transition: all 0.5s;
+        }
+
+        &[disabled] {
+            background: $dark-color;
+            opacity: 0.3;
+            cursor: default;
+        }
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .recipe-title-list {
+        &__results {
+            @include main-align-adaptive();
+        }
+
+        &__no-results {
+            width: 400px;
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .recipe-title-list {
+        &__no-results {
+            width: 270px;
+            font-size: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .recipe-title-list {
+        &__results {
+            @include main-align-adaptive-small();
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .recipe-title-list {
+        &__no-results {
+            width: 240px;
+            font-size: 18px;
+        }
+    }
+}

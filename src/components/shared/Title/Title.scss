@@ -1,0 +1,16 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.title {
+    @include medium-bold-font();
+    letter-spacing: 0.05em;
+    text-transform: uppercase;    
+    color: $main-color;
+    margin-bottom: 30px;    
+}
+
+@media screen and (max-width: 1250px) {
+    .title {    
+        font-size: 16px;           
+    }
+}

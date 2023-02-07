@@ -1,0 +1,87 @@
+@import '../../../variables.scss';
+
+.horizontal-menu {
+    &__links {        
+        font-weight: 600;
+        font-size: 20px;               
+        display: flex;
+        margin-right: 20px;              
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 24px;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $dark-color;
+
+        &:hover {            
+            color: $bright-color;
+            transition: all 0.3s; 
+        }
+    }
+}
+
+.dark-link {
+    color: $white-color;    
+}
+
+.active {
+    color: $main-color;
+    cursor: default;
+
+    &:hover {
+        color: $main-color;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .horizontal-menu {
+        &__links {           
+            margin-right: 0;              
+        }
+
+        &__item:not(:last-child) {
+            margin-right: 50px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .horizontal-menu {
+        &__item:not(:last-child) {
+            margin-right: 40px;
+        }        
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .horizontal-menu {
+        width: 100%;
+
+        &__item:not(:last-child) {
+            margin-right: 45px;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .horizontal-menu {
+        &__links {
+            justify-content: center;
+        }              
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .horizontal-menu {
+        &__item:not(:last-child) {
+            margin-right: 20px;
+        }
+
+        &__links {
+            font-size: 18px;
+        }
+    }
+}

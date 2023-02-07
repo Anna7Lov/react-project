@@ -1,0 +1,11 @@
+@import '../../../variables.scss';
+
+.star-rating {
+    position: absolute;
+    z-index: 100;
+    padding: 2.5px 5px;      
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 14px;
+    bottom: 12px;
+    left: 10px;
+}

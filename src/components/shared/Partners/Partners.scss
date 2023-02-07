@@ -1,0 +1,56 @@
+@import '../../../mixins.scss';
+
+.partners {
+    @include main-align();    
+    margin-bottom: 30px;  
+    
+    &__subtitle {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__list {
+        display: flex;     
+        flex-wrap: wrap;   
+    }
+
+    &__item {
+        width: 25%;
+        height: 100px;        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }   
+}
+
+.cooking {
+    background: #b8eaff;
+}
+
+.kitchen {
+    background: #fff46b;
+}
+
+.terrace {
+    background: #f6f6f6;
+}
+
+.clickky {
+    background: #C71C36;
+}
+
+@media screen and (max-width: 850px) {
+    .partners { 
+        &__item {
+            width: 50%;            
+        } 
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .partners { 
+        &__item {
+            width: 100%;            
+        } 
+    }
+}
