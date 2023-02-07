@@ -1,7 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRecipeThunk, getSimilarRecipesThunk } from '../../rdx/recipes/thunks';
+import {
+  getRecipeThunk,
+  getRecipeTasteThunk,
+  getSimilarRecipesThunk
+} from '../../rdx/recipes/thunks';
 import { RequestState } from '../../services/recipesTypes';
 import { selectRecipe } from '../../rdx/recipes/selectors';
 import { selectCurrentUser } from '../../rdx/user/selectors';
@@ -9,6 +13,8 @@ import { Loading } from '../../components/shared/Loading/Loading';
 import { SimilarRecipesList } from '../../components/recipe/SimilarRecipesList/SimilarRecipesList';
 import { HeartButton } from '../../components/shared/HeartButton/HeartButton';
 import { StarRating } from '../../components/shared/StarRating/StarRating';
+import { RecipeTaste } from '../../components/recipe/RecipeTaste/RecipeTaste';
+import { Subtitle } from '../../components/recipe/Subtitle/Subtitle';
 import './RecipePage.scss';
 
 export const RecipePage = (): JSX.Element => {
@@ -27,6 +33,7 @@ export const RecipePage = (): JSX.Element => {
   useEffect(() => {
     if (id) {
       dispatch(getRecipeThunk(id));
+      dispatch(getRecipeTasteThunk(id));
       dispatch(getSimilarRecipesThunk(id));
     }
   }, [id, dispatch]);
@@ -111,8 +118,10 @@ export const RecipePage = (): JSX.Element => {
         </div>
       </div>
 
+      <RecipeTaste />
+
       <div className="recipe__content">
-        <h3 className="recipe__subtitle">Ingredients:</h3>
+        <Subtitle subtitle='Ingredients:' />
         <ul className="recipe__ingredients">
           {currentRecipe.info.extendedIngredients?.map((ingredient, index) => (
             <li key={`${ingredient.name}${index}`} className="recipe__ingredient">
@@ -124,7 +133,7 @@ export const RecipePage = (): JSX.Element => {
 
       {currentRecipe.info.analyzedInstructions?.length
         ? (<div className="recipe__content">
-          <h3 className="recipe__subtitle">Instructions:</h3>
+          <Subtitle subtitle='Instructions:' />
           <ol className="recipe__instructions">
             {currentRecipe.info.analyzedInstructions[0]?.steps.map(
               (instruction) => (

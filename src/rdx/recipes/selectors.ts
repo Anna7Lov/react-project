@@ -3,6 +3,7 @@ import {
   RecipeTitleModel,
   RequestState,
   RecipeModel,
+  RecipeTasteModel,
   SimilarRecipeModel,
   AutocompleteModel
 } from '../../services/recipesTypes';
@@ -25,6 +26,15 @@ export const selectRecipe = (
     error: Error | null;
   };
 } => state.recipes.recipe;
+
+export const selectRecipeTaste = (state: GlobalAppState): RecipeTasteModel =>
+  state.recipes.recipeTaste;
+
+export const selectIsRecipeTasteLoading = (state: GlobalAppState): boolean =>
+  state.recipes.recipeTasteRequestState === RequestState.Waiting;
+
+export const selectIsRecipeTasteFailed = (state: GlobalAppState): Error | null =>
+  state.recipes.recipeTasteError;
 
 export const selectSimilarRecipes = (state: GlobalAppState): SimilarRecipeModel[] =>
   state.recipes.similarRecipes;

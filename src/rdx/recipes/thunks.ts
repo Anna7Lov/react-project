@@ -1,6 +1,7 @@
 import {
   searchRecipesAsyncAction,
   getRecipeAsyncAction,
+  getRecipeTasteAsyncAction,
   getSimilarRecipesAsyncAction,
   getAutocompleteAsyncAction,
   getFoodTriviaAsyncAction
@@ -9,6 +10,7 @@ import {
 import {
   searchRecipes,
   getRecipe,
+  getRecipeTaste,
   getSimilarRecipes,
   getAutocomplete,
   getFoodTrivia
@@ -53,6 +55,19 @@ export const getRecipeThunk = (id: string): ThunkAppType => async (dispatch: App
     dispatch(getRecipeAsyncAction.success({ recipe: response.response, id }));
   } catch (error) {
     dispatch(getRecipeAsyncAction.failure({ error: new Error('Something went wrong'), id }));
+  }
+};
+
+export const getRecipeTasteThunk = (id: string): ThunkAppType => async (dispatch: AppDispatch) => {
+  dispatch(getRecipeTasteAsyncAction.request({ id }));
+  try {
+    const response = await getRecipeTaste(id);
+    if (!response.success || !response.response) {
+      throw (Error('Something went wrong'));
+    }
+    dispatch(getRecipeTasteAsyncAction.success({ recipeTaste: response.response }));
+  } catch (error) {
+    dispatch(getRecipeTasteAsyncAction.failure({ error: new Error('Something went wrong') }));
   }
 };
 

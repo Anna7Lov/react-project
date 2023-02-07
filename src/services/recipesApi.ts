@@ -3,11 +3,12 @@ import {
   RecipeModel,
   SimilarRecipeModel,
   AutocompleteModel,
-  FoodTriviaResponseType
+  FoodTriviaResponseType,
+  RecipeTasteModel
 } from './recipesTypes';
 
 const BASE_URL = 'https://api.spoonacular.com';
-const API_KEY = '0af608f360ec471f896ac76414b99cb4';
+const API_KEY = '3726eaf2941248f0bbd5c880725bbba8';
 
 const commonHeaders = {
   'Content-Type': 'application/json'
@@ -76,6 +77,12 @@ export const searchRecipes = async (
 export const getRecipe = async (id: string): Promise<CallApiEndpointResult<RecipeModel>> =>
   await callApiEndpoint<undefined, RecipeModel>({
     endpoint: `recipes/${id}/information?apiKey=${API_KEY}`,
+    method: 'GET'
+  });
+
+export const getRecipeTaste = async (id: string): Promise<CallApiEndpointResult<RecipeTasteModel>> =>
+  await callApiEndpoint<undefined, RecipeTasteModel>({
+    endpoint: `recipes/${id}/tasteWidget.json?apiKey=${API_KEY}`,
     method: 'GET'
   });
 

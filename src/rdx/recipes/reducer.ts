@@ -3,11 +3,19 @@ import { GlobalAppActions } from '../actions';
 import {
   searchRecipesAsyncAction,
   getRecipeAsyncAction,
+  getRecipeTasteAsyncAction,
   getSimilarRecipesAsyncAction,
   getAutocompleteAsyncAction,
   getFoodTriviaAsyncAction
 } from './actions';
-import { RecipeTitleModel, RecipeModel, RequestState, SimilarRecipeModel, AutocompleteModel } from '../../services/recipesTypes';
+import {
+  RecipeTitleModel,
+  RecipeModel,
+  RequestState,
+  RecipeTasteModel,
+  SimilarRecipeModel,
+  AutocompleteModel
+} from '../../services/recipesTypes';
 
 export interface RecipesState {
   recipesTitles: RecipeTitleModel[];
@@ -18,6 +26,9 @@ export interface RecipesState {
     info: RecipeModel | null;
     error: Error | null;
   }; };
+  recipeTaste: RecipeTasteModel;
+  recipeTasteRequestState: RequestState;
+  recipeTasteError: Error | null;
   similarRecipes: SimilarRecipeModel[];
   similarRecipesRequestState: RequestState;
   similarRecipesError: Error | null;
@@ -34,6 +45,9 @@ const initialState: RecipesState = {
   searchRecipesRequestState: RequestState.Unset,
   error: null,
   recipe: {},
+  recipeTaste: {},
+  recipeTasteRequestState: RequestState.Unset,
+  recipeTasteError: null,
   similarRecipes: [],
   similarRecipesRequestState: RequestState.Unset,
   similarRecipesError: null,
@@ -111,6 +125,31 @@ export const reducer = (state = initialState, action: GlobalAppActions): Recipes
             requestState: RequestState.Failure
           }
         }
+      };
+    }
+
+    case getType(getRecipeTasteAsyncAction.request): {
+      return {
+        ...state,
+        recipeTasteRequestState: RequestState.Waiting,
+        recipeTasteError: null
+      };
+    }
+
+    case getType(getRecipeTasteAsyncAction.success): {
+      return {
+        ...state,
+        recipeTaste: action.payload.recipeTaste,
+        recipeTasteRequestState: RequestState.Success,
+        recipeTasteError: null
+      };
+    }
+
+    case getType(getRecipeTasteAsyncAction.failure): {
+      return {
+        ...state,
+        recipeTasteRequestState: RequestState.Failure,
+        recipeTasteError: action.payload.error
       };
     }
 

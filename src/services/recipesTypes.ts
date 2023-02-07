@@ -41,6 +41,16 @@ export interface RecipeModel {
   analyzedInstructions?: InstructionModel[];
 }
 
+export interface RecipeTasteModel {
+  sweetness?: number;
+  saltiness?: number;
+  sourness?: number;
+  bitterness?: number;
+  savoriness?: number;
+  fattiness?: number;
+  spiciness?: number;
+}
+
 export interface SimilarRecipeModel {
   id: number;
   title: string;

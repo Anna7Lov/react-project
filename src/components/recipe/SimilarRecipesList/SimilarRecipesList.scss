@@ -1,14 +1,6 @@
 @import '../../../variables.scss';
 
 .similar-recipes-list {
-    &__title {
-        text-align: center;
-        font-weight: 500;
-        font-size: 24px;        
-        color: $main-color;        
-        margin-bottom: 30px;  
-    }
-
     &__items {
         display: flex;
         flex-wrap: wrap;  
@@ -16,7 +8,7 @@
     }   
     
     &__error {        
-        width: 600px;
+        width: 550px;
         text-align: center;
         color: $bright-color;
         font-size: 24px;
@@ -26,7 +18,7 @@
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 650px) {
     .similar-recipes-list {        
         &__error {        
             width: 230px;  

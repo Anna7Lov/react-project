@@ -6,6 +6,7 @@ import {
   selectAreSimilarRecipesFailed
 } from '../../../rdx/recipes/selectors';
 import { Loading } from '../../shared/Loading/Loading';
+import { Subtitle } from '../Subtitle/Subtitle';
 import { SimilarRecipe } from '../SimilarRecipe/SimilarRecipe';
 import './SimilarRecipesList.scss';
 
@@ -20,7 +21,7 @@ export const SimilarRecipesList = (): JSX.Element => {
         ? (<Loading />)
         : !AreSimilarRecipesLoading && !similarRecipesError && similarRecipes.length
             ? (<div>
-          <h3 className="similar-recipes-list__title">Similar Recipes:</h3>
+          <Subtitle subtitle='Similar Recipes:' />
           <ul className="similar-recipes-list__items">
             {similarRecipes.map((similarRecipe) => (
               <SimilarRecipe
@@ -35,7 +36,7 @@ export const SimilarRecipesList = (): JSX.Element => {
                 ? ''
                 : (
         <div className="similar-recipes-list__error">
-          No Similar Recipes. Error: {similarRecipesError?.message}
+          No Similar Recipes. {similarRecipesError?.message}
         </div>
                   )}
     </div>
