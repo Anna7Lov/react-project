@@ -69,11 +69,14 @@
     .drop-down-list {
         &__label {
             width: 270px;
+            font-size: 14px;
+            padding-left: 7.5px;
         }
 
         &__select {
             width: 220px;
             font-size: 13px;
+            margin-left: 7.5px;
         }
     }
 }

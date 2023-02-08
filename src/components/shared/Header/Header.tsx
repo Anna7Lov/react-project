@@ -21,9 +21,9 @@ export const Header = ({ onThemeChanged, theme }: HeaderProps): JSX.Element => {
   const { t, i18n } = useTranslation();
 
   const horizontalLinks: LinkItem[] = [
-    { id: 1, name: `${t('nav.home')}`, address: '/' },
-    { id: 2, name: `${t('nav.about')}`, address: '/about' },
-    { id: 3, name: `${t('nav.gallery')}`, address: '/gallery' }
+    { id: 1, name: t('nav.home'), address: '/' },
+    { id: 2, name: t('nav.about'), address: '/about' },
+    { id: 3, name: t('nav.gallery'), address: '/gallery' }
   ];
 
   const onEnglishClick = useCallback(() => {

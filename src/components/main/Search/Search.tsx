@@ -14,6 +14,7 @@ export const Search = (): JSX.Element => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const searchToolsRef = useRef(null);
+  const { t } = useTranslation();
   const [inputText, setInputText] = useState<string>(searchParams.get('query') ?? '');
   const debouncedQuery = useDebounce<string>(inputText, 600);
   const [isDropDownBoxOpened, setIsDropDownBoxOpened] = useState<boolean>(false);
@@ -29,24 +30,22 @@ export const Search = (): JSX.Element => {
     searchParams.get('sortDirection') ?? ''
   );
 
-  const { t } = useTranslation();
-
   const cuisineList: DropDownItem[] = [
     {
       id: 50,
-      title: 'Cuisine',
+      title: t('cuisine.label'),
       list: [
-        { id: 51, value: '', name: `${t('cuisine.chooseCuisine')}` },
-        { id: 52, value: 'american', name: `${t('cuisine.american')}` },
-        { id: 53, value: 'caribbean', name: `${t('cuisine.caribbean')}` },
-        { id: 54, value: 'chinese', name: `${t('cuisine.chinese')}` },
-        { id: 55, value: 'eastern european', name: `${t('cuisine.easternEuropean')}` },
-        { id: 56, value: 'italian', name: `${t('cuisine.italian')}` },
-        { id: 57, value: 'spanish', name: `${t('cuisine.spanish')}` },
-        { id: 58, value: 'japanese', name: `${t('cuisine.japanese')}` },
-        { id: 59, value: 'mexican', name: `${t('cuisine.mexican')}` },
-        { id: 60, value: 'thai', name: `${t('cuisine.thai')}` },
-        { id: 61, value: '', name: `${t('cuisine.allCuisines')}` }
+        { id: 51, value: '', name: t('cuisine.chooseCuisine') },
+        { id: 52, value: 'american', name: t('cuisine.american') },
+        { id: 53, value: 'caribbean', name: t('cuisine.caribbean') },
+        { id: 54, value: 'chinese', name: t('cuisine.chinese') },
+        { id: 55, value: 'eastern european', name: t('cuisine.easternEuropean') },
+        { id: 56, value: 'italian', name: t('cuisine.italian') },
+        { id: 57, value: 'spanish', name: t('cuisine.spanish') },
+        { id: 58, value: 'japanese', name: t('cuisine.japanese') },
+        { id: 59, value: 'mexican', name: t('cuisine.mexican') },
+        { id: 60, value: 'thai', name: t('cuisine.thai') },
+        { id: 61, value: '', name: t('cuisine.allCuisines') }
       ]
     }
   ];
@@ -54,13 +53,13 @@ export const Search = (): JSX.Element => {
   const dietList: DropDownItem[] = [
     {
       id: 60,
-      title: 'Diet',
+      title: t('diet.label'),
       list: [
-        { id: 61, value: '', name: `${t('diet.chooseDiet')}` },
-        { id: 62, value: 'vegetarian', name: `${t('diet.vegetarian')}` },
-        { id: 63, value: 'vegan', name: `${t('diet.vegan')}` },
-        { id: 64, value: 'gluten free', name: `${t('diet.glutenFree')}` },
-        { id: 65, value: '', name: `${t('diet.noDiet')}` }
+        { id: 61, value: '', name: t('diet.chooseDiet') },
+        { id: 62, value: 'vegetarian', name: t('diet.vegetarian') },
+        { id: 63, value: 'vegan', name: t('diet.vegan') },
+        { id: 64, value: 'gluten free', name: t('diet.glutenFree') },
+        { id: 65, value: '', name: t('diet.noDiet') }
       ]
     }
   ];
@@ -68,16 +67,16 @@ export const Search = (): JSX.Element => {
   const mealTypeList: DropDownItem[] = [
     {
       id: 70,
-      title: 'Type',
+      title: t('mealType.label'),
       list: [
-        { id: 71, value: '', name: `${t('mealType.chooseMealType')}` },
-        { id: 72, value: 'main course', name: `${t('mealType.mainCourse')}` },
-        { id: 73, value: 'dessert', name: `${t('mealType.dessert')}` },
-        { id: 74, value: 'salad', name: `${t('mealType.salad')}` },
-        { id: 75, value: 'soup', name: `${t('mealType.soup')}` },
-        { id: 76, value: 'snack', name: `${t('mealType.snack')}` },
-        { id: 77, value: 'drink', name: `${t('mealType.drink')}` },
-        { id: 78, value: '', name: `${t('mealType.allTypes')}` }
+        { id: 71, value: '', name: t('mealType.chooseMealType') },
+        { id: 72, value: 'main course', name: t('mealType.mainCourse') },
+        { id: 73, value: 'dessert', name: t('mealType.dessert') },
+        { id: 74, value: 'salad', name: t('mealType.salad') },
+        { id: 75, value: 'soup', name: t('mealType.soup') },
+        { id: 76, value: 'snack', name: t('mealType.snack') },
+        { id: 77, value: 'drink', name: t('mealType.drink') },
+        { id: 78, value: '', name: t('mealType.allTypes') }
       ]
     }
   ];
@@ -85,13 +84,13 @@ export const Search = (): JSX.Element => {
   const sortList: DropDownItem[] = [
     {
       id: 100,
-      title: 'Sort',
+      title: t('sort.label'),
       list: [
-        { id: 101, value: '', name: `${t('sort.sortBy')}` },
-        { id: 102, value: 'popularity', name: `${t('sort.popularity')}` },
-        { id: 103, value: 'time', name: `${t('sort.time')}` },
-        { id: 104, value: 'calories', name: `${t('sort.calories')}` },
-        { id: 105, value: '', name: `${t('sort.byDefault')}` }
+        { id: 101, value: '', name: t('sort.sortBy') },
+        { id: 102, value: 'popularity', name: t('sort.popularity') },
+        { id: 103, value: 'time', name: t('sort.time') },
+        { id: 104, value: 'calories', name: t('sort.calories') },
+        { id: 105, value: '', name: t('sort.byDefault') }
       ]
     }
   ];

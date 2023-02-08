@@ -16,25 +16,25 @@ export const AboutPage = (): JSX.Element => {
     {
       id: 10,
       number: '2500+',
-      text: `${t('advantage.recipes')}`,
+      text: t('advantage.recipes'),
       additionalClass: 'recipes'
     },
     {
       id: 11,
       number: '2M+',
-      text: `${t('advantage.customers')}`,
+      text: t('advantage.customers'),
       additionalClass: 'customers'
     },
     {
       id: 12,
       number: '4.9',
-      text: `${t('advantage.rating')}`,
+      text: t('advantage.rating'),
       additionalClass: 'rating'
     },
     {
       id: 13,
       number: '12',
-      text: `${t('advantage.awards')}`,
+      text: t('advantage.awards'),
       additionalClass: 'awards'
     }
   ];

@@ -3,7 +3,7 @@ import './ButtonSmall.scss';
 
 interface ButtonSmallProps {
   additionalClass: string;
-  type: 'button' | 'submit' | 'reset' | undefined;
+  type: 'button' | 'submit' | 'reset';
   onButtonSmallClick?: () => void;
   isDisabled?: boolean;
   title: string;

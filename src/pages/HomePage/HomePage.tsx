@@ -6,7 +6,7 @@ import { Partners } from '../../components/shared/Partners/Partners';
 
 export const HomePage = (): JSX.Element => {
   return (
-    <div>
+    <div className='home'>
       <ScrollUpButton />
       <Search />
       <RecipeTitleList />

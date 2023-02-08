@@ -11,6 +11,7 @@
     "autocompleteNoResults": "No results. Try changing the query.",
     "autocompleteSubtitle": "Possible recipe names according to your text query",
     "cuisine": {
+        "label": "Cuisine",
         "chooseCuisine": "Choose Cuisine",
         "american": "American",
         "caribbean": "Caribbean",
@@ -24,6 +25,7 @@
         "allCuisines": "All cuisines"
     },
     "diet": {
+        "label": "Diet",
         "chooseDiet": "Choose Diet",
         "vegetarian": "Vegetarian",
         "vegan": "Vegan",
@@ -31,6 +33,7 @@
         "noDiet": "No diet"
     },
     "mealType": {
+        "label": "Type",
         "chooseMealType": "Choose Meal type",        
         "mainCourse": "Main course",
         "dessert": "Dessert",
@@ -41,6 +44,7 @@
         "allTypes": "All types"
     },
     "sort": {
+        "label": "Sort",
         "sortBy": "Sort By",        
         "popularity": "Popularity (from the most popular)",
         "time": "Time (from the fastest to prepare)",

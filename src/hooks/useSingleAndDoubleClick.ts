@@ -3,7 +3,7 @@ import { useState, useEffect, MouseEventHandler } from 'react';
 export const useSingleAndDoubleClick = (
   handleSingleClick: () => void,
   handleDoubleClick: () => void,
-  delay = 200): MouseEventHandler<HTMLButtonElement> => {
+  delay = 220): MouseEventHandler<HTMLButtonElement> => {
   const [click, setClick] = useState<number>(0);
 
   useEffect(() => {

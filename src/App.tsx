@@ -42,15 +42,15 @@ const App = (): JSX.Element => {
     <ThemeContext.Provider value={theme}>
       <div className={theme} >
         <Routes>
-          <Route path='login' element={<AuthorizationPage />} />
-          <Route path='signup' element={<RegistrationPage />} />
+          <Route path='/login' element={<AuthorizationPage />} />
+          <Route path='/signup' element={<RegistrationPage />} />
           <Route path='/' element={<AuthRequire>
             <Layout onThemeChanged={onThemeChanged} theme={theme} />
           </AuthRequire>}>
             <Route index element={<HomePage />} />
-            <Route path='about' element={<AboutPage />} />
-            <Route path='profile' element={<ProfilePage />} />
-            <Route path='gallery' element={<GalleryPage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/profile' element={<ProfilePage />} />
+            <Route path='/gallery' element={<GalleryPage />} />
             <Route path='/recipes/:id/information' element={<RecipePage />} />
             <Route path='*' element={<NotFoundPage />} />
           </Route>
