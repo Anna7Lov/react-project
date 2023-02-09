@@ -58,13 +58,13 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
             ...state.currentUser,
             favoriteRecipes: [...state.currentUser.favoriteRecipes, action.payload]
           },
-          users: state.users.map((i) => (
-            i.email === state.currentUser?.email
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
-                  favoriteRecipes: [...state.currentUser.favoriteRecipes, action.payload]
+                  ...u,
+                  favoriteRecipes: [...u.favoriteRecipes, action.payload]
                 }
-              : i
+              : u
           ))
         };
       } else {
@@ -83,15 +83,15 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
               (item) => item.id !== action.payload
             )
           },
-          users: state.users.map((i) => (
-            i.email === state.currentUser?.email
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
-                  favoriteRecipes: state.currentUser.favoriteRecipes.filter(
+                  ...u,
+                  favoriteRecipes: u.favoriteRecipes.filter(
                     (item) => item.id !== action.payload
                   )
                 }
-              : i
+              : u
           ))
         };
       } else {
@@ -108,13 +108,13 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
             ...state.currentUser,
             theme: action.payload
           },
-          users: state.users.map((i) => (
-            i.id === state.currentUser?.id
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
+                  ...u,
                   theme: action.payload
                 }
-              : i
+              : u
           ))
         };
       } else {
@@ -131,13 +131,13 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
             ...state.currentUser,
             language: action.payload
           },
-          users: state.users.map((i) => (
-            i.id === state.currentUser?.id
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
+                  ...u,
                   language: action.payload
                 }
-              : i
+              : u
           ))
         };
       } else {
@@ -157,16 +157,16 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
             phone: action.payload.phone,
             email: action.payload.email
           },
-          users: state.users.map((i) => (
-            i.id === state.currentUser?.id
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
+                  ...u,
                   name: action.payload.name,
                   lastName: action.payload.lastName,
                   phone: action.payload.phone,
                   email: action.payload.email
                 }
-              : i
+              : u
           ))
         };
       } else {
@@ -183,13 +183,13 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
             ...state.currentUser,
             password: action.payload.password
           },
-          users: state.users.map((i) => (
-            i.id === state.currentUser?.id
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
+                  ...u,
                   password: action.payload.password
                 }
-              : i
+              : u
           ))
         };
       } else {
@@ -208,15 +208,15 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
               ? state.currentUser.ratingList.map((item) => item.id === action.payload.id ? action.payload : item)
               : [...state.currentUser.ratingList, action.payload]
           },
-          users: state.users.map((i) => (
-            i.email === state.currentUser?.email
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
-                  ratingList: state.currentUser.ratingList.some((i) => (i.id === action.payload.id))
-                    ? state.currentUser.ratingList.map((item) => item.id === action.payload.id ? action.payload : item)
-                    : [...state.currentUser.ratingList, action.payload]
+                  ...u,
+                  ratingList: u.ratingList.some((i) => (i.id === action.payload.id))
+                    ? u.ratingList.map((item) => item.id === action.payload.id ? action.payload : item)
+                    : [...u.ratingList, action.payload]
                 }
-              : i
+              : u
           ))
         };
       } else {
@@ -235,15 +235,15 @@ export const reducer = (state = initialState, action: GlobalAppActions): UserSta
               (item) => item.id !== action.payload
             )
           },
-          users: state.users.map((i) => (
-            i.email === state.currentUser?.email
+          users: state.users.map((u) => (
+            u.id === state.currentUser?.id
               ? {
-                  ...state.currentUser,
-                  ratingList: state.currentUser.ratingList.filter(
+                  ...u,
+                  ratingList: u.ratingList.filter(
                     (item) => item.id !== action.payload
                   )
                 }
-              : i
+              : u
           ))
         };
       } else {
