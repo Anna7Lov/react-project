@@ -1,0 +1,15 @@
+@import '../../../mixins.scss';
+
+.masonry-images {
+    display: flex;
+    margin-left: -30px;
+
+    &__column {
+        padding-left: 30px;
+    }
+
+    &__image {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}

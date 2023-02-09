@@ -1,0 +1,64 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.input-item {
+    position: relative;
+    height: 64px;
+    margin-bottom: 8px;
+
+    &__input {
+        width: 375px;
+        height: 46px;        
+        font-size: 16px;
+        color: $dark-color;
+        border: 2px solid $main-color;
+        border-radius: 5px;
+        padding: 12px;
+    }
+    
+    &__input-error {
+        border-color: $bright-color;
+    }
+
+    &__visibility {
+        content: "";
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 15px;
+        cursor: pointer;             
+    }
+
+    &__error {
+        font-size: 14px;
+        color: $bright-color;
+        padding: 3px 0;
+    }
+    
+}
+
+.invisible {
+    background: url(../../../../public/images/hidden.png) no-repeat;
+    top: calc(50% - 21.5px);    
+}
+
+.visible {
+    background: url(../../../../public/images/visible.png) no-repeat;
+    top: calc(50% - 21px);    
+}
+
+@media screen and (max-width: 450px) {
+    .input-item  {       
+        &__input {            
+            width: 340px;            
+        }
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .input-item  {       
+        &__input {            
+            width: 270px;            
+        }
+    }
+}

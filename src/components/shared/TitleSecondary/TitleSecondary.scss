@@ -1,0 +1,31 @@
+@import '../../../variables.scss';
+
+.title-secondary {
+    font-weight: 500;
+    font-size: 30px;    
+    color: black;
+    max-width: 800px;
+    margin-bottom: 30px;    
+}
+
+.dark-title-secondary {
+    color: $white-color;
+}
+
+@media screen and (max-width: 1250px) {
+    .title-secondary {    
+        font-size: 26px;           
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .title-secondary {    
+        font-size: 22px;           
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .title-secondary {    
+        font-size: 26px;           
+    }
+}

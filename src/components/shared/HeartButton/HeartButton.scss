@@ -1,0 +1,58 @@
+@import '../../../variables.scss';
+
+.heart-button {
+    &__button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: rgba(255, 255, 255, 0.7);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        filter: brightness(150%);
+    }
+
+    &__heart {
+        position: absolute;
+        right: 11.3px;
+        top: 39%;
+        height: 13px;
+        width: 13px;
+        background: rgb(136, 136, 136);
+        transform: rotate(-45deg);
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            height: 13px;
+            width: 13px;
+            background: rgb(136, 136, 136);
+            border-radius: 50%;
+        }
+
+        &:before {
+            top: -8px;
+            left: 0;
+        }
+
+        &:after {
+            left: 8px;
+            top: 0;
+        }
+    }
+}
+
+.heart-added {
+    background-color: $bright-color;
+
+    &:before,
+    &:after {
+        background-color: $bright-color;
+    }
+}

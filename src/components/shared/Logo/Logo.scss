@@ -1,0 +1,23 @@
+.logo {
+    display: block;
+    background: url(../../../../public/images/cooking_logo.jpg) no-repeat center;
+    background-size: contain;
+    width: 275px;
+    height: 89px;
+    margin-right: 30px;
+    border-radius: 14px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    .logo {        
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .logo {        
+        margin: 0 auto 20px;
+    }
+}

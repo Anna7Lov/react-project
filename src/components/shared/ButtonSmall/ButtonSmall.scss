@@ -1,0 +1,42 @@
+@import '../../../variables.scss';
+@import '../../../mixins.scss';
+
+.button-small {
+    @include small-bold-font();
+    display: block;
+    width: 110px;
+    height: 35px;
+    margin: 0 auto 30px;    
+    border-radius: 5px;    
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+
+    &:hover {        
+        transition: all 0.5s;
+        filter: brightness(130%);
+    }
+
+    &[disabled] {
+        background-color: $dark-color;
+        opacity: 0.4;
+        cursor: default;        
+    }
+}
+
+.button-main {
+    background: $main-color;    
+}
+
+.button-ordinary {
+    background: $secondary-color;    
+}
+
+.button-bright {
+    background: $bright-color;        
+}
+
+.button-delete {
+    background: $bright-color; 
+    margin: 0 auto 15px;   
+}
