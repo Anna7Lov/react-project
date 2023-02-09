@@ -87,7 +87,6 @@ export const reducer = (state = initialState, action: GlobalAppActions): Recipes
     }
 
     case getType(getRecipeAsyncAction.request): {
-      console.log(state.recipe);
       return {
         ...state,
         recipe: {
